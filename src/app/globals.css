@@ -1,8 +1,41 @@
 @import "tailwindcss";
 
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth body {
+  overflow: hidden;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #171717;
+  --foreground: #ededed;
+}
+
+/* set as default font for the website */
+@font-face {
+  font-family: "Agrandir";
+  src: url("/fonts/Agrandir-GrandHeavy.otf") format("opentype");
+  /* font-weight: 100 300 500 800 900; */
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Agrandir - regular";
+  src: url("/fonts/Agrandir-Regular.otf") format("opentype");
+  /* font-weight: 100 300 500 800 900; */
+  font-style: normal;
+  font-display: swap;
 }
 
 @theme inline {
@@ -10,17 +43,21 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-main: "Agrandir";
+  --font-regular: "Agrandir - regular";
 }
-
+/* 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+  /* default is agrandir but switch to Arial if custom font fails to load */
+  font-family: var(--font-main), Arial, Helvetica, sans-serif;
 }
