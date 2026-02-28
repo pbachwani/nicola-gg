@@ -12,8 +12,8 @@ export default function ProjectCard({ project, i }) {
     offset: ["start end", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [20, -35]);
-  const imageY = useTransform(scrollYProgress, [0, 1], [10, -10]);
+  const y = useTransform(scrollYProgress, [0, 1], [100, -40]);
+  const imageY = useTransform(scrollYProgress, [0, 1], [20, -20]);
 
   if (!project) return null;
 
@@ -48,10 +48,17 @@ export default function ProjectCard({ project, i }) {
       <motion.div
         ref={ref}
         style={{ y }}
-        className="absolute bottom-4 z-10 w-full flex justify-between items-baseline px-4 gap-4"
+        className="absolute bottom-4 z-10 w-full flex flex-col justify-between items-baseline px-4 gap-2"
       >
-        <h2 className="text-xl md:text-2xl font-medium">{project.name}</h2>
-        <p className="text-sm">{project.category}</p>
+        <div className="flex justify-between w-full">
+          <h2 className="text-xl md:text-2xl font-medium">{project.name}</h2>
+          <p className="text-sm">{project.category}</p>
+        </div>
+
+        <div className="flex justify-between w-full opacity-70">
+          <p className="text-sm">{project.director}</p>
+          <p className="text-sm">{project.cinematographer}</p>
+        </div>
       </motion.div>
     </Link>
   );
