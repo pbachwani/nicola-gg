@@ -257,7 +257,7 @@ const About = () => {
   return (
     <main className="relative">
       <div className="sticky top-1/3 bg-transparent z-50 px-4 md:px-16 py-10">
-        <h1 className="md:text-2xl">
+        <h1 className="md:text-2xl text-justify">
           {words.map((word, wordIndex) => (
             <span
               key={wordIndex}
@@ -274,10 +274,10 @@ const About = () => {
 
       <section ref={sectionRef} className="relative w-full">
         {/* IMAGE WRAPPER */}
-        <div className="relative w-full h-screen">
+        <div className="relative w-full h-svh">
           <div
             ref={imageRef}
-            className="absolute bottom-0 left-0 w-full h-full"
+            className="absolute bottom-0 left-0 w-full h-full opacity-50"
           >
             {images.map((src, i) => (
               <img

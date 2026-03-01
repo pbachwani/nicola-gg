@@ -9,7 +9,7 @@ export default function ProjectsPage() {
     <PageTransition>
       <div className="bg-black text-white min-h-screen px-6 md:px-12 py-20">
         {/* Heading */}
-        <h1 className="text-4xl md:text-6xl font-semibold mb-16 opacity-80">
+        <h1 className="text-4xl md:text-6xl font-semibold my-16 opacity-80">
           Projects
         </h1>
 
