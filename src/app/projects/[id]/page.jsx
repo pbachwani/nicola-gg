@@ -24,10 +24,10 @@ export default async function ProjectPage({ params }) {
       {/* ✅ FIXED INFO LAYER */}
       <div className="fixed inset-0 z-50 pointer-events-none">
         <div className="flex justify-between items-end h-screen  pt-20">
-          <div className="w-screen h-fit flex flex-col md:flex-row justify-between items-start bg-black/0 px-6 md:px-16 p-4 relative max-md:gap-4">
+          <div className="w-screen h-fit flex flex-col md:flex-row justify-between items-start bg-black/0 md:px-16 px-4 py-6 relative max-md:gap-4">
             {/* BLUR GRADIENT LAYER */}
             <div
-              className="absolute inset-0 backdrop-blur-lg bg-black/50 
+              className="absolute inset-0 backdrop-blur-xl bg-black 
                   [mask:linear-gradient(to_top,black,transparent)] 
                   [-webkit-mask-image:linear-gradient(to_top,black,transparent)]
                   pointer-events-none -z-10"
@@ -35,7 +35,7 @@ export default async function ProjectPage({ params }) {
             {/* LEFT */}
             <div className="flex flex-col justify-end max-w-xs">
               <div>
-                <h1 className="text-xl md:text-2xl mb-4">{project.name}</h1>
+                <h1 className="text-xl md:text-2xl mb-2">{project.name}</h1>
                 <p className="text-sm text-white/60">{project.category}</p>
               </div>
 
