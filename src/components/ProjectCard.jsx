@@ -12,7 +12,7 @@ export default function ProjectCard({ project, i }) {
     offset: ["start end", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [100, -40]);
+  const y = useTransform(scrollYProgress, [0, 1], [100, -60]);
   const imageY = useTransform(scrollYProgress, [0, 1], [20, -20]);
 
   if (!project) return null;
@@ -31,10 +31,14 @@ export default function ProjectCard({ project, i }) {
           duration: 0.6,
           ease: "easeOut",
         }}
-        className="relative w-full aspect-4/5 overflow-hidden transition-all duration-500 ease-out group-hover:scale-[0.98] shadow-2xl"
+        className="relative w-full aspect-4/5 overflow-hidden transition-all duration-500 ease-out group-hover:scale-[0.98]"
       >
         {/* Image */}
         <motion.img
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ ease: "easeOut" }}
+          layoutId={`project-media-${project.id}`}
           style={{ y: imageY }}
           src={project.cover}
           alt={project.name}
@@ -42,22 +46,27 @@ export default function ProjectCard({ project, i }) {
         />
 
         {/* Gradient */}
-        <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-80" />
+        {/* <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-80" /> */}
       </motion.div>
       {/* 🔥 Title with scroll movement */}
       <motion.div
         ref={ref}
         style={{ y }}
-        className="absolute bottom-4 z-10 w-full flex flex-col justify-between items-baseline px-4 gap-2"
+        className="absolute bottom-4 z-10 w-full flex flex-col justify-between items-baseline px-4 gap-2 "
       >
-        <div className="flex justify-between w-full">
-          <h2 className="text-xl md:text-2xl font-medium">{project.name}</h2>
-          <p className="text-sm">{project.category}</p>
+        <div className="flex justify-between items-baseline w-full">
+          <motion.h2
+            layoutId={`project-title-${project.id}`}
+            className="text-xl md:text-2xl font-medium"
+          >
+            {project.name}
+          </motion.h2>
+          <p className="text-sm font-regular">{project.category}</p>
         </div>
 
-        <div className="flex justify-between w-full opacity-70">
-          <p className="text-sm">{project.director}</p>
-          <p className="text-sm">{project.cinematographer}</p>
+        <div className="flex justify-between items-baseline w-full opacity-70 font-regular text-lg">
+          <p className="">{project.director}</p>
+          <p className=" text-right">{project.cinematographer}</p>
         </div>
       </motion.div>
     </Link>

@@ -7,6 +7,7 @@ export const projects = [
     productionCompany: "",
     category: "TVC",
     cover: "/apple-security/1.jpg",
+    span: 4,
     images: [
       "/apple-security/1.jpg",
       "/apple-security/2.jpg",
@@ -26,6 +27,7 @@ export const projects = [
     productionCompany: "Loudmouth",
     category: "TVC",
     cover: "/neeraj/1.JPG",
+    span: 2,
     images: [
       "/neeraj/1.JPG",
       "/neeraj/2.jpg",
@@ -59,6 +61,7 @@ export const projects = [
     productionCompany: "",
     category: "TVC",
     cover: "/astropulse/1.jpg",
+    span: 2,
     images: [
       "/astropulse/1.jpg",
       "/astropulse/2.jpg",
@@ -77,6 +80,7 @@ export const projects = [
     productionCompany: "",
     category: "TVC",
     cover: "/lotus-limitless/1.jpg",
+    span: 4,
     images: [
       "/lotus-limitless/1.jpg",
       "/lotus-limitless/2.jpg",
@@ -124,6 +128,7 @@ export const projects = [
     productionCompany: "",
     category: "Film",
     cover: "/honkai-star-trail/1.jpg",
+    span: 4,
     images: [
       "/honkai-star-trail/1.jpg",
       "/honkai-star-trail/2.jpg",
@@ -145,6 +150,7 @@ export const projects = [
     productionCompany: "",
     category: "Film",
     cover: "/blossom-shanghai/1.jpg",
+    span: 2,
     images: [
       "/blossom-shanghai/1.jpg",
       "/blossom-shanghai/2.jpg",
@@ -165,6 +171,7 @@ export const projects = [
     productionCompany: "",
     category: "TVC",
     cover: "/beats/1.jpg",
+    span: 2,
     images: [
       "/beats/1.jpg",
       "/beats/2.jpg",
@@ -184,6 +191,7 @@ export const projects = [
     productionCompany: "Loudmouth",
     category: "TVC",
     cover: "/royal-enfield/1.jpg",
+    span: 4,
     images: [
       "/royal-enfield/1.jpg",
       "/royal-enfield/2.jpg",
@@ -200,6 +208,7 @@ export const projects = [
     productionCompany: "",
     category: "TVC",
     cover: "/bmw-x5/1.jpg",
+    span: 4,
     images: [
       "/bmw-x5/1.jpg",
       "/bmw-x5/2.jpg",
@@ -222,6 +231,7 @@ export const projects = [
     productionCompany: "",
     category: "Film",
     cover: "/lollipop/1.jpg",
+    span: 2,
     images: [
       "/lollipop/1.jpg",
       "/lollipop/2.jpg",
@@ -268,6 +278,7 @@ export const projects = [
     productionCompany: "",
     category: "MV",
     cover: "/crime-fiction/1.JPG",
+    span: 2,
     images: [
       "/crime-fiction/1.JPG",
       "/crime-fiction/2.JPG",
@@ -305,6 +316,7 @@ export const projects = [
     productionCompany: "kidzfrmnowhere.",
     category: "TVC",
     cover: "/furla/1.jpg",
+    span: 4,
     images: [
       "/furla/1.jpg",
       "/furla/2.jpg",
@@ -332,6 +344,7 @@ export const projects = [
     productionCompany: "",
     category: "TVC",
     cover: "/sony-ps5/1.jpg",
+    span: 4,
     images: [
       "/sony-ps5/1.jpg",
       "/sony-ps5/2.jpg",
@@ -351,6 +364,7 @@ export const projects = [
     productionCompany: "kidzfrmnowhere.",
     category: "TVC",
     cover: "/teva/1.jpg",
+    span: 2,
     images: [
       "/teva/1.jpg",
       "/teva/2.jpg",
@@ -370,6 +384,7 @@ export const projects = [
     productionCompany: "",
     category: "TVC",
     cover: "/beyond-symmetry/1.jpg",
+    span: 2,
     images: [
       "/beyond-symmetry/1.jpg",
       "/beyond-symmetry/2.jpg",
@@ -391,6 +406,7 @@ export const projects = [
     productionCompany: "",
     category: "TVC",
     cover: "/revival-marni/1.jpg",
+    span: 4,
     images: [
       "/revival-marni/1.jpg",
       "/revival-marni/2.jpg",
@@ -411,6 +427,7 @@ export const projects = [
     productionCompany: "",
     category: "TVC",
     cover: "/amazon-prime/1.jpg",
+    span: 4,
     images: [
       "/amazon-prime/1.jpg",
       "/amazon-prime/2.jpg",
@@ -428,6 +445,7 @@ export const projects = [
     productionCompany: "Ransom Films",
     category: "TVC",
     cover: "/budweiser-be-a-king/1.jpg",
+    span: 2,
     images: [
       "/budweiser-be-a-king/1.jpg",
       "/budweiser-be-a-king/2.jpg",

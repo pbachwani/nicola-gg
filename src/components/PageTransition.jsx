@@ -1,29 +1,41 @@
 "use client";
 
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 export default function PageTransition({ children }) {
+  const pathname = usePathname();
+
   return (
-    <motion.div
-      initial={{
-        opacity: 0,
-        y: 40,
-        scale: 0.98,
-        filter: "blur(10px)",
-      }}
-      animate={{
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        filter: "blur(0px)",
-      }}
-      transition={{
-        duration: 0.7,
-        ease: [0.76, 0, 0.24, 1], // cinematic easing
-      }}
-    >
-      {children}
-    </motion.div>
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={pathname}
+        initial={{
+          opacity: 0.5,
+          // y: 10,
+          scale: 0.98,
+          filter: "blur(10px)",
+        }}
+        animate={{
+          opacity: 1,
+          // y: 0,
+          scale: 1,
+          filter: "blur(0px)",
+        }}
+        exit={{
+          opacity: 0,
+          // y: -10,
+          scale: 0.98,
+          filter: "blur(10px)",
+        }}
+        transition={{
+          duration: 0.7,
+          ease: [0.76, 0, 0.24, 1],
+        }}
+      >
+        {children}
+      </motion.div>
+    </AnimatePresence>
   );
 }
 
