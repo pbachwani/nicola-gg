@@ -4,13 +4,15 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <main className="min-h-screen px-4 md:px-16 pt-20">
+    <main className="h-full px-4 md:px-16 py-10 flex flex-col justify-end">
       <div className="flex flex-col h-full">
-        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-8 lg:gap-12 pt-10 pb-8 text-lg">
+        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-4 lg:gap-12 max-md:pt-20 pt-10 px-2">
           {/* LOGO */}
-          <div className="w-full lg:w-auto text-center lg:text-left">
-            <h1 className="font-main uppercase">[replace with logo]</h1>
-          </div>
+          {/* <div className="w-full lg:w-auto text-center lg:text-left">
+            <h1 className="font-main uppercase text-sm -tracking-widest">
+              [ replace with logo ]
+            </h1>
+          </div> */}
 
           {/* NAV LINKS */}
           <div className="flex flex-wrap justify-center lg:justify-start gap-x-6 gap-y-2">
@@ -35,18 +37,28 @@ const Footer = () => {
           </div>
 
           {/* EMAIL */}
-          <div className="text-center lg:text-right">
-            <p className=" font-regular text-white/50 hover:text-white transition-colors duration-300 ease-out">
+          <div className="text-right lg:text-right flex gap-2 items-baseline">
+            <span className="text-sm text-white/50 cursor-default">Email:</span>
+            <p className=" font-regular text-white/50 hover:text-white transition-colors duration-300 ease-out hover:cursor-pointer">
               gasparri.nicola@gmail.com
             </p>
           </div>
+
+          {/* <div className="border-[0.5px] px-4 pt-1.5 text-xs rounded-sm gap-4">
+            <input type="emil" placeholder="Join our newsletter" className="" />
+            <span>arrow</span>
+          </div> */}
         </div>
-        <div className="h-full">
+        <div className="h-full py-8">
           <ImageCompare
             before="/videos/Apple-Security.mp4"
             after="/videos/Apple-Security.mp4"
           />
-          <h1 className="text-center my-2">Colour magic</h1>
+        </div>
+
+        <div className="w-full flex justify-between text-sm opacity-50 font-regular uppercase px-2">
+          <h1>&copy; Ground Glass</h1>
+          <h1>All rights reserved</h1>
         </div>
       </div>
     </main>

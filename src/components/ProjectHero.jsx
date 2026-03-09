@@ -5,8 +5,6 @@ import { motion } from "framer-motion";
 export default function ProjectHero({ project }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 60 }}
-      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       className="fixed inset-0 z-50 pointer-events-none"
     >

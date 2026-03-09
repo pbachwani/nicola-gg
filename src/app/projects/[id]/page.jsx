@@ -3,6 +3,7 @@ import PageTransition from "@/components/PageTransition";
 import ProjectHero from "@/components/ProjectHero";
 import ProjectHeroMedia from "@/components/ProjectHeroMedia";
 import ScrollToTopOnMount from "@/components/ScrollToTopOnMount";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
@@ -33,7 +34,10 @@ export default async function ProjectPage({ params }) {
         <div className="flex flex-col items-center gap-10 py-10 md:pb-40 pb-80">
           {project.images?.map((img, i) => (
             <div key={i} className="w-[90%] md:w-[65%]">
-              <img
+              <Image
+                loading="lazy"
+                width={"75"}
+                height={"40"}
                 src={img}
                 alt=""
                 className="w-full h-auto object-cover transition-transform duration-500 ease-out hover:scale-[1.05]"

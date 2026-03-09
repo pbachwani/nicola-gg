@@ -2,31 +2,33 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 export default function PageTransition({ children }) {
   const pathname = usePathname();
+  const [show, setShow] = useState(false);
 
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence>
       <motion.div
         key={pathname}
         initial={{
           opacity: 0.5,
           // y: 10,
-          scale: 0.98,
+          // scale: 0.98,
           filter: "blur(10px)",
         }}
         animate={{
           opacity: 1,
           // y: 0,
-          scale: 1,
+          // scale: 1,
           filter: "blur(0px)",
         }}
         exit={{
           opacity: 0,
           // y: -10,
           scale: 0.98,
-          filter: "blur(10px)",
+          // filter: "blur(10px)",
         }}
         transition={{
           duration: 0.7,

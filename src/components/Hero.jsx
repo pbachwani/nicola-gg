@@ -12,7 +12,7 @@ const Hero = () => {
           loop
           muted
         >
-          <source src="/videos/Apple-Security.mp4" />
+          <source src="https://nicola-gasparri.b-cdn.net/project-videos/Apple-Security.mp4" />
         </video>
       </div>
     </section>

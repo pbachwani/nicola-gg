@@ -35,7 +35,10 @@ const Navbar = () => {
     >
       <div className="flex w-full h-full justify-between pb-2 items-end px-4 md:px-16">
         <div>
-          <Link href={"/"} className="md:text-2xl text-xl">
+          <Link
+            href={"/"}
+            className="md:text-2xl text-xl uppercase tracking-wide"
+          >
             Ground Glass
           </Link>
           {/* <p className="text-xs">[test-version]</p> */}

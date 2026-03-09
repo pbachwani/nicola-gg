@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 
 export default function ProjectCard({ project, i }) {
   const ref = useRef(null);
@@ -22,23 +23,18 @@ export default function ProjectCard({ project, i }) {
       href={`/projects/${project.id}`}
       className="group relative flex flex-col"
     >
-      <motion.div
+      <div
         ref={ref}
-        initial={false}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: i * 0.05,
-          duration: 0.6,
-          ease: "easeOut",
-        }}
         className="relative w-full aspect-4/5 overflow-hidden transition-all duration-500 ease-out group-hover:scale-[0.98]"
       >
         {/* Image */}
-        <motion.img
+        <Image
+          width={"16"}
+          height={"9"}
+          loading="lazy"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ ease: "easeOut" }}
-          layoutId={`project-media-${project.id}`}
           style={{ y: imageY }}
           src={project.cover}
           alt={project.name}
@@ -47,17 +43,17 @@ export default function ProjectCard({ project, i }) {
 
         {/* Gradient */}
         {/* <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-80" /> */}
-      </motion.div>
+      </div>
       {/* 🔥 Title with scroll movement */}
       <motion.div
         ref={ref}
         style={{ y }}
-        className="absolute bottom-4 z-10 w-full flex flex-col justify-between items-baseline px-4 gap-2 "
+        className="absolute bottom-4 z-10 w-full flex flex-col justify-between items-baseline px-4 gap-2"
       >
         <div className="flex justify-between items-baseline w-full">
           <motion.h2
             layoutId={`project-title-${project.id}`}
-            className="text-xl md:text-2xl font-medium"
+            className="text-xl md:text-2xl font-medium mix-blend-difference"
           >
             {project.name}
           </motion.h2>

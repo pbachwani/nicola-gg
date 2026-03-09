@@ -44,16 +44,17 @@ export default function ImageCompare({ before, after }) {
       onMouseMove={handleMove}
       onTouchStart={handleTouch}
       onTouchMove={handleTouch}
-      className="relative w-full aspect-video overflow-hidden cursor-ew-resize group md:h-[70svh] h-[50svh] select-none touch-none rounded-4xl"
+      className="relative w-full aspect-video overflow-hidden cursor-ew-resize group h-fit max-h-[70vh] select-none touch-none md:rounded-3xl rounded-xl"
     >
       {/* RAW */}
       <video
+        preload="auto"
         autoPlay
         loop
         muted
         playsInline
         src={before}
-        className="absolute inset-0 w-full h-full object-cover opacity-80 brightness-75"
+        className="absolute inset-0 w-full h-full object-cover opacity-70 brightness-75"
       />
 
       {/* GRADED */}
@@ -64,6 +65,7 @@ export default function ImageCompare({ before, after }) {
         }}
       >
         <video
+          preload="auto"
           autoPlay
           loop
           muted
@@ -88,8 +90,10 @@ export default function ImageCompare({ before, after }) {
       </div>
 
       {/* Labels */}
-      <div className="absolute bottom-40 right-4 text-white text-xs">[RAW]</div>
-      <div className="absolute bottom-40 left-4 text-white text-xs">
+      <div className="absolute bottom-20  right-4 text-white text-xs">
+        [RAW]
+      </div>
+      <div className="absolute bottom-20 left-4 text-white text-xs">
         [GRADED]
       </div>
     </div>
