@@ -14,7 +14,7 @@ export default function Work() {
         </h1>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 space-x-2 space-y-10 relative">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-10 relative">
           {projects?.map((project, i) => {
             if (!project) return null;
 

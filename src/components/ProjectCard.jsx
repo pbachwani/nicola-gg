@@ -25,16 +25,16 @@ export default function ProjectCard({ project, i }) {
     >
       <div
         ref={ref}
-        className="relative w-full aspect-4/5 overflow-hidden transition-all duration-500 ease-out group-hover:scale-[0.98]"
+        className="relative w-full aspect-4/5 overflow-hidden transition-all duration-500 ease-out group-hover:scale-[0.98] md:hover:brightness-100 md:brightness-60"
       >
         {/* Image */}
         <Image
-          width={"16"}
-          height={"9"}
+          width={"9"}
+          height={"16"}
           loading="lazy"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ ease: "easeOut" }}
+          // initial={{ opacity: 0 }}
+          // animate={{ opacity: 1 }}
+          // transition={{ ease: "easeOut" }}
           style={{ y: imageY }}
           src={project.cover}
           alt={project.name}
@@ -48,12 +48,12 @@ export default function ProjectCard({ project, i }) {
       <motion.div
         ref={ref}
         style={{ y }}
-        className="absolute bottom-4 z-10 w-full flex flex-col justify-between items-baseline px-4 gap-2"
+        className="absolute bottom-4 z-10 w-full flex flex-col justify-between items-baseline px-4 gap-2 brightness-110"
       >
         <div className="flex justify-between items-baseline w-full">
           <motion.h2
             layoutId={`project-title-${project.id}`}
-            className="text-xl md:text-2xl font-medium mix-blend-difference"
+            className="text-xl md:text-2xl font-medium mix-blend-difference group-hover:scale-105 transition-all duration-300 ease-out"
           >
             {project.name}
           </motion.h2>
@@ -65,6 +65,10 @@ export default function ProjectCard({ project, i }) {
           <p className=" text-right">{project.cinematographer}</p>
         </div>
       </motion.div>
+
+      {/* <div className="absolute bottom-1/2 w-full z-10 scale-0 group-hover:scale-100 transition-all duration-300 ease-out opacity-30">
+        <p className="text-center">explore project</p>
+      </div> */}
     </Link>
   );
 }

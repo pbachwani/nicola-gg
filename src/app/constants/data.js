@@ -6,7 +6,7 @@ export const projects = [
     cinematographer: "TianXing Wang",
     productionCompany: "",
     category: "TVC",
-    cover: "/apple-security/1.jpg",
+    cover: "/apple-security/apple-security-coverImg.png",
     span: 4,
     images: [
       "/apple-security/1.jpg",
@@ -26,7 +26,7 @@ export const projects = [
     cinematographer: "Konrad Losch",
     productionCompany: "Loudmouth",
     category: "TVC",
-    cover: "/neeraj/1.JPG",
+    cover: "/neeraj/neeraj-coverImg.JPG",
     span: 2,
     images: [
       "/neeraj/1.JPG",
@@ -49,8 +49,8 @@ export const projects = [
       "/neeraj/18.jpg",
       "/neeraj/19.jpg",
       "/neeraj/20.jpg",
-      "/neeraj/21.jpg",
-      "/neeraj/22.jpg",
+      "/neeraj/21.JPG",
+      "/neeraj/22.JPG",
     ],
   },
   {
@@ -60,7 +60,7 @@ export const projects = [
     cinematographer: "",
     productionCompany: "",
     category: "TVC",
-    cover: "/astropulse/1.jpg",
+    cover: "/astropulse/astropulse-coverImg.jpg",
     span: 2,
     images: [
       "/astropulse/1.jpg",
@@ -79,7 +79,7 @@ export const projects = [
     cinematographer: "Lu Xiqi",
     productionCompany: "",
     category: "TVC",
-    cover: "/lotus-limitless/1.jpg",
+    cover: "/lotus-limitless/lotus-limitless-coverImg.jpg",
     span: 4,
     images: [
       "/lotus-limitless/1.jpg",
@@ -127,7 +127,7 @@ export const projects = [
     cinematographer: "Kai Krause",
     productionCompany: "",
     category: "Film",
-    cover: "/honkai-star-trail/1.jpg",
+    cover: "/honkai-star-trail/honkai-star-trail-coverImg.jpg",
     span: 4,
     images: [
       "/honkai-star-trail/1.jpg",
@@ -149,7 +149,7 @@ export const projects = [
     cinematographer: "Peter Pau",
     productionCompany: "",
     category: "Film",
-    cover: "/blossom-shanghai/1.jpg",
+    cover: "/blossom-shanghai/blossom-shanghai-coverImg.jpg",
     span: 2,
     images: [
       "/blossom-shanghai/1.jpg",
@@ -170,7 +170,7 @@ export const projects = [
     cinematographer: "Liu Chao",
     productionCompany: "",
     category: "TVC",
-    cover: "/beats/1.jpg",
+    cover: "/beats/beats-coverImg.jpg",
     span: 2,
     images: [
       "/beats/1.jpg",
@@ -190,7 +190,7 @@ export const projects = [
     cinematographer: "Vikash Nowlakha",
     productionCompany: "Loudmouth",
     category: "TVC",
-    cover: "/royal-enfield/1.jpg",
+    cover: "/royal-enfield/royal-enfield-coverImg.jpg",
     span: 4,
     images: [
       "/royal-enfield/1.jpg",
@@ -207,7 +207,7 @@ export const projects = [
     cinematographer: "Lu Xiqi",
     productionCompany: "",
     category: "TVC",
-    cover: "/bmw-x5/1.jpg",
+    cover: "/bmw-x5/bmw-x5-coverImg.jpg",
     span: 4,
     images: [
       "/bmw-x5/1.jpg",
@@ -230,7 +230,7 @@ export const projects = [
     cinematographer: "Tone Prot Promprot",
     productionCompany: "",
     category: "Film",
-    cover: "/lollipop/1.jpg",
+    cover: "/lollipop/lollipop-coverImg.jpg",
     span: 2,
     images: [
       "/lollipop/1.jpg",
@@ -277,7 +277,7 @@ export const projects = [
     cinematographer: "Talin",
     productionCompany: "",
     category: "MV",
-    cover: "/crime-fiction/1.JPG",
+    cover: "/crime-fiction/crime-fiction-coverImg.JPG",
     span: 2,
     images: [
       "/crime-fiction/1.JPG",
@@ -315,7 +315,7 @@ export const projects = [
     cinematographer: "Tetsuya Arimori",
     productionCompany: "kidzfrmnowhere.",
     category: "TVC",
-    cover: "/furla/1.JPG",
+    cover: "/furla/furla-coverImg.JPG",
     span: 4,
     images: [
       "/furla/1.JPG",
@@ -343,7 +343,7 @@ export const projects = [
     cinematographer: "",
     productionCompany: "",
     category: "TVC",
-    cover: "/sony-ps5/1.jpg",
+    cover: "/sony-ps5/sony-ps5-coverImg.jpg",
     span: 4,
     images: [
       "/sony-ps5/1.jpg",
@@ -363,7 +363,7 @@ export const projects = [
     cinematographer: "Yuki Ono",
     productionCompany: "kidzfrmnowhere.",
     category: "TVC",
-    cover: "/teva/1.jpg",
+    cover: "/teva/teva-coverImg.jpg",
     span: 2,
     images: [
       "/teva/1.jpg",
@@ -383,7 +383,7 @@ export const projects = [
     cinematographer: "Stevo Shen",
     productionCompany: "",
     category: "TVC",
-    cover: "/beyond-symmetry/1.jpg",
+    cover: "/beyond-symmetry/beyond-symmetry-coverImg.jpg",
     span: 2,
     images: [
       "/beyond-symmetry/1.jpg",
@@ -405,7 +405,7 @@ export const projects = [
     cinematographer: "Yanqiu Fei",
     productionCompany: "",
     category: "TVC",
-    cover: "/revival-marni/1.jpg",
+    cover: "/revival-marni/revival-marni-coverImg.jpg",
     span: 4,
     images: [
       "/revival-marni/1.jpg",
@@ -426,7 +426,7 @@ export const projects = [
     cinematographer: "Alessandro Ubaldi",
     productionCompany: "",
     category: "TVC",
-    cover: "/amazon-prime/1.jpg",
+    cover: "/amazon-prime/amazon-prime-coverImg.jpg",
     span: 4,
     images: [
       "/amazon-prime/1.jpg",
@@ -444,7 +444,7 @@ export const projects = [
     cinematographer: "",
     productionCompany: "Ransom Films",
     category: "TVC",
-    cover: "/budweiser-be-a-king/1.jpg",
+    cover: "/budweiser-be-a-king/budweiser-be-a-king-coverImg.jpg",
     span: 2,
     images: [
       "/budweiser-be-a-king/1.jpg",

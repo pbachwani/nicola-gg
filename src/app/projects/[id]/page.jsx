@@ -1,9 +1,11 @@
 import { projects } from "@/app/constants/data";
+import NextProject from "@/components/NextProject";
 import PageTransition from "@/components/PageTransition";
-import ProjectHero from "@/components/ProjectHero";
+import ProjectContent from "@/components/ProjectContent";
 import ProjectHeroMedia from "@/components/ProjectHeroMedia";
 import ScrollToTopOnMount from "@/components/ScrollToTopOnMount";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
@@ -22,16 +24,25 @@ export default async function ProjectPage({ params }) {
     notFound();
   }
 
+  const currentIndex = projects.findIndex((p) => p.id === id);
+
+  const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
+
+  const nextProject =
+    currentIndex < projects.length - 1
+      ? projects[currentIndex + 1]
+      : projects[0];
+
   return (
-    <div className="bg-black text-white">
-      <ScrollToTopOnMount />
-      <ProjectHero project={project} />
+    <div className="text-white">
+      {/* <ScrollToTopOnMount /> */}
       <PageTransition>
+        <ProjectContent project={project} />
         {/* project video */}
         <ProjectHeroMedia project={project} />
         {/* v1 - personal */}
         {/* ✅ SCROLLING IMAGES */}
-        <div className="flex flex-col items-center gap-10 py-10 md:pb-40 pb-80">
+        <div className="flex flex-col items-center gap-10 py-10">
           {project.images?.map((img, i) => (
             <div key={i} className="w-[90%] md:w-[65%]">
               <Image
@@ -44,6 +55,10 @@ export default async function ProjectPage({ params }) {
               />
             </div>
           ))}
+        </div>
+
+        <div className="relative mt-10">
+          <NextProject nextProject={nextProject} />
         </div>
       </PageTransition>
     </div>
