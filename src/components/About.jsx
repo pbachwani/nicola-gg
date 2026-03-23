@@ -163,15 +163,15 @@ import { twMerge } from "tailwind-merge";
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const images = [
-  "/amazon-prime/1.jpg",
-  "/amazon-prime/2.jpg",
-  "/amazon-prime/3.jpg",
-  "/amazon-prime/4.jpg",
-  "/amazon-prime/5.jpg",
-  "/amazon-prime/6.jpg",
-  "/apple-security/1.jpg",
-  "/apple-security/2.jpg",
-  "/apple-security/3.jpg",
+  "nicola/amazon-prime/1.jpg",
+  "nicola/amazon-prime/2.jpg",
+  "nicola/amazon-prime/3.jpg",
+  "nicola/amazon-prime/4.jpg",
+  "nicola/amazon-prime/5.jpg",
+  "nicola/amazon-prime/6.jpg",
+  "nicola/apple-security/1.jpg",
+  "nicola/apple-security/2.jpg",
+  "nicola/apple-security/3.jpg",
 ];
 
 const About = () => {
@@ -221,7 +221,7 @@ const About = () => {
       // TEXT HIGHLIGHT (unchanged)
       ScrollTrigger.create({
         trigger: sectionRef.current,
-        start: "top top",
+        start: "top center",
         end: "+=800",
         scrub: true,
         onUpdate: (self) => {
@@ -256,14 +256,14 @@ const About = () => {
 
   return (
     <main className="relative">
-      <div className="sticky top-1/3 bg-transparent z-50 px-4 md:px-16 py-10">
-        <h1 className="md:text-2xl text-justify">
+      <div className="sticky top-1/3 bg-transparent z-50 px-4 md:px-24 py-10">
+        <h1 className="md:text-2xl text-center">
           {words.map((word, wordIndex) => (
             <span
               key={wordIndex}
               className={twMerge(
-                "transition-colors duration-300 text-white/10 ",
-                wordIndex < currentWord && "text-white",
+                "transition-colors duration-500 text-white/10 opacity-20 blur-sm",
+                wordIndex < currentWord && "text-white blur-none opacity-100",
               )}
             >
               {word}{" "}

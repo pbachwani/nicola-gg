@@ -13,7 +13,7 @@ export default function ProjectCard({ project, i }) {
     offset: ["start end", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [100, -60]);
+  const y = useTransform(scrollYProgress, [0, 1], [40, -100]);
   const imageY = useTransform(scrollYProgress, [0, 1], [20, -20]);
 
   if (!project) return null;

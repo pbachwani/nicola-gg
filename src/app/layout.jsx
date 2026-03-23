@@ -15,7 +15,7 @@ import ProjectsLayout from "./projects/layout";
 // });
 
 export const metadata = {
-  title: "Nicola Gasparri",
+  title: "Ground Glass",
   description: "To be added",
 };
 

@@ -9,13 +9,7 @@ export default function ProjectContent({ project }) {
       className="fixed inset-0 z-20 pointer-events-none"
     >
       <div className="flex justify-between items-end h-screen pt-20">
-        <div className="w-screen h-fit flex flex-col md:flex-row justify-between items-start md:px-16 px-4 py-6 relative max-md:gap-4">
-          {/* <div
-            className="absolute inset-0 backdrop-blur-xl bg-black 
-            [mask:linear-gradient(to_top,black,transparent)]
-            pointer-events-none -z-10"
-          /> */}
-
+        <div className="w-screen h-fit flex flex-col md:flex-row justify-between items-start md:px-16 px-4 py-16 md:py-6 relative max-md:gap-4">
           {/* LEFT */}
           <div className="flex flex-col justify-end max-w-xs">
             <div>

@@ -13,7 +13,7 @@ export default function PageTransition({ children }) {
       <motion.div
         initial={{
           opacity: 0,
-          scale: 1.04,
+          scale: 0.7,
         }}
         animate={{
           opacity: 1,
@@ -27,6 +27,16 @@ export default function PageTransition({ children }) {
           opacity: 1,
         }}
       >
+        {/* <motion.div
+          initial={{ y: 0 }}
+          animate={{ y: "100%", opacity: 0 }}
+          transition={{
+            duration: 1.8,
+            ease: [0.76, 0, 0.24, 1],
+            delay: 0.5,
+          }}
+          className="absolute w-full h-full min-h-screen bg-black z-50"
+        ></motion.div> */}
         {children}
       </motion.div>
     </AnimatePresence>

@@ -180,7 +180,6 @@ export const projects = [
       "/nicola/beats/6.jpg",
       "/nicola/beats/7.jpg",
       "/nicola/beats/8.jpg",
-      "/nicola/beats/9.jpg",
     ],
   },
   {

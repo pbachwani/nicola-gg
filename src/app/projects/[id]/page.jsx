@@ -57,7 +57,7 @@ export default async function ProjectPage({ params }) {
           ))}
         </div>
 
-        <div className="relative mt-10">
+        <div className="mt-10">
           <NextProject nextProject={nextProject} />
         </div>
       </PageTransition>
