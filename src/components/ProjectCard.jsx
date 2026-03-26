@@ -48,7 +48,7 @@ export default function ProjectCard({ project, i }) {
       <motion.div
         ref={ref}
         style={{ y }}
-        className="absolute bottom-4 z-10 w-full flex flex-col justify-between items-baseline px-4 gap-2 brightness-110"
+        className="absolute bottom-4 z-10 w-full flex flex-col px-4 gap-2 brightness-110"
       >
         <div className="flex justify-between items-baseline w-full">
           <motion.h2
@@ -57,12 +57,22 @@ export default function ProjectCard({ project, i }) {
           >
             {project.name}
           </motion.h2>
-          <p className="text-sm font-regular">{project.category}</p>
+          {/* <p className="text-sm font-regular">{project.category}</p> */}
         </div>
 
         <div className="flex justify-between items-baseline w-full opacity-70 font-regular text-lg">
-          <p className="">{project.director}</p>
-          <p className=" text-right">{project.cinematographer}</p>
+          {project.director && (
+            <p className="flex flex-col">
+              <span className="text-xs opacity-75">Director</span>
+              {project.director}
+            </p>
+          )}
+          {project.cinematographer && (
+            <p className="flex flex-col text-right">
+              <span className="text-xs opacity-75">Cinematographer</span>
+              {project.cinematographer}
+            </p>
+          )}
         </div>
       </motion.div>
 
