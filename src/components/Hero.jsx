@@ -1,134 +1,156 @@
 "use client";
 import Autoplay from "embla-carousel-autoplay";
 import useEmblaCarousel from "embla-carousel-react";
-import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import React, { useEffect, useRef, useState, useCallback } from "react";
+
+const slides = [
+  {
+    src: "https://nicola-gasparri.b-cdn.net/homepage/01_Apple_Security_HP.mp4",
+    project: "Apple Security",
+    index: "01",
+  },
+  {
+    src: "https://nicola-gasparri.b-cdn.net/homepage/01_Samsung_HP.mp4",
+    project: "Samsung",
+    index: "02",
+  },
+  {
+    src: "https://nicola-gasparri.b-cdn.net/homepage/Astropulse_Final_HP.mp4.mp4",
+    project: "Astropulse",
+    index: "03",
+  },
+  {
+    src: "https://nicola-gasparri.b-cdn.net/homepage/04_Lotus_HP.mp4",
+    project: "Lotus Limitless",
+    index: "04",
+  },
+];
+
+const AUTOPLAY_DELAY = 8000;
 
 const Hero = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    {
-      loop: true,
-      align: "center",
-      containScroll: "trimSnaps",
-    },
-    [Autoplay({ delay: 4000 })],
+  const autoplayRef = useRef(
+    Autoplay({ delay: AUTOPLAY_DELAY, stopOnInteraction: false }),
   );
 
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, align: "center", containScroll: "trimSnaps" },
+    [autoplayRef.current],
+  );
+
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const progressInterval = useRef(null);
+
+  const startProgress = useCallback(() => {
+    setProgress(0);
+    clearInterval(progressInterval.current);
+    const start = Date.now();
+    progressInterval.current = setInterval(() => {
+      const elapsed = Date.now() - start;
+      const pct = Math.min((elapsed / AUTOPLAY_DELAY) * 100, 100);
+      setProgress(pct);
+      if (pct >= 100) clearInterval(progressInterval.current);
+    }, 30);
+  }, []);
+
   useEffect(() => {
     if (!emblaApi) return;
-
-    const slides = emblaApi.slideNodes();
-    console.log(slides);
-
     const onSelect = () => {
-      const centerIndex = emblaApi.selectedScrollSnap();
-
-      slides.forEach((slide, index) => {
-        if (index === centerIndex) {
-          // console.log(slide);
-          slide.classList.add("is-centered");
-          console.log(centerIndex + 1, slides.length);
-        } else {
-          slide.classList.remove("is-centered");
-        }
-      });
+      setActiveIndex(emblaApi.selectedScrollSnap());
+      startProgress();
     };
-
     emblaApi.on("select", onSelect);
-    onSelect(); // run once on mount
+    onSelect();
+    return () => emblaApi.off("select", onSelect);
+  }, [emblaApi, startProgress]);
 
-    return () => {
-      emblaApi.off("select", onSelect);
-    };
-  }, [emblaApi]);
+  useEffect(() => () => clearInterval(progressInterval.current), []);
 
-  const [canPrev, setCanPrev] = useState(false);
-  const [canNext, setCanNext] = useState(false);
+  const scrollPrev = () => {
+    emblaApi?.scrollPrev();
+    autoplayRef.current?.reset();
+  };
+  const scrollNext = () => {
+    emblaApi?.scrollNext();
+    autoplayRef.current?.reset();
+  };
 
-  // update prev/next availability
-  useEffect(() => {
-    if (!emblaApi) return;
-
-    const updateButtons = () => {
-      // if loop: true, canScrollPrev/Next will always be true, still fine to check tho
-      setCanPrev(emblaApi?.canScrollPrev() ?? false);
-      setCanNext(emblaApi?.canScrollNext() ?? false);
-    };
-
-    emblaApi.on("select", updateButtons);
-    emblaApi.on("reInit", updateButtons);
-    // call once
-    updateButtons();
-
-    return () => {
-      emblaApi.off("select", updateButtons);
-      emblaApi.off("reInit", updateButtons);
-    };
-  }, [emblaApi]);
-
-  const scrollPrev = () => emblaApi && emblaApi.scrollPrev();
-  const scrollNext = () => emblaApi && emblaApi.scrollNext();
   return (
-    <section className="w-full h-full overflow-hidden max-h-svh" ref={emblaRef}>
-      <div id="hero-video" className="flex">
-        {/* slide 1 */}
-        <div
-          style={{
-            flex: "0 0 100%",
-            // cursor: `url(${arrowPlay.src}) 50 50, auto`,
-          }}
-        >
-          <video
-            playsInline
-            preload="auto"
-            className="w-full h-screen object-cover"
-            autoPlay
-            loop
-            muted
-          >
-            <source src="https://nicola-gasparri.b-cdn.net/project-videos/Apple-Security.mp4" />
-          </video>
-        </div>
-        {/* slide 2 */}
-        <div
-          style={{
-            flex: "0 0 100%",
-            // cursor: `url(${arrowPlay.src}) 50 50, auto`,
-          }}
-        >
-          <video
-            playsInline
-            preload="auto"
-            className="w-full h-screen object-cover"
-            autoPlay
-            loop
-            muted
-          >
-            <source src="https://nicola-gasparri.b-cdn.net/project-videos/Apple-Security.mp4" />
-          </video>
-        </div>
-        {/* slide 3 */}
-        <div
-          style={{
-            flex: "0 0 100%",
-            // cursor: `url(${arrowPlay.src}) 50 50, auto`,
-          }}
-        >
-          <video
-            playsInline
-            preload="auto"
-            className="w-full h-screen object-cover"
-            autoPlay
-            loop
-            muted
-          >
-            <source src="https://nicola-gasparri.b-cdn.net/project-videos/Apple-Security.mp4" />
-          </video>
+    <section className="relative w-full h-svh overflow-hidden">
+      {/* Embla viewport */}
+      <div className="w-full h-full overflow-hidden" ref={emblaRef}>
+        <div id="hero-video" className="flex h-full">
+          {slides.map((slide, i) => (
+            <div
+              key={i}
+              style={{ flex: "0 0 100%" }}
+              className="relative h-full"
+            >
+              <video
+                playsInline
+                preload="auto"
+                className="w-full h-full object-cover"
+                autoPlay
+                loop
+                muted
+              >
+                <source src={slide.src} />
+              </video>
+            </div>
+          ))}
         </div>
       </div>
 
-      <div className="absolute bottom-0 w-full h-fit">
-        <button onClick={() => scrollPrev()}>Prev</button>
-        <button onClick={() => scrollNext()}>Next</button>
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-linear-to-b from-black/20 via-transparent to-black/50 pointer-events-none" />
+
+      {/* Project name — animated on slide change */}
+      <div className="absolute bottom-12 left-8 md:left-14">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeIndex}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.45, ease: [0.33, 1, 0.68, 1] }}
+          >
+            <p className="text-white/20 text-xs tracking-[0.2em] uppercase mb-1 font-light">
+              {slides[activeIndex].index} /{" "}
+              {String(slides.length).padStart(2, "0")}
+            </p>
+            <h2 className="text-white/80 text-2xl md:text-3xl font-light tracking-wide">
+              {slides[activeIndex].project}
+            </h2>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Progress bar */}
+        <div className="mt-4 w-32 h-px bg-white/20 overflow-hidden">
+          <motion.div
+            className="h-full bg-white"
+            style={{ width: `${progress}%` }}
+            transition={{ ease: "linear" }}
+          />
+        </div>
+      </div>
+
+      {/* Prev / Next */}
+      <div className="absolute bottom-12 right-8 md:right-14 flex items-center gap-5 z-10">
+        <button
+          onClick={scrollPrev}
+          className="text-white/20 hover:text-white transition-colors duration-200 text-xs tracking-[0.15em] uppercase hover:cursor-pointer"
+        >
+          Prev
+        </button>
+        <div className="w-px h-3 bg-white/20" />
+        <button
+          onClick={scrollNext}
+          className="text-white/20 hover:text-white transition-colors duration-200 text-xs tracking-[0.15em] uppercase hover:cursor-pointer"
+        >
+          Next
+        </button>
       </div>
     </section>
   );

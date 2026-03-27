@@ -60,16 +60,18 @@ export default function ProjectCard({ project, i }) {
           {/* <p className="text-sm font-regular">{project.category}</p> */}
         </div>
 
-        <div className="flex justify-between items-baseline w-full opacity-70 font-regular text-lg">
+        <div className="flex justify-between items-baseline w-full opacity-70 font-regular text-lg font-bold">
           {project.director && (
             <p className="flex flex-col">
-              <span className="text-xs opacity-75">Director</span>
+              <span className="text-xs opacity-75 font-light">Director</span>
               {project.director}
             </p>
           )}
           {project.cinematographer && (
             <p className="flex flex-col text-right">
-              <span className="text-xs opacity-75">Cinematographer</span>
+              <span className="text-xs opacity-75 font-light">
+                Cinematographer
+              </span>
               {project.cinematographer}
             </p>
           )}
