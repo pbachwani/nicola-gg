@@ -36,10 +36,9 @@ const NicolaProjects = () => {
             className="text-[10px] tracking-[0.25em] uppercase opacity-40"
             style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
           >
-            Nicola Gasparri
+            Agua Jiang
           </span>
 
-          {/* Scroll progress track */}
           <div className="relative w-px h-40 overflow-hidden">
             {/* Track */}
             <div className="absolute inset-0 bg-current opacity-10" />
@@ -58,10 +57,10 @@ const NicolaProjects = () => {
         <div className="px-6 md:px-16 pt-36 pb-16 border-b border-current/10">
           <div className="flex flex-col gap-4">
             <p className="text-[10px] tracking-[0.3em] uppercase opacity-30">
-              Artist — 01
+              Artist — 02
             </p>
             <h1 className="text-5xl md:text-7xl font-light tracking-tight leading-none">
-              Nicola Gasparri
+              Agua Jiang
             </h1>
             <p className="text-xs tracking-widest uppercase opacity-30 mt-2">
               {projects_nicola.length} Projects
@@ -87,11 +86,11 @@ const NicolaProjects = () => {
             Next Artist
           </p>
           <Link
-            href="/artists/agua"
+            href="/artists/nicola"
             className="group flex items-end justify-between w-full"
           >
             <h2 className="text-4xl md:text-6xl font-light tracking-tight leading-none opacity-50 group-hover:opacity-100 transition-opacity duration-300">
-              Agua Jiang
+              Nicola Gasparri
             </h2>
             <div className="flex items-center gap-2 opacity-40 group-hover:opacity-100 transition-opacity duration-300 pb-1">
               <span className="text-xs tracking-widest uppercase">

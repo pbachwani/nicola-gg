@@ -9,7 +9,7 @@ export default function ProjectContent({ project }) {
       className="fixed inset-0 z-20 pointer-events-none"
     >
       <div className="flex justify-between items-end h-screen pt-20">
-        <div className="w-screen h-fit flex flex-col md:flex-row justify-between items-start md:px-16 px-4 py-10 md:py-6 relative max-md:gap-4">
+        <div className="w-screen h-fit flex flex-col md:flex-row justify-between items-start md:px-16 px-4 py-16 md:py-6 relative max-md:gap-4">
           {/* LEFT */}
           <div className="flex flex-col justify-end max-w-xs">
             <div>
@@ -20,7 +20,7 @@ export default function ProjectContent({ project }) {
                 {project.name}
               </motion.h1>
               <div>
-                <p className="text-sm text-white/60">Category</p>
+                <p className="text-sm text-white/60 font-regular">Category</p>
                 <h2 className="text-lg">{project.category}</h2>
               </div>
             </div>
@@ -32,14 +32,16 @@ export default function ProjectContent({ project }) {
           <div className="flex flex-col justify-end md:text-right max-w-xs gap-2">
             {project.director && (
               <div>
-                <p className="text-sm text-white/60">Director</p>
+                <p className="text-sm text-white/60 font-regular">Director</p>
                 <h2 className="text-lg">{project.director}</h2>
               </div>
             )}
 
             {project.cinematographer && (
               <div>
-                <p className="text-sm text-white/60">Cinematographer</p>
+                <p className="text-sm text-white/60 font-regular">
+                  Cinematographer
+                </p>
                 <h2 className="text-lg">{project.cinematographer}</h2>
               </div>
             )}

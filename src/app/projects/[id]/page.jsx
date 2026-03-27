@@ -1,4 +1,4 @@
-import { projects } from "@/app/constants/data";
+import { projects_nicola } from "@/app/constants/data";
 import NextProject from "@/components/NextProject";
 import PageTransition from "@/components/PageTransition";
 import ProjectContent from "@/components/ProjectContent";
@@ -10,7 +10,7 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
 export async function generateStaticParams() {
-  return projects.map((project) => ({
+  return projects_nicola.map((project) => ({
     id: project.id,
   }));
 }
@@ -18,30 +18,30 @@ export async function generateStaticParams() {
 export default async function ProjectPage({ params }) {
   const { id } = await params;
 
-  const project = projects.find((p) => p.id === id);
+  const project = projects_nicola.find((p) => p.id === id);
 
   if (!project) {
     notFound();
   }
 
-  const currentIndex = projects.findIndex((p) => p.id === id);
+  const currentIndex = projects_nicola.findIndex((p) => p.id === id);
 
-  const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
+  const prevProject =
+    currentIndex > 0 ? projects_nicola[currentIndex - 1] : null;
 
   const nextProject =
-    currentIndex < projects.length - 1
-      ? projects[currentIndex + 1]
-      : projects[0];
+    currentIndex < projects_nicola.length - 1
+      ? projects_nicola[currentIndex + 1]
+      : projects_nicola[0];
 
   return (
     <div className="text-white">
       {/* <ScrollToTopOnMount /> */}
       <PageTransition>
         <ProjectContent project={project} />
-        {/* project video */}
+
         <ProjectHeroMedia project={project} />
-        {/* v1 - personal */}
-        {/* ✅ SCROLLING IMAGES */}
+
         <div className="flex flex-col items-center gap-10 py-10">
           {project.images?.map((img, i) => (
             <div key={i} className="w-[90%] md:w-[65%]">

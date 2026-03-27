@@ -1,7 +1,7 @@
 "use client";
 import PageTransition from "@/components/PageTransition";
 import ProjectCard from "@/components/ProjectCard";
-import { projects } from "../constants/data";
+import { projects_nicola } from "../constants/data";
 
 export default function Work() {
   // console.log(projects[0].id);
@@ -15,7 +15,7 @@ export default function Work() {
 
         {/* Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-10 relative">
-          {projects?.map((project, i) => {
+          {projects_nicola?.map((project, i) => {
             if (!project) return null;
 
             return (

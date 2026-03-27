@@ -1,4 +1,4 @@
-export const projects = [
+export const projects_nicola = [
   {
     id: "apple-security",
     name: "Apple Security",

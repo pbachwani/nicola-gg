@@ -77,6 +77,27 @@ const Hero = () => {
     autoplayRef.current?.reset();
   };
 
+  const videoRefs = useRef([]);
+
+  useEffect(() => {
+    const videos = videoRefs.current.filter(Boolean);
+    if (!videos.length) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          entry.target.play();
+        } else {
+          entry.target.pause();
+        }
+      },
+      { threshold: 0.3 },
+    );
+
+    videos.forEach((vid) => observer.observe(vid));
+    return () => videos.forEach((vid) => observer.unobserve(vid));
+  }, []);
+
   return (
     <section className="relative w-full h-svh overflow-hidden">
       {/* Embla viewport */}
@@ -89,15 +110,18 @@ const Hero = () => {
               className="relative h-full"
             >
               <video
+                ref={(el) => (videoRefs.current[i] = el)} // 👈 replaces ref={videoRef}
+                src={slide.src}
                 playsInline
                 preload="auto"
                 className="w-full h-full object-cover"
                 autoPlay
                 loop
                 muted
-              >
-                <source src={slide.src} />
-              </video>
+                controlsList="nodownload noplaybackrate"
+                onContextMenu={(e) => e.preventDefault()}
+                draggable={false}
+              />
             </div>
           ))}
         </div>
