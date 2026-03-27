@@ -27,7 +27,7 @@ const slides = [
   },
 ];
 
-const AUTOPLAY_DELAY = 8000;
+const AUTOPLAY_DELAY = 8500;
 
 const Hero = () => {
   const autoplayRef = useRef(
@@ -116,9 +116,9 @@ const Hero = () => {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.45, ease: [0.33, 1, 0.68, 1] }}
           >
-            <p className="text-white/20 text-xs tracking-[0.2em] uppercase mb-1 font-light">
-              {slides[activeIndex].index} /{" "}
-              {String(slides.length).padStart(2, "0")}
+            <p className="text-white/20 text-xs tracking-[0.2em] uppercase mb-1">
+              [{slides[activeIndex].index} /{" "}
+              {String(slides.length).padStart(2, "0")}]
             </p>
             <h2 className="text-white/80 text-2xl md:text-3xl font-light tracking-wide">
               {slides[activeIndex].project}
@@ -131,7 +131,7 @@ const Hero = () => {
           <motion.div
             className="h-full bg-white"
             style={{ width: `${progress}%` }}
-            transition={{ ease: "linear" }}
+            transition={{ ease: "easeOut" }}
           />
         </div>
       </div>

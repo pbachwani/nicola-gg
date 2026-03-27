@@ -9,7 +9,9 @@ export default function PreloaderWrapper({ children }) {
   const progressInterval = useRef(null);
 
   useEffect(() => {
-    const videos = Array.from(document.querySelectorAll("#hero-video video"));
+    const videos = Array.from(
+      document.querySelectorAll("#hero-video video"),
+    ).slice(0, 2);
 
     if (!videos.length) {
       setReady(true);
@@ -22,7 +24,7 @@ export default function PreloaderWrapper({ children }) {
       loaded++;
       const pct = Math.round((loaded / videos.length) * 100);
       setProgress(pct);
-      if (loaded === videos.length) setTimeout(() => setReady(true), 600);
+      if (loaded === videos.length) setTimeout(() => setReady(true), 400);
     };
 
     videos.forEach((vid) => {
@@ -37,20 +39,17 @@ export default function PreloaderWrapper({ children }) {
     };
   }, []);
 
-  // Smooth counter — chases real progress but max speed is capped so it never rushes
   useEffect(() => {
     clearInterval(progressInterval.current);
     progressInterval.current = setInterval(() => {
       setDisplayNum((prev) => {
         if (prev >= progress) return prev;
-        // Move at most 1 per tick — tick is 30ms → max ~33/sec, feels like ~3s to 100
         return Math.min(prev + 1, progress);
       });
-    }, 30); // slowed from 18ms → 30ms per tick
+    }, 15);
     return () => clearInterval(progressInterval.current);
   }, [progress]);
 
-  // Only mark display-ready once counter itself reaches 100
   const [counterDone, setCounterDone] = useState(false);
   useEffect(() => {
     if (displayNum >= 100) {
@@ -59,7 +58,6 @@ export default function PreloaderWrapper({ children }) {
     }
   }, [displayNum]);
 
-  // Gate the curtain exit on BOTH videos loaded AND counter finished
   const showPreloader = !ready || !counterDone;
 
   return (
@@ -109,24 +107,19 @@ export default function PreloaderWrapper({ children }) {
             <motion.div
               key="preloader-content"
               exit={{ opacity: 0, transition: { duration: 0.2 } }}
-              style={{
-                position: "fixed",
-                inset: 0,
-                zIndex: 10000,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "0.75rem",
-              }}
+              style={{ position: "fixed", inset: 0, zIndex: 10000 }}
             >
+              {/* Wordmark — top left */}
               <motion.p
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.2 }}
                 style={{
+                  position: "absolute",
+                  bottom: "2rem",
+                  right: "5rem",
                   color: "rgba(255,255,255,0.4)",
-                  fontSize: "9px",
+                  fontSize: "12px",
                   letterSpacing: "0.3em",
                   textTransform: "uppercase",
                   fontWeight: 300,
@@ -135,26 +128,34 @@ export default function PreloaderWrapper({ children }) {
                 Ground Glass
               </motion.p>
 
+              {/* Counter — bottom right */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
                 style={{
-                  color: "#fff",
-                  fontSize: "clamp(60px, 12vw, 40px)",
-                  fontWeight: 200,
-                  lineHeight: 1,
-                  letterSpacing: "-0.03em",
-                  //   fontVariantNumeric: "tabular-nums",
-                  //   fontFamily: "var(--font-khand, serif)",
+                  position: "absolute",
+                  bottom: "2rem",
+                  right: "2rem",
+                  color: "rgba(255,255,255,0.5)",
+                  fontSize: "11px",
+                  fontWeight: 300,
+                  letterSpacing: "0.05em",
+                  fontVariantNumeric: "tabular-nums",
                 }}
               >
                 {displayNum}
               </motion.div>
 
+              {/* Progress bar — perfectly centered */}
               <div
                 style={{
-                  width: "80px",
+                  position: "absolute",
+                  top: "50%",
+                  left: 0,
+                  right: 0,
+                  transform: "translateY(-50%)",
+                  width: "100%",
                   height: "1px",
                   background: "rgba(255,255,255,0.12)",
                   overflow: "hidden",
@@ -168,7 +169,7 @@ export default function PreloaderWrapper({ children }) {
                   }}
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: progress / 100 }}
-                  transition={{ ease: "linear", duration: 0.2 }}
+                  transition={{ ease: "linear", duration: 0.5 }}
                 />
               </div>
             </motion.div>
