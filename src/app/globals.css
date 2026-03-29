@@ -21,6 +21,10 @@ html.lenis {
   --foreground: #ededed;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 /* set as default font for the website */
 @font-face {
   font-family: "Agrandir";

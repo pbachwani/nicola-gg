@@ -7,7 +7,7 @@ import { motion } from "motion/react";
 export default function FeaturedProjects() {
   return (
     <section className="px-6 md:px-16 py-32">
-      <h1 className="text-2xl mb-10">Selected Projects</h1>
+      <h1 className="text-2xl mb-10">Featured Projects</h1>
       <div className="grid grid-cols-1 lg:grid-cols-6 gap-5">
         {projects_nicola.map((project) => {
           const span = project.span || 3;

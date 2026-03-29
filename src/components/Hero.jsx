@@ -131,37 +131,64 @@ const Hero = () => {
       <div className="absolute inset-0 bg-linear-to-b from-black/20 via-transparent to-black/50 pointer-events-none" />
 
       {/* Project name — animated on slide change */}
-      <div className="absolute bottom-12 left-8 md:left-14">
+      <div className="absolute bottom-12 left-1/2 max-md:-translate-x-1/2 md:left-14">
         <AnimatePresence mode="wait">
-          <motion.div
-            key={activeIndex}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.45, ease: [0.33, 1, 0.68, 1] }}
-          >
-            <p className="text-white/20 text-xs tracking-[0.2em] uppercase mb-1">
-              [{slides[activeIndex].index} /{" "}
-              {String(slides.length).padStart(2, "0")}]
-            </p>
-            <h2 className="text-white/80 text-2xl md:text-3xl font-light tracking-wide">
+          <div className="max-w-sm max-md:text-center">
+            {/* <div className="flex gap-4 items-center">
+              <p className="text-white/20 text-xs tracking-[0.2em] uppercase mb-2">
+                [
+                <motion.span
+                  key={activeIndex}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
+                >
+                  {slides[activeIndex].index} /{" "}
+                </motion.span>
+                {String(slides.length).padStart(2, "0")}]
+              </p>
+              <div className="flex items-center gap-2 z-10 mb-2">
+                <button
+                  onClick={scrollPrev}
+                  className="text-white/20 hover:text-white transition-colors duration-200 text-xs tracking-[0.15em]  hover:cursor-pointer"
+                >
+                  Prev
+                </button>
+                <div className="w-px h-3 bg-white/20" />
+                <button
+                  onClick={scrollNext}
+                  className="text-white/20 hover:text-white transition-colors duration-200 text-xs tracking-[0.15em]  hover:cursor-pointer"
+                >
+                  Next
+                </button>
+              </div>
+            </div> */}
+            <motion.h2
+              key={activeIndex}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
+              className="text-white/80 text-2xl md:text-3xl font-light tracking-wide"
+            >
               {slides[activeIndex].project}
-            </h2>
-          </motion.div>
-        </AnimatePresence>
+            </motion.h2>
 
-        {/* Progress bar */}
-        <div className="mt-4 w-32 h-px bg-white/20 overflow-hidden">
-          <motion.div
-            className="h-full bg-white"
-            style={{ width: `${progress}%` }}
-            transition={{ ease: "easeOut" }}
-          />
-        </div>
+            {/* Progress bar */}
+            <div className="mt-2 w-xs h-px bg-white/20 overflow-hidden ml-0.5">
+              <motion.div
+                className="h-full bg-white"
+                style={{ width: `${progress}%` }}
+                transition={{ ease: "easeOut" }}
+              />
+            </div>
+          </div>
+        </AnimatePresence>
       </div>
 
       {/* Prev / Next */}
-      <div className="absolute bottom-12 right-8 md:right-14 flex items-center gap-5 z-10">
+      {/* <div className="absolute bottom-12 right-8 md:right-14 flex items-center gap-5 z-10">
         <button
           onClick={scrollPrev}
           className="text-white/20 hover:text-white transition-colors duration-200 text-xs tracking-[0.15em] uppercase hover:cursor-pointer"
@@ -175,7 +202,7 @@ const Hero = () => {
         >
           Next
         </button>
-      </div>
+      </div> */}
     </section>
   );
 };

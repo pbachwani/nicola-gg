@@ -187,7 +187,7 @@ const About = () => {
     }
   };
 
-  const text = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Et pariatur aliquam quam. Maxime explicabo harum cumque error quaerat ipsa optio quisquam alias porro praesentium molestiae omnis, exercitationem esse vero laboriosam deserunt, modi obcaecati. Vero neque sequi blanditiis rerum, non molestiae error asperiores unde, odit dolores at tempora quaerat sit doloremque?`;
+  const text = `Groundglass is a boutique colour studio with roots in Florence and Shanghai, where a cross-cultural perspective shapes a refined approach to image-making. Our team brings together different sensibilities and experiences, creating distinctive work through a careful balance of taste, precision, and cinematic craft.`;
 
   const words = text.split(" ");
   const [currentWord, setCurrentWord] = useState(0);
@@ -256,8 +256,8 @@ const About = () => {
 
   return (
     <main className="relative">
-      <div className="sticky top-1/3 bg-transparent z-50 px-4 md:px-24 py-10">
-        <h1 className="md:text-2xl text-center">
+      <div className="sticky top-1/3 bg-transparent z-50 px-4 md:px-16 py-10">
+        <h1 className="md:text-3xl text-justify">
           {words.map((word, wordIndex) => (
             <span
               key={wordIndex}
