@@ -3,6 +3,8 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import clsx from "clsx";
 import { motion, AnimatePresence } from "motion/react";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 const links = [
   // { href: "/", label: "Home" },
@@ -12,6 +14,8 @@ const links = [
 ];
 
 const Navbar = () => {
+  const pathname = usePathname();
+  const home = pathname === "/";
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -38,25 +42,32 @@ const Navbar = () => {
   return (
     <>
       <motion.nav
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         className={clsx(
-          "fixed w-full h-20 z-40 transition-all duration-300 ease-out",
+          "fixed w-full h-20 z-40 transition-all duration-250 ease-out-quint px-4 md:px-16 my-2",
           show ? "translate-y-0" : "-translate-y-full",
         )}
       >
-        <div className="flex w-full h-full justify-between pb-2 items-end px-4 md:px-16">
+        <div className={`flex w-full h-full justify-between pb-2 items-center`}>
           <Link
             href="/"
             className="md:text-2xl text-xl uppercase tracking-wide"
           >
-            <p onClick={() => window.scrollTo({ top, behavior: "smooth" })}>
-              Ground Glass
-            </p>
+            <Image
+              alt="Ground Glass logo"
+              width={100}
+              height={100}
+              src="/logo-files/PNG/white stacked.png"
+              className="w-auto h-10 object-cover"
+              onClick={() => window.scrollTo({ top, behavior: "smooth" })}
+            />
           </Link>
 
           {/* Desktop links */}
-          <div className="flex gap-2 text-sm max-md:hidden">
+          <div className="flex gap-2 text-sm max-md:hidden mt-1 cursor-pointer">
             {links.map((l) => (
-              <Link key={l.href} href={l.href}>
+              <Link key={l.href} href={l.href} className="hover:cursor-pointer">
                 {l.label}
               </Link>
             ))}

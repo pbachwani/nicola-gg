@@ -9,7 +9,8 @@ const artists = [
     id: "nicola",
     name: "Nicola Gasparri",
     href: "/artists/nicola",
-    video: "/videos/Apple-Security.mp4",
+    video:
+      "https://nicola-gasparri.b-cdn.net/project-videos/hsrLaunchshow_MIP01.mp4",
     index: "01",
   },
   {
@@ -44,7 +45,7 @@ const ArtistsPage = () => {
     clearInterval(intervalRef.current);
     intervalRef.current = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % artists.length);
-    }, 7000);
+    }, 5000);
   };
 
   useEffect(() => {
@@ -138,16 +139,20 @@ const ArtistsPage = () => {
                 </div>
 
                 {/* Progress bar */}
-                <div className="w-full max-w-xs max-md:hidden h-px bg-white/20 overflow-hidden">
+                <div className="w-full max-w-xs max-md:hidden h-px bg-white/0 overflow-hidden">
                   <AnimatePresence mode="wait">
                     {isActive && (
                       <motion.div
                         key={artist.id + activeIndex}
-                        className="h-full bg-white/70"
+                        className={`h-full bg-white/0 ${isActive && "bg-white/70"}`}
                         initial={{ scaleX: 0 }}
                         animate={{ scaleX: 1 }}
-                        exit={{ scaleX: 0, transition: { duration: 0.2 } }}
-                        transition={{ duration: 7, ease: "linear" }}
+                        exit={{
+                          opacity: 0,
+                          // scaleX: "100%",
+                          transition: { duration: 0.2 },
+                        }}
+                        transition={{ duration: 5, ease: "linear" }}
                         style={{ transformOrigin: "left" }}
                       />
                     )}

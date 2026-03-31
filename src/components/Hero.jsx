@@ -3,6 +3,7 @@ import Autoplay from "embla-carousel-autoplay";
 import useEmblaCarousel from "embla-carousel-react";
 import { motion, AnimatePresence } from "framer-motion";
 import React, { useEffect, useRef, useState, useCallback } from "react";
+import cursor from "@/app/data/cursor1.svg";
 
 const slides = [
   {
@@ -99,7 +100,12 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative w-full h-svh overflow-hidden">
+    <section
+      className="relative w-full h-svh overflow-hidden"
+      style={{
+        cursor: `url(${cursor.src}), auto`,
+      }}
+    >
       {/* Embla viewport */}
       <div className="w-full h-full overflow-hidden" ref={emblaRef}>
         <div id="hero-video" className="flex h-full">

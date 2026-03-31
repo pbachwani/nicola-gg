@@ -61,7 +61,10 @@ html.lenis {
 body {
   background: var(--background);
   color: var(--foreground);
-
+  cursor: url("/Cursor.svg"), auto;
   /* default is agrandir but switch to Arial if custom font fails to load */
   font-family: var(--font-main), Arial, Helvetica, sans-serif;
 }
+/* * {
+  cursor: inherit;
+} */
