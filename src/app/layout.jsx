@@ -3,16 +3,7 @@ import "./globals.css";
 import LenisProvider from "@/components/LenisProvider";
 import Navbar from "@/components/Navbar";
 import ProjectsLayout from "./projects/layout";
-
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
+import TransitionProvider from "@/components/TransitionProvider";
 
 export const metadata = {
   title: "Ground Glass",
@@ -24,8 +15,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`antialiased`}>
         <LenisProvider>
-          <Navbar />
-          {children}
+          <TransitionProvider>
+            <Navbar />
+            {children}
+          </TransitionProvider>
         </LenisProvider>
       </body>
     </html>

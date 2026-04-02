@@ -3,39 +3,66 @@
 import { AnimatePresence, motion } from "motion/react";
 import { usePathname } from "next/navigation";
 
+const CURTAIN_EASE = [0.76, 0, 0.24, 1];
+const CURTAIN_DURATION = 0.85;
+
 export default function PageTransition({ children }) {
   const pathname = usePathname();
 
   return (
     <AnimatePresence mode="wait">
       <motion.div key={pathname}>
-        {/* Page enter — slides up from slight offset */}
+        {/* Page content — delayed until curtains have parted */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1], delay: 0.35 }}
+          transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1], delay: 0.95 }}
         >
           {children}
         </motion.div>
 
-        {/* Exit curtain — black panel sweeps down over the page, then sweeps out upward */}
+        {/* Top curtain */}
         <motion.div
-          initial={{ scaleY: 0, transformOrigin: "bottom" }}
+          initial={{ scaleY: 0 }}
           animate={{ scaleY: 0 }}
           exit={{
             scaleY: [0, 1, 1, 0],
-            transformOrigin: ["bottom", "bottom", "top", "top"],
             transition: {
-              duration: 0.7,
+              duration: CURTAIN_DURATION,
               times: [0, 0.4, 0.5, 1],
-              ease: "easeInOut",
+              ease: CURTAIN_EASE,
             },
           }}
           style={{
             position: "fixed",
             inset: 0,
+            bottom: "50%",
+            background: "#fff",
+            zIndex: 9998,
+            transformOrigin: "bottom",
+            pointerEvents: "none",
+          }}
+        />
+
+        {/* Bottom curtain */}
+        <motion.div
+          initial={{ scaleY: 0 }}
+          animate={{ scaleY: 0 }}
+          exit={{
+            scaleY: [0, 1, 1, 0],
+            transition: {
+              duration: CURTAIN_DURATION,
+              times: [0, 0.4, 0.5, 1],
+              ease: CURTAIN_EASE,
+            },
+          }}
+          style={{
+            position: "fixed",
+            inset: 0,
+            top: "50%",
             background: "#000",
             zIndex: 9998,
+            transformOrigin: "top",
             pointerEvents: "none",
           }}
         />
@@ -43,95 +70,3 @@ export default function PageTransition({ children }) {
     </AnimatePresence>
   );
 }
-// option 1
-// <motion.div
-//   initial={{
-//     opacity: 0,
-//     y: 40,
-//     scale: 0.98,
-//     filter: "blur(10px)",
-//   }}
-//   animate={{
-//     opacity: 1,
-//     y: 0,
-//     scale: 1,
-//     filter: "blur(0px)",
-//   }}
-//   transition={{
-//     duration: 0.7,
-//     ease: [0.76, 0, 0.24, 1], // cinematic easing
-//   }}
-// >
-//   {children}
-// </motion.div>
-
-// option 2
-
-// <motion.div
-//   initial={{
-//     opacity: 0,
-//     scale: 1.04,
-//   }}
-//   animate={{
-//     opacity: 1,
-//     scale: 1,
-//   }}
-//   transition={{
-//     duration: 0.8,
-//     ease: [0.76, 0, 0.24, 1],
-//   }}
-// >
-//   {children}
-// </motion.div>;
-
-// option 3
-
-// <div className="relative">
-//       {/* Content */}
-//       <motion.div
-//         initial={{ opacity: 0 }}
-//         animate={{ opacity: 1 }}
-//         transition={{ duration: 0.6, delay: 0.2 }}
-//       >
-//         {children}
-//       </motion.div>
-
-//       {/* Black overlay */}
-//       <motion.div
-//         initial={{ opacity: 1 }}
-//         animate={{ opacity: 0 }}
-//         transition={{
-//           duration: 0.8,
-//           ease: [0.76, 0, 0.24, 1],
-//         }}
-//         className="fixed inset-0 bg-black pointer-events-none z-50"
-//       />
-//     </div>
-
-//  <motion.div
-//         key={pathname}
-//         initial={{
-//           opacity: 0.5,
-//           // y: 10,
-//           scale: 0.98,
-//           filter: "blur(10px)",
-//         }}
-//         animate={{
-//           opacity: 1,
-//           // y: 0,
-//           scale: 1,
-//           filter: "blur(0px)",
-//         }}
-//         exit={{
-//           opacity: 0,
-//           // y: -10,
-//           scale: 0.98,
-//           // filter: "blur(10px)",
-//         }}
-//         transition={{
-//           duration: 0.8,
-//           ease: [0.76, 0, 0.24, 1],
-//         }}
-//       >
-//         {children}
-//       </motion.div>

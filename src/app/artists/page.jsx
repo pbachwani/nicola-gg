@@ -3,6 +3,7 @@ import PageTransition from "@/components/PageTransition";
 import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import TransitionProvider from "@/components/TransitionProvider";
 
 const artists = [
   {
@@ -57,7 +58,7 @@ const ArtistsPage = () => {
   const displayArtist = artists.find((a) => a.id === displayId);
 
   return (
-    <PageTransition>
+    <>
       <div className="relative w-full min-h-svh bg-black overflow-hidden px-4 md:px-16">
         {/* Background video */}
         <AnimatePresence mode="wait">
@@ -163,7 +164,7 @@ const ArtistsPage = () => {
           })}
         </div>
       </div>
-    </PageTransition>
+    </>
   );
 };
 

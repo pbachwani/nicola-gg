@@ -5,6 +5,7 @@ import Hero from "@/components/Hero";
 import PreloaderWrapper from "@/components/PreloaderWrapper";
 import React from "react";
 import cursor from "@/app/data/cursor1.svg";
+import PageTransition from "@/components/PageTransition";
 
 const Home = () => {
   return (
