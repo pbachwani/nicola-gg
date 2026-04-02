@@ -49,17 +49,14 @@ const Navbar = () => {
           show ? "translate-y-0" : "-translate-y-full",
         )}
       >
-        <div className={`flex w-full h-full justify-between pb-2 items-center`}>
-          <Link
-            href="/"
-            className="md:text-2xl text-xl uppercase tracking-wide"
-          >
+        <div className={`flex w-full h-full justify-between items-center`}>
+          <Link href="/" className="">
             <Image
               alt="Ground Glass logo"
               width={100}
               height={100}
               src="/logo-files/PNG/white stacked.png"
-              className="w-auto h-10 object-cover"
+              className="w-auto h-12 object-cover"
               onClick={() => window.scrollTo({ top, behavior: "smooth" })}
             />
           </Link>

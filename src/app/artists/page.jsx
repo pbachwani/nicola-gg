@@ -82,7 +82,7 @@ const ArtistsPage = () => {
         </AnimatePresence>
 
         {/* Centered artist list */}
-        <div className="relative z-10 flex flex-col md:flex-row items-start md:items-end justify-center pb-20 min-h-svh gap-4">
+        <div className="relative z-10 flex flex-col md:flex-row items-center justify-center pb-20 min-h-svh gap-4">
           {artists.map((artist) => {
             const isActive = displayId === artist.id;
             return (
@@ -139,7 +139,7 @@ const ArtistsPage = () => {
                 </div>
 
                 {/* Progress bar */}
-                <div className="w-full max-w-xs max-md:hidden h-px bg-white/0 overflow-hidden">
+                {/* <div className="w-full max-w-xs max-md:hidden h-px bg-white/0 overflow-hidden">
                   <AnimatePresence mode="wait">
                     {isActive && (
                       <motion.div
@@ -157,7 +157,7 @@ const ArtistsPage = () => {
                       />
                     )}
                   </AnimatePresence>
-                </div>
+                </div> */}
               </Link>
             );
           })}

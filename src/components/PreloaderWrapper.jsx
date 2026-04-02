@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import Link from "next/link";
+import { PreloaderContext } from "@/app/context/PreloaderContext";
 
 export default function PreloaderWrapper({ children }) {
   const [ready, setReady] = useState(false);
@@ -103,6 +104,7 @@ export default function PreloaderWrapper({ children }) {
         x: "-50%",
         ease: "power2.inOut",
         delay: 0.5,
+        scale: 1,
       })
       .to(mark, {
         opacity: 0,
@@ -116,22 +118,49 @@ export default function PreloaderWrapper({ children }) {
         { opacity: 1, scale: 1, duration: 0.35, ease: "power2.out" },
         "-=0.5",
       )
-      .add(() => {
-        gsap.to(stacked, {
-          top: "1.5rem",
-          left: isMobile.current ? "16px" : "64px",
-          transform: "translate(0, 0)",
-          scale: 0.5, // adjust this until it matches your nav logo size
-          transformOrigin: "top left",
-          duration: 0.6,
-          ease: "power3.inOut",
-          onComplete: () => {
-            gsap.set(stacked, { opacity: 0 });
-            gsap.to(navLogo, { opacity: 1, duration: 0.15 });
-            onDone();
-          },
-        });
-      }, "+=0.6");
+      // .add(() => {
+      //   gsap.to(stacked, {
+      //     top: "1.5rem",
+      //     left: isMobile.current ? "16px" : "64px",
+      //     transform: "translate(0, 0)",
+      //     scale: 0.5, // adjust this until it matches your nav logo size
+      //     transformOrigin: "top left",
+      //     duration: 0.6,
+      //     ease: "power3.inOut",
+      //     onComplete: () => {
+      //       gsap.set(stacked, { opacity: 0 });
+      //       gsap.to(navLogo, { opacity: 1, duration: 0.15 });
+      //       onDone();
+      //     },
+      //   });
+      // }, "+=0.6")
+
+      .to(stacked, {
+        // height: "0px",
+        // opacity: 0,
+        // transformOrigin: "top right",
+        // scale: 0, // adjust this until it matches your nav logo size
+        // transform: "translate(0, 0)",
+        duration: 0.6,
+        ease: "power3.inOut",
+        onComplete: () => {
+          gsap.set(stacked, { opacity: 0 });
+          gsap.to(navLogo, {
+            opacity: 0,
+            duration: 1.15,
+            ease: "power2.inOut",
+          });
+          onDone();
+        },
+      });
+    // .to(navLogo, {
+    //   // width: "0px",
+    //   // height: "0px",
+    //   opacity: 0,
+    //   duration: 0.15,
+    //   delay: 1,
+    //   ease: "power2.out",
+    // });
   }
 
   const showPreloader = !ready || !counterDone;
@@ -310,39 +339,29 @@ export default function PreloaderWrapper({ children }) {
       </AnimatePresence>
 
       {/* Nav logo — outside preloader, persists after curtain exit */}
-      <AnimatePresence>
-        {showPreloader && (
-          <motion.div
-            key="nav-logo"
-            exit={{
-              opacity: 0,
-              transition: { duration: 0.3, ease: "easeOut", delay: 1 },
-            }}
-            style={{ position: "fixed", zIndex: 9998 }}
-          >
-            <Link
-              href={"/"}
-              onClick={() => window.scrollTo({ top, behavior: "smooth" })}
-              className="hover:cursor-pointer"
-            >
-              <img
-                ref={navLogoRef}
-                src="/logo-files/PNG/white stacked.png"
-                alt="Ground Glass Studio"
-                className="fixed top-6 px-4 md:px-16 h-10 w-auto opacity-0 z-[9999]"
-              />
-            </Link>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={!showPreloader ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
+      <Link
+        href={"/"}
+        onClick={() => window.scrollTo({ top, behavior: "smooth" })}
+        className="hover:cursor-pointer"
       >
-        {children}
-      </motion.div>
+        <img
+          ref={navLogoRef}
+          src="/logo-files/PNG/white stacked.png"
+          alt="Ground Glass Studio"
+          className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 md:px-16 h-20 w-fit opacity-0 z-[9999]"
+        />
+      </Link>
+
+      <PreloaderContext.Provider value={{ preloaderDone: !showPreloader }}>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={!showPreloader ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          {children}
+        </motion.div>
+      </PreloaderContext.Provider>
     </>
   );
 }
