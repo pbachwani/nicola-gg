@@ -1,9 +1,7 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import LenisProvider from "@/components/LenisProvider";
 import Navbar from "@/components/Navbar";
-import ProjectsLayout from "./projects/layout";
-import TransitionProvider from "@/components/TransitionProvider";
+import PreloaderWrapper from "@/components/PreloaderWrapper";
 
 export const metadata = {
   title: "Ground Glass",
@@ -13,12 +11,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`antialiased`}>
+      <body className="antialiased">
         <LenisProvider>
-          <TransitionProvider>
+          <PreloaderWrapper>
             <Navbar />
             {children}
-          </TransitionProvider>
+          </PreloaderWrapper>
         </LenisProvider>
       </body>
     </html>

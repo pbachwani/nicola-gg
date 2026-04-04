@@ -4,7 +4,6 @@ import useEmblaCarousel from "embla-carousel-react";
 import { motion, AnimatePresence } from "framer-motion";
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import cursor from "@/app/data/cursor1.svg";
-import { usePreloader } from "@/app/context/PreloaderContext";
 
 const slides = [
   {
@@ -32,8 +31,6 @@ const slides = [
 const AUTOPLAY_DELAY = 8500;
 
 const Hero = () => {
-  const { preloaderDone } = usePreloader();
-
   const autoplayRef = useRef(
     Autoplay({ delay: AUTOPLAY_DELAY, stopOnInteraction: false }),
   );
@@ -59,59 +56,14 @@ const Hero = () => {
     }, 30);
   }, []);
 
-  // useEffect(() => {
-  //   if (!emblaApi) return;
-  //   const onSelect = () => {
-  //     setActiveIndex(emblaApi.selectedScrollSnap());
-  //     startProgress();
-  //   };
-  //   emblaApi.on("select", onSelect);
-  //   onSelect();
-  //   return () => emblaApi.off("select", onSelect);
-  // }, [emblaApi, startProgress]);
+  const [preloaderDone, setPreloaderDone] = useState(false);
 
-  // useEffect(() => () => clearInterval(progressInterval.current), []);
+  useEffect(() => {
+    const onDone = () => setPreloaderDone(true);
+    window.addEventListener("preloader:done", onDone);
+    return () => window.removeEventListener("preloader:done", onDone);
+  }, []);
 
-  // useEffect(() => {
-  //   if (!preloaderDone) return;
-
-  //   const videos = videoRefs.current.filter(Boolean);
-  //   if (!videos.length) return;
-
-  //   const observer = new IntersectionObserver(
-  //     ([entry]) => {
-  //       if (entry.isIntersecting) entry.target.play();
-  //       else entry.target.pause();
-  //     },
-  //     { threshold: 0.3 },
-  //   );
-
-  //   videos.forEach((vid) => {
-  //     vid.currentTime = 0;
-  //     observer.observe(vid);
-  //   });
-
-  //   return () => videos.forEach((vid) => observer.unobserve(vid));
-  // }, [preloaderDone]);
-
-  // useEffect(() => {
-  //   if (!emblaApi) return;
-  //   const onSelect = () => {
-  //     const index = emblaApi.selectedScrollSnap();
-  //     setActiveIndex(index);
-  //     startProgress();
-
-  //     // Reset the active slide's video to the start
-  //     const activeVideo = videoRefs.current[index];
-  //     if (activeVideo) {
-  //       activeVideo.currentTime = 0;
-  //       activeVideo.play();
-  //     }
-  //   };
-  //   emblaApi.on("select", onSelect);
-  //   onSelect();
-  //   return () => emblaApi.off("select", onSelect);
-  // }, [emblaApi, startProgress]);
   // 1. Cleanup progress interval on unmount
   useEffect(() => () => clearInterval(progressInterval.current), []);
 
@@ -123,13 +75,15 @@ const Hero = () => {
       const index = emblaApi.selectedScrollSnap();
       setActiveIndex(index);
       startProgress();
-
       const activeVideo = videoRefs.current[index];
       if (activeVideo) {
         activeVideo.currentTime = 0;
         activeVideo.play();
       }
     };
+
+    // Reset autoplay so its timer starts NOW, in sync with the video
+    autoplayRef.current?.reset();
 
     emblaApi.on("select", onSelect);
     onSelect();
@@ -158,6 +112,7 @@ const Hero = () => {
 
     return () => videos.forEach((vid) => observer.unobserve(vid));
   }, [preloaderDone]);
+
   return (
     <section
       className="relative w-full h-svh overflow-hidden"
@@ -211,7 +166,7 @@ const Hero = () => {
             </motion.h2>
 
             {/* Progress bar */}
-            <div className="mt-2 w-xs h-px bg-white/20 overflow-hidden ml-0.5">
+            <div className="mt-2 w-xs h-px bg-white/10 overflow-hidden ml-0.5">
               <motion.div
                 className="h-full bg-white"
                 style={{ width: `${progress}%` }}

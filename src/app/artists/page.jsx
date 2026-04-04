@@ -58,7 +58,7 @@ const ArtistsPage = () => {
   const displayArtist = artists.find((a) => a.id === displayId);
 
   return (
-    <>
+    <PageTransition>
       <div className="relative w-full min-h-svh bg-black overflow-hidden px-4 md:px-16">
         {/* Background video */}
         <AnimatePresence mode="wait">
@@ -164,7 +164,7 @@ const ArtistsPage = () => {
           })}
         </div>
       </div>
-    </>
+    </PageTransition>
   );
 };
 

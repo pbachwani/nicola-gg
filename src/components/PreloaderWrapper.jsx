@@ -1,59 +1,81 @@
 "use client";
+
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
 import gsap from "gsap";
 import Link from "next/link";
-import { PreloaderContext } from "@/app/context/PreloaderContext";
 
 export default function PreloaderWrapper({ children }) {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
   const [ready, setReady] = useState(false);
   const [progress, setProgress] = useState(0);
   const [displayNum, setDisplayNum] = useState(0);
   const [barVisible, setBarVisible] = useState(true);
+  const [counterDone, setCounterDone] = useState(false);
+
   const progressInterval = useRef(null);
   const logoAnimStarted = useRef(false);
-
-  // Logo refs — live outside preloader-content
   const markRef = useRef(null);
   const stackedRef = useRef(null);
   const navLogoRef = useRef(null);
 
-  const isMobile = useRef(false);
+  const showPreloader = !ready || !counterDone;
+  const [contentVisible, setContentVisible] = useState(false);
 
+  // ── Video loading (home only) ──────────────────────────────
   useEffect(() => {
-    isMobile.current = window.innerWidth < 768;
-  }, []);
-
-  useEffect(() => {
-    const videos = Array.from(
-      document.querySelectorAll("#hero-video video"),
-    ).slice(0, 2);
-
-    if (!videos.length) {
+    if (!isHome) {
+      setProgress(100);
       setReady(true);
       return;
     }
 
-    let loaded = 0;
-    const onReady = () => {
-      loaded++;
-      const pct = Math.round((loaded / videos.length) * 100);
-      setProgress(pct);
-      if (loaded === videos.length) setTimeout(() => setReady(true), 400);
+    const tryAttach = () => {
+      const videos = Array.from(
+        document.querySelectorAll("#hero-video video"),
+      ).slice(0, 2);
+
+      if (!videos.length) {
+        setProgress(100);
+        setReady(true);
+        return;
+      }
+
+      let loaded = 0;
+      const onReady = () => {
+        loaded++;
+        const pct = Math.round((loaded / videos.length) * 100);
+        setProgress(pct);
+        if (loaded === videos.length) setTimeout(() => setReady(true), 400);
+      };
+
+      videos.forEach((vid) => {
+        if (vid.readyState >= 3) onReady();
+        else vid.addEventListener("canplay", onReady, { once: true });
+      });
+
+      return () => {
+        videos.forEach((vid) => vid.removeEventListener("canplay", onReady));
+      };
     };
 
-    videos.forEach((vid) => {
-      if (vid.readyState >= 3) onReady();
-      else vid.addEventListener("canplay", onReady, { once: true });
-    });
+    // Small defer so DOM has a chance to paint video elements
+    const raf = requestAnimationFrame(tryAttach);
+    const fallback = setTimeout(() => {
+      setProgress(100);
+      setReady(true);
+    }, 3000); // 3s max — never hold the user longer
 
-    const fallback = setTimeout(() => setReady(true), 6000);
     return () => {
+      cancelAnimationFrame(raf);
       clearTimeout(fallback);
-      videos.forEach((vid) => vid.removeEventListener("canplay", onReady));
     };
-  }, []);
+  }, [isHome]);
 
+  // ── Counter tick ───────────────────────────────────────────
   useEffect(() => {
     clearInterval(progressInterval.current);
     progressInterval.current = setInterval(() => {
@@ -65,19 +87,17 @@ export default function PreloaderWrapper({ children }) {
     return () => clearInterval(progressInterval.current);
   }, [progress]);
 
-  const [counterDone, setCounterDone] = useState(false);
-
+  // ── Logo animation trigger ─────────────────────────────────
   useEffect(() => {
     if (displayNum >= 100 && !logoAnimStarted.current) {
       logoAnimStarted.current = true;
-
-      // Fade out bar first, then start logo anim
       setBarVisible(false);
       setTimeout(() => {
         runLogoAnimation(() => {
           setTimeout(() => setCounterDone(true), 100);
+          window.dispatchEvent(new Event("preloader:done"));
         });
-      }, 400); // wait for bar fade to finish
+      }, 400);
     }
   }, [displayNum]);
 
@@ -92,7 +112,6 @@ export default function PreloaderWrapper({ children }) {
     }
 
     const tl = gsap.timeline();
-
     tl.fromTo(
       mark,
       { opacity: 0, scale: 0.8 },
@@ -106,41 +125,14 @@ export default function PreloaderWrapper({ children }) {
         delay: 0.5,
         scale: 1,
       })
-      .to(mark, {
-        opacity: 0,
-        duration: 0.3,
-        ease: "power2.in",
-        delay: 1.1,
-      })
+      .to(mark, { opacity: 0, duration: 0.3, ease: "power2.in", delay: 1.1 })
       .fromTo(
         stacked,
         { opacity: 0, scale: 0.85, delay: -0.25 },
         { opacity: 1, scale: 1, duration: 0.35, ease: "power2.out" },
         "-=0.5",
       )
-      // .add(() => {
-      //   gsap.to(stacked, {
-      //     top: "1.5rem",
-      //     left: isMobile.current ? "16px" : "64px",
-      //     transform: "translate(0, 0)",
-      //     scale: 0.5, // adjust this until it matches your nav logo size
-      //     transformOrigin: "top left",
-      //     duration: 0.6,
-      //     ease: "power3.inOut",
-      //     onComplete: () => {
-      //       gsap.set(stacked, { opacity: 0 });
-      //       gsap.to(navLogo, { opacity: 1, duration: 0.15 });
-      //       onDone();
-      //     },
-      //   });
-      // }, "+=0.6")
-
       .to(stacked, {
-        // height: "0px",
-        // opacity: 0,
-        // transformOrigin: "top right",
-        // scale: 0, // adjust this until it matches your nav logo size
-        // transform: "translate(0, 0)",
         duration: 0.6,
         ease: "power3.inOut",
         onComplete: () => {
@@ -153,26 +145,16 @@ export default function PreloaderWrapper({ children }) {
           onDone();
         },
       });
-    // .to(navLogo, {
-    //   // width: "0px",
-    //   // height: "0px",
-    //   opacity: 0,
-    //   duration: 0.15,
-    //   delay: 1,
-    //   ease: "power2.out",
-    // });
   }
-
-  const showPreloader = !ready || !counterDone;
 
   return (
     <>
-      {/* Logo lives here — at top level, above everything, never faded by preloader-content exit */}
+      {/* Logo stage */}
       <AnimatePresence>
         {showPreloader && (
           <motion.div
             key="logo-stage"
-            exit={{ opacity: 0, transition: { duration: 0 } }} // instant — logo is already gone by now
+            exit={{ opacity: 0, transition: { duration: 0 } }}
             style={{
               position: "fixed",
               inset: 0,
@@ -181,6 +163,7 @@ export default function PreloaderWrapper({ children }) {
             }}
           >
             <img
+              loading="eager"
               ref={markRef}
               src="/logo-files/PNG/white logo mark.png"
               alt="logo mark"
@@ -194,8 +177,8 @@ export default function PreloaderWrapper({ children }) {
                 opacity: 0,
               }}
             />
-
             <img
+              loading="eager"
               ref={stackedRef}
               src="/logo-files/PNG/white stacked.png"
               alt="Ground Glass Studio"
@@ -213,6 +196,7 @@ export default function PreloaderWrapper({ children }) {
         )}
       </AnimatePresence>
 
+      {/* Curtains + preloader UI */}
       <AnimatePresence>
         {showPreloader && (
           <>
@@ -255,12 +239,12 @@ export default function PreloaderWrapper({ children }) {
               }}
             />
 
+            {/* bottom right content */}
             <motion.div
               key="preloader-content"
               exit={{ opacity: 0, transition: { duration: 0.2 } }}
               style={{ position: "fixed", inset: 0, zIndex: 10000 }}
             >
-              {/* Wordmark */}
               <motion.p
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -278,8 +262,6 @@ export default function PreloaderWrapper({ children }) {
               >
                 Ground Glass
               </motion.p>
-
-              {/* Counter */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -298,8 +280,8 @@ export default function PreloaderWrapper({ children }) {
                 {displayNum}
               </motion.div>
 
-              {/* Progress bar */}
-              <AnimatePresence>
+              {/* loading bar */}
+              {/* <AnimatePresence>
                 {barVisible && (
                   <motion.div
                     key="progress-bar"
@@ -332,17 +314,16 @@ export default function PreloaderWrapper({ children }) {
                     />
                   </motion.div>
                 )}
-              </AnimatePresence>
+              </AnimatePresence> */}
             </motion.div>
           </>
         )}
       </AnimatePresence>
 
-      {/* Nav logo — outside preloader, persists after curtain exit */}
-
+      {/* Nav logo */}
       <Link
-        href={"/"}
-        onClick={() => window.scrollTo({ top, behavior: "smooth" })}
+        href="/"
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         className="hover:cursor-pointer"
       >
         <img
@@ -353,15 +334,14 @@ export default function PreloaderWrapper({ children }) {
         />
       </Link>
 
-      <PreloaderContext.Provider value={{ preloaderDone: !showPreloader }}>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={!showPreloader ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          {children}
-        </motion.div>
-      </PreloaderContext.Provider>
+      {/* Page content */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={!showPreloader ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+      >
+        {children}
+      </motion.div>
     </>
   );
 }

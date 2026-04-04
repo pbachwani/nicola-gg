@@ -63,7 +63,7 @@ export default function TransitionProvider({ children }) {
     <AnimatePresence mode="wait">
       <motion.div key={pathname} style={{ position: "relative" }}>
         {children}
-        <Curtains />
+        <Curtains></Curtains>
       </motion.div>
     </AnimatePresence>
   );

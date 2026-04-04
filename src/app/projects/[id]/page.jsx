@@ -34,6 +34,8 @@ export default async function ProjectPage({ params }) {
       ? projects_nicola[currentIndex + 1]
       : projects_nicola[0];
 
+  console.log(nextProject);
+
   return (
     <div className="text-white">
       {/* <ScrollToTopOnMount /> */}
@@ -46,7 +48,6 @@ export default async function ProjectPage({ params }) {
           {project.images?.map((img, i) => (
             <div key={i} className="w-[90%] md:w-[65%]">
               <Image
-                loading="lazy"
                 width={"75"}
                 height={"40"}
                 src={img}

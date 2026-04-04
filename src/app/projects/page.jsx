@@ -6,20 +6,24 @@ import { projects_nicola } from "../constants/data";
 export default function Work() {
   // console.log(projects[0].id);
   return (
-    <div className="text-white min-h-screen px-4 md:px-16 py-20">
-      {/* Heading */}
-      {/* <h1 className="text-4xl md:text-6xl font-semibold my-16 opacity-80">
+    <PageTransition>
+      <div className="text-white min-h-screen px-4 md:px-16 py-20">
+        {/* Heading */}
+        {/* <h1 className="text-4xl md:text-6xl font-semibold my-16 opacity-80">
           Projects
-        </h1> */}
+          </h1> */}
 
-      {/* Grid */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-10 relative mt-20">
-        {projects_nicola?.map((project, i) => {
-          if (!project) return null;
+        {/* Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-10 relative mt-20">
+          {projects_nicola?.map((project, i) => {
+            if (!project) return null;
 
-          return <ProjectCard key={project.id || i} project={project} i={i} />;
-        })}
+            return (
+              <ProjectCard key={project.id || i} project={project} i={i} />
+            );
+          })}
+        </div>
       </div>
-    </div>
+    </PageTransition>
   );
 }

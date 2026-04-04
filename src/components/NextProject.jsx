@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRef, useEffect } from "react";
-import gsap from "gsap";
+
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "motion/react";
 
@@ -52,6 +52,7 @@ const NextProject = ({ nextProject }) => {
         <Link
           href={`/projects/${nextProject.id}`}
           className="md:w-full h-full relative block"
+          onClick={() => console.log(nextProject.id)}
         >
           <Image
             loading="lazy"
