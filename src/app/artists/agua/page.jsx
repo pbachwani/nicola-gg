@@ -1,5 +1,5 @@
 "use client";
-import { projects_nicola } from "@/app/constants/data";
+import { projects_agua } from "@/app/constants/data";
 import PageTransition from "@/components/PageTransition";
 import ProjectCard from "@/components/ProjectCard";
 import Link from "next/link";
@@ -63,7 +63,7 @@ const NicolaProjects = () => {
               Agua Jiang
             </h1>
             <p className="text-xs tracking-widest uppercase opacity-30 mt-2">
-              {projects_nicola.length} Projects
+              {projects_agua.length} Projects
             </p>
           </div>
         </div>
@@ -71,7 +71,7 @@ const NicolaProjects = () => {
         {/* Grid */}
         <div className="px-6 md:px-16 py-16">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-10">
-            {projects_nicola?.map((project, i) => {
+            {projects_agua?.map((project, i) => {
               if (!project) return null;
               return (
                 <ProjectCard key={project.id || i} project={project} i={i} />

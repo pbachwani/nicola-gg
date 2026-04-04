@@ -1,16 +1,14 @@
-import { projects_nicola } from "@/app/constants/data";
 import NextProject from "@/components/NextProject";
 import PageTransition from "@/components/PageTransition";
 import ProjectContent from "@/components/ProjectContent";
 import ProjectHeroMedia from "@/components/ProjectHeroMedia";
-import ScrollToTopOnMount from "@/components/ScrollToTopOnMount";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
+
+import { projects } from "@/app/constants/data";
 
 export async function generateStaticParams() {
-  return projects_nicola.map((project) => ({
+  return projects.map((project) => ({
     id: project.id,
   }));
 }
@@ -18,66 +16,44 @@ export async function generateStaticParams() {
 export default async function ProjectPage({ params }) {
   const { id } = await params;
 
-  const project = projects_nicola.find((p) => p.id === id);
+  const project = projects.find((p) => p.id === id);
 
   if (!project) {
     notFound();
   }
 
-  const currentIndex = projects_nicola.findIndex((p) => p.id === id);
+  const currentIndex = projects.findIndex((p) => p.id === id);
 
-  const prevProject =
-    currentIndex > 0 ? projects_nicola[currentIndex - 1] : null;
+  // const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
 
   const nextProject =
-    currentIndex < projects_nicola.length - 1
-      ? projects_nicola[currentIndex + 1]
-      : projects_nicola[0];
-
-  console.log(nextProject);
+    currentIndex < projects.length - 1
+      ? projects[currentIndex + 1]
+      : projects[0];
 
   return (
-    <div className="text-white">
-      {/* <ScrollToTopOnMount /> */}
-      <PageTransition>
-        <ProjectContent project={project} />
+    <PageTransition>
+      <ProjectContent project={project} />
 
-        <ProjectHeroMedia project={project} />
+      <ProjectHeroMedia project={project} />
 
-        <div className="flex flex-col items-center gap-10 py-10">
-          {project.images?.map((img, i) => (
-            <div key={i} className="w-[90%] md:w-[65%]">
-              <Image
-                width={"75"}
-                height={"40"}
-                src={img}
-                alt=""
-                className="w-full h-auto object-cover transition-transform duration-500 ease-out hover:scale-[1.05]"
-              />
-            </div>
-          ))}
-        </div>
+      <div className="flex flex-col items-center gap-10 py-10">
+        {project.images?.map((img, i) => (
+          <div key={i} className="w-[90%] md:w-[65%]">
+            <Image
+              width={"7500"}
+              height={"4000"}
+              src={img}
+              alt=""
+              className="w-full h-auto object-cover transition-transform duration-500 ease-out hover:scale-[1.05]"
+            />
+          </div>
+        ))}
+      </div>
 
-        <div className="mt-10">
-          <NextProject nextProject={nextProject} />
-        </div>
-      </PageTransition>
-    </div>
+      <div className="mt-10">
+        <NextProject nextProject={nextProject} />
+      </div>
+    </PageTransition>
   );
-}
-
-{
-  /* v2 */
-}
-
-{
-  /* <div className="flex flex-col">
-          {project.images?.map((img, i) => (
-            <div key={i} className="h-[150vh] flex items-center justify-center">
-              <div className="sticky top-1/2 -translate-y-1/2 w-[90%] md:w-[65%] border border-white/20">
-                <img src={img} alt="" className="w-full h-auto object-cover" />
-              </div>
-            </div>
-          ))}
-        </div> */
 }

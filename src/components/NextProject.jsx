@@ -60,7 +60,7 @@ const NextProject = ({ nextProject }) => {
             height={9}
             src={nextProject.cover}
             alt=""
-            onLoadingComplete={() => {
+            onLoad={() => {
               ScrollTrigger.refresh();
             }}
             className="w-full object-cover min-h-screen max-h-screen"

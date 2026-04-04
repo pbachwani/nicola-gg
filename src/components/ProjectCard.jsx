@@ -29,20 +29,15 @@ export default function ProjectCard({ project, i }) {
       >
         {/* Image */}
         <Image
+          // onLoad={() => console.log("loaded")}
           width={"900"}
           height={"1600"}
           loading="lazy"
-          // initial={{ opacity: 0 }}
-          // animate={{ opacity: 1 }}
-          // transition={{ ease: "easeOut" }}
           style={{ y: imageY }}
           src={project.cover}
           alt={project.name}
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.07]"
         />
-
-        {/* Gradient */}
-        {/* <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-80" /> */}
       </div>
       {/* 🔥 Title with scroll movement */}
       <motion.div

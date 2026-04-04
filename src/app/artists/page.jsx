@@ -21,20 +21,6 @@ const artists = [
     video: "/videos/Apple-Security.mp4",
     index: "02",
   },
-  // {
-  //   id: "prateek",
-  //   name: "Prateek",
-  //   href: "/artists/agua",
-  //   video: "/videos/Apple-Security.mp4",
-  //   index: "03",
-  // },
-  // {
-  //   id: "bachwani",
-  //   name: "Bachwani",
-  //   href: "/artists/agua",
-  //   video: "/videos/Apple-Security.mp4",
-  //   index: "04",
-  // },
 ];
 
 const ArtistsPage = () => {
