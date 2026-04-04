@@ -995,16 +995,21 @@ export const projects_agua = [
   },
 ];
 
-export const projects = [];
+export function getAllProjects() {
+  const result = [];
+  const maxLength = Math.max(projects_nicola.length, projects_agua.length);
 
-const maxLength = Math.max(projects_nicola.length, projects_agua.length);
+  for (let i = 0; i < maxLength; i++) {
+    if (projects_nicola[i]) {
+      const { span, ...rest } = projects_nicola[i];
+      result.push({ ...rest, author: "nicola" });
+    }
+    if (projects_agua[i]) {
+      result.push({ ...projects_agua[i], author: "agua" });
+    }
+  }
 
-for (let i = 0; i < maxLength; i++) {
-  if (projects_nicola[i]) {
-    const { span, ...rest } = projects_nicola[i];
-    projects.push({ ...rest, author: "nicola" });
-  }
-  if (projects_agua[i]) {
-    projects.push({ ...projects_agua[i], author: "agua" });
-  }
+  return result;
 }
+
+export const projects = getAllProjects();

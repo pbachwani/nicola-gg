@@ -30,6 +30,7 @@ export default function PreloaderWrapper({ children }) {
     if (!isHome) {
       setProgress(100);
       setReady(true);
+      setCounterDone(true);
       return;
     }
 
@@ -330,10 +331,26 @@ export default function PreloaderWrapper({ children }) {
           ref={navLogoRef}
           src="/logo-files/PNG/white stacked.png"
           alt="Ground Glass Studio"
-          className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 md:px-16 h-20 w-fit opacity-0 z-[9999]"
+          className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 md:px-16 h-20 w-fit opacity-0 pointer-events-none"
         />
       </Link>
 
+      {/* for debugging stilly bs */}
+      {/* <div
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          zIndex: 99999,
+          background: "red",
+          color: "white",
+          padding: "8px",
+          fontSize: "12px",
+        }}
+      >
+        ready: {String(ready)} | counterDone: {String(counterDone)} |
+        showPreloader: {String(showPreloader)}
+      </div> */}
       {/* Page content */}
       <motion.div
         initial={{ opacity: 0 }}

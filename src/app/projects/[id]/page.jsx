@@ -4,23 +4,17 @@ import ProjectContent from "@/components/ProjectContent";
 import ProjectHeroMedia from "@/components/ProjectHeroMedia";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-
-import { projects } from "@/app/constants/data";
+import { getAllProjects } from "@/app/constants/data";
 
 export async function generateStaticParams() {
-  return projects.map((project) => ({
-    id: project.id,
-  }));
+  return getAllProjects().map((project) => ({ id: project.id }));
 }
 
 export default async function ProjectPage({ params }) {
   const { id } = await params;
-
+  const projects = getAllProjects();
   const project = projects.find((p) => p.id === id);
-
-  if (!project) {
-    notFound();
-  }
+  if (!project) notFound();
 
   const currentIndex = projects.findIndex((p) => p.id === id);
 
