@@ -91,8 +91,8 @@ const ArtistsPage = () => {
                       fontSize: isActive
                         ? // ? "clamp(20px, 3vw, 24px)"
                           // : "clamp(16px, 1vw, 20px)",
-                          "24px"
-                        : "20px",
+                          "32px"
+                        : "24px",
                       opacity: isActive ? 1 : 0.25,
                     }}
                     transition={{ duration: 0.45, ease: [0.33, 1, 0.68, 1] }}

@@ -24,7 +24,7 @@ const NicolaProjects = () => {
 
   return (
     <PageTransition>
-      <div className="min-h-screen">
+      <div className="">
         {/* Sticky side label + scroll indicator */}
         <motion.div
           className="fixed left-6 top-1/2 -translate-y-1/2 z-30 hidden md:flex flex-col items-center gap-3"
@@ -55,20 +55,45 @@ const NicolaProjects = () => {
         </motion.div>
 
         {/* Header */}
-        <div className="px-6 md:px-16 pt-36 pb-16 border-b border-current/10">
-          <div className="flex flex-col gap-4">
-            <p className="text-[10px] tracking-[0.3em] uppercase opacity-30">
+        {/* <div className="px-6 md:px-16 pt-36 pb-16 border-b border-current/10"> */}
+        <div className="min-h-screen flex flex-col justify-center relative">
+          {/* video */}
+          <div className="w-full h-full min-h-screen max-h-svh z-0">
+            <video
+              src="/videos/Apple-Security.mp4"
+              autoPlay
+              loop
+              muted
+              className="w-full object-cover h-screen opacity-80"
+            ></video>
+          </div>
+          {/* content */}
+          <div className="flex flex-col w-full justify-center items-center gap-10 z-10 absolute px-4">
+            {/* <p className="text-[10px] tracking-[0.3em] uppercase opacity-30">
               Artist — 01
-            </p>
-            <h1 className="text-5xl md:text-7xl font-light tracking-tight leading-none">
+            </p> */}
+            <h1 className="text-3xl md:text-5xl font-light tracking-tight leading-none">
               Nicola Gasparri
             </h1>
-            <p className="text-xs tracking-widest uppercase opacity-30 mt-2">
-              {projects_nicola.length} Projects
+            <p className="text-xs tracking-widest uppercase opacity-80 mt-2 max-w-5xl text-justify">
+              Nicola Gasparri is a partner and senior colourist at Groundglass,
+              working between Florence and Shanghai. His work is defined by a
+              refined and cinematic approach to colour, balancing precision with
+              a strong sensitivity to tone, contrast, and atmosphere. He works
+              closely with directors and cinematographers to shape the visual
+              language of each project, bringing clarity and depth to the final
+              image. Nicola has graded projects for brands including Apple,
+              Nike, BMW, Porsche, Mercedes-Benz, Adidas, and Coca-Cola, working
+              across commercials, film, and branded content throughout Europe
+              and Asia.
             </p>
           </div>
         </div>
-
+        <div className="px-6 md:px-16 pt-16 text-right ">
+          <p className="text-xs tracking-widest uppercase opacity-70 mt-2">
+            {projects_nicola.length} Projects
+          </p>
+        </div>
         {/* Grid */}
         <div className="px-6 md:px-16 py-16">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-10">

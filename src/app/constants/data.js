@@ -18,6 +18,7 @@ export const projects_nicola = [
       "/nicola/apple-security/7.jpg",
       "/nicola/apple-security/8.jpg",
     ],
+    video: "/Apple Security - original.mp4",
   },
   {
     id: "neeraj",
@@ -52,6 +53,7 @@ export const projects_nicola = [
       "/nicola/neeraj/21.JPG",
       "/nicola/neeraj/22.JPG",
     ],
+    video: "/samsung.mp4",
   },
   {
     id: "astropulse",
@@ -71,6 +73,7 @@ export const projects_nicola = [
       "/nicola/astropulse/6.jpg",
       "/nicola/astropulse/7.jpg",
     ],
+    video: "/astropulse.mp4",
   },
   {
     id: "lotus-limitless",

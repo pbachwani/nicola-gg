@@ -170,7 +170,7 @@ const Navbar = () => {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
               >
-                <Link href={"/"}>Ground Glass</Link>
+                <Link href={"/"}>{/* <img src="" alt="" /> */}</Link>
               </motion.p>
             </motion.div>
           </>
