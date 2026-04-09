@@ -25,7 +25,7 @@ export default function ProjectCard({ project, i }) {
     >
       <div
         ref={ref}
-        className="relative w-full aspect-4/5 overflow-hidden transition-all duration-500 ease-out group-hover:scale-[0.98]"
+        className="relative w-full aspect-4/5 overflow-hidden transition-all duration-500 ease-out group-hover:scale-[0.98] md:hover:brightness-95"
       >
         {/* Image */}
         <Image
@@ -43,7 +43,7 @@ export default function ProjectCard({ project, i }) {
       <motion.div
         ref={ref}
         style={{ y }}
-        className="absolute bottom-4 z-10 w-full flex flex-col px-4 gap-2"
+        className="absolute bottom-4 z-10 w-full flex flex-col px-4 gap-2 brightness-110"
       >
         <div className="flex justify-between items-baseline w-full">
           <motion.h2

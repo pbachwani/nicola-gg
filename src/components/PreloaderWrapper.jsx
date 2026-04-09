@@ -11,10 +11,10 @@ export default function PreloaderWrapper({ children }) {
   const isHome = pathname === "/";
 
   const [ready, setReady] = useState(false);
+  const [counterDone, setCounterDone] = useState(false);
   const [progress, setProgress] = useState(0);
   const [displayNum, setDisplayNum] = useState(0);
   const [barVisible, setBarVisible] = useState(true);
-  const [counterDone, setCounterDone] = useState(false);
 
   const progressInterval = useRef(null);
   const logoAnimStarted = useRef(false);
@@ -23,7 +23,7 @@ export default function PreloaderWrapper({ children }) {
   const navLogoRef = useRef(null);
 
   const showPreloader = !ready || !counterDone;
-  const [contentVisible, setContentVisible] = useState(false);
+  // const [contentVisible, setContentVisible] = useState(false);
 
   // ── Video loading (home only) ──────────────────────────────
   useEffect(() => {
@@ -126,23 +126,52 @@ export default function PreloaderWrapper({ children }) {
         delay: 0.5,
         scale: 1,
       })
-      .to(mark, { opacity: 0, duration: 0.3, ease: "power2.in", delay: 1.1 })
+
+      .to(mark, {
+        opacity: 0,
+        duration: 0.6,
+        scale: 0.9,
+        ease: "power2.in",
+        delay: 0.9,
+      })
       .fromTo(
         stacked,
-        { opacity: 0, scale: 0.85, delay: -0.25 },
-        { opacity: 1, scale: 1, duration: 0.35, ease: "power2.out" },
-        "-=0.5",
+        {
+          opacity: 1,
+          clipPath: "inset(0 100% 0 0)", // hidden
+          scale: 1,
+        },
+        {
+          clipPath: "inset(0 0% 0 0)", // fully revealed
+          duration: 0.6,
+          ease: "power2.out",
+        },
+        "-=0.2",
       )
+      // .fromTo(
+      //   stacked,
+      //   { opacity: 0, scale: 0.85, delay: -0.25 },
+      //   { opacity: 1, scale: 1, duration: 0.35, ease: "power2.out" },
+      //   "-=0.25",
+      // )
       .to(stacked, {
         duration: 0.6,
         ease: "power3.inOut",
+        opacity: 0,
+        scale: 0.85,
         onComplete: () => {
-          gsap.set(stacked, { opacity: 0 });
-          gsap.to(navLogo, {
-            opacity: 0,
-            duration: 1.15,
-            ease: "power2.inOut",
-          });
+          // gsap.set(stacked, {
+          //   opacity: 0,
+          //   scale: 0.85,
+          //   duration: 0.6,
+          //   ease: "power2.out",
+          // });
+          // gsap.to(navLogo, {
+          //   scale: 1,
+          //   opacity: 0,
+          //   duration: 1.15,
+          //   ease: "power2.inOut",
+          // });
           onDone();
         },
       });

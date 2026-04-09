@@ -16,7 +16,7 @@ const artists = [
   },
   {
     id: "agua",
-    name: "Agua",
+    name: "Agua Jiang",
     href: "/artists/agua",
     video: "/videos/Apple-Security.mp4",
     index: "02",
@@ -86,16 +86,8 @@ const ArtistsPage = () => {
                 {/* Name row */}
                 <div className="flex items-center md:justify-center py-2 px-2 w-full relative">
                   <motion.h2
-                    className="text-white font-light tracking-tight leading-none text-center md:min-h-10"
-                    animate={{
-                      fontSize: isActive
-                        ? // ? "clamp(20px, 3vw, 24px)"
-                          // : "clamp(16px, 1vw, 20px)",
-                          "32px"
-                        : "24px",
-                      opacity: isActive ? 1 : 0.25,
-                    }}
-                    transition={{ duration: 0.45, ease: [0.33, 1, 0.68, 1] }}
+                    className={`text-white font-light tracking-tight leading-none text-center md:min-h-10 duration-300 ease-out ${isActive ? "text-2xl md:text-4xl" : "text-lg md:text-2xl opacity-40"}`}
+                    // transition={{ duration: 0.45, ease: [0.33, 1, 0.68, 1] }}
                   >
                     {artist.name}
                   </motion.h2>

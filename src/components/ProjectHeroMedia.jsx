@@ -1,4 +1,5 @@
 "use client";
+import { cdnBase } from "@/app/constants/data";
 import { useEffect, useRef } from "react";
 
 export default function ProjectHeroMedia({ project }) {
@@ -31,7 +32,7 @@ export default function ProjectHeroMedia({ project }) {
     <div className="w-[90%] md:w-[75%] flex items-center mx-auto py-24 relative overflow-hidden">
       <video
         ref={videoRef}
-        src="https://nicola-gasparri.b-cdn.net/project-videos/hsrLaunchshow_MIP01.mp4"
+        src={`${cdnBase}${project.video}`}
         autoPlay
         loop
         muted

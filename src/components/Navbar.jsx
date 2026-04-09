@@ -5,6 +5,8 @@ import clsx from "clsx";
 import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import Contact from "@/app/contact/page";
+import Footer from "./Footer";
 
 const links = [
   // { href: "/", label: "Home" },
@@ -14,11 +16,14 @@ const links = [
 ];
 
 const Navbar = () => {
+  const [footerVisible, setFooterVisible] = useState(false);
   const pathname = usePathname();
   const home = pathname === "/";
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [drawerOpen, setDrawerOpen] = useState(false);
+
+  // wherever you initialize Lenis
 
   useEffect(() => {
     const handleScroll = () => {
@@ -63,14 +68,29 @@ const Navbar = () => {
 
           {/* Desktop links */}
           <div className="flex gap-2 text-sm max-md:hidden mt-1 cursor-pointer">
-            {links.map((l) => (
+            <Link href={"/projects"} className="hover:cursor-pointer">
+              Work
+            </Link>
+            <Link href={"/artists"} className="hover:cursor-pointer">
+              Artists
+            </Link>
+            <button
+              onClick={() => {
+                console.log("contact clicked");
+                setFooterVisible(!footerVisible);
+              }}
+              className="hover:cursor-pointer"
+            >
+              Contact
+            </button>
+            {/* {links.map((l) => (
               <Link key={l.href} href={l.href} className="hover:cursor-pointer">
                 {l.label}
               </Link>
-            ))}
+            ))} */}
           </div>
 
-          {/* Hamburger — mobile only */}
+          {/* Hamburger button— mobile only */}
           <button
             className="md:hidden flex flex-col justify-center items-end gap-1.5 w-8 h-8"
             onClick={() => setDrawerOpen(true)}
@@ -89,7 +109,7 @@ const Navbar = () => {
         </div>
       </motion.nav>
 
-      {/* Drawer */}
+      {/* Drawer for mobile */}
       <AnimatePresence>
         {drawerOpen && (
           <>

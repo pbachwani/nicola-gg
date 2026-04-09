@@ -64,7 +64,7 @@ const NicolaProjects = () => {
               autoPlay
               loop
               muted
-              className="w-full object-cover h-screen opacity-80"
+              className="w-full object-cover h-screen opacity-60"
             ></video>
           </div>
           {/* content */}
@@ -75,11 +75,11 @@ const NicolaProjects = () => {
             <h1 className="text-3xl md:text-5xl font-light tracking-tight leading-none">
               Nicola Gasparri
             </h1>
-            <p className="text-xs tracking-widest uppercase opacity-80 mt-2 max-w-5xl text-justify">
-              Nicola Gasparri is a partner and senior colourist at Groundglass,
-              working between Florence and Shanghai. His work is defined by a
-              refined and cinematic approach to colour, balancing precision with
-              a strong sensitivity to tone, contrast, and atmosphere. He works
+            <p className="text-sm mt-2 max-w-5xl text-justify ">
+              Nicola is a partner and senior colourist at Groundglass, working
+              between Florence and Shanghai. His work is defined by a refined
+              and cinematic approach to colour, balancing precision with a
+              strong sensitivity to tone, contrast, and atmosphere. He works
               closely with directors and cinematographers to shape the visual
               language of each project, bringing clarity and depth to the final
               image. Nicola has graded projects for brands including Apple,
@@ -89,9 +89,20 @@ const NicolaProjects = () => {
             </p>
           </div>
         </div>
-        <div className="px-6 md:px-16 pt-16 text-right ">
-          <p className="text-xs tracking-widest uppercase opacity-70 mt-2">
+        <div className="px-6 md:px-16 pt-16 text-center w-full max-w-7xl mx-auto hidden">
+          {/* <p className="text-xs tracking-widest uppercase opacity-70 mt-2">
             {projects_nicola.length} Projects
+          </p> */}
+          <p className="text-md mt-2 text-justify">
+            Nicola is a partner and senior colourist at Groundglass, working
+            between Florence and Shanghai. His work is defined by a refined and
+            cinematic approach to colour, balancing precision with a strong
+            sensitivity to tone, contrast, and atmosphere. He works closely with
+            directors and cinematographers to shape the visual language of each
+            project, bringing clarity and depth to the final image. Nicola has
+            graded projects for brands including Apple, Nike, BMW, Porsche,
+            Mercedes-Benz, Adidas, and Coca-Cola, working across commercials,
+            film, and branded content throughout Europe and Asia.
           </p>
         </div>
         {/* Grid */}

@@ -3,25 +3,26 @@ import Autoplay from "embla-carousel-autoplay";
 import useEmblaCarousel from "embla-carousel-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState, useCallback } from "react";
+import { cdnBase } from "@/app/constants/data";
 
 const slides = [
   {
-    src: "https://nicola-gasparri.b-cdn.net/homepage/01_Apple_Security_HP.mp4",
+    src: `${cdnBase}/homepage/01_Apple_Security_HP.mp4`,
     project: "Apple Security",
     index: "01",
   },
   {
-    src: "https://nicola-gasparri.b-cdn.net/homepage/01_Samsung_HP.mp4",
+    src: `${cdnBase}/homepage/01_Samsung_HP.mp4`,
     project: "Samsung",
     index: "02",
   },
   {
-    src: "https://nicola-gasparri.b-cdn.net/homepage/Astropulse_Final_HP.mp4.mp4",
+    src: `${cdnBase}/homepage/Astropulse_Final_HP.mp4.mp4`,
     project: "Astropulse",
     index: "03",
   },
   {
-    src: "https://nicola-gasparri.b-cdn.net/homepage/04_Lotus_HP.mp4",
+    src: `${cdnBase}/homepage/04_Lotus_HP.mp4`,
     project: "Lotus Limitless",
     index: "04",
   },

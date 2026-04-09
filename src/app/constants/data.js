@@ -1,6 +1,9 @@
+export const cdnBase = "https://nicola-gasparri.b-cdn.net";
+
 export const projects_nicola = [
   {
     id: "apple-security",
+    video: "/project-videos/apple-security.mp4",
     name: "Apple Security",
     director: "Adam Liu",
     cinematographer: "TianXing Wang",
@@ -18,10 +21,10 @@ export const projects_nicola = [
       "/nicola/apple-security/7.jpg",
       "/nicola/apple-security/8.jpg",
     ],
-    video: "/Apple Security - original.mp4",
   },
   {
     id: "neeraj",
+    video: "/project-videos/samsung.mp4",
     name: "Neeraj",
     director: "Aakash Bhatia",
     cinematographer: "Konrad Losch",
@@ -53,10 +56,10 @@ export const projects_nicola = [
       "/nicola/neeraj/21.JPG",
       "/nicola/neeraj/22.JPG",
     ],
-    video: "/samsung.mp4",
   },
   {
     id: "astropulse",
+    video: "/project-videos/astropulse.mp4",
     name: "Astropulse",
     director: "Wei Wang",
     cinematographer: "",
@@ -73,10 +76,10 @@ export const projects_nicola = [
       "/nicola/astropulse/6.jpg",
       "/nicola/astropulse/7.jpg",
     ],
-    video: "/astropulse.mp4",
   },
   {
     id: "lotus-limitless",
+    video: "/project-videos/lotus-limitless.mp4",
     name: "Lotus Limitless",
     director: "Yao Fei",
     cinematographer: "Lu Xiqi",
@@ -125,6 +128,7 @@ export const projects_nicola = [
   },
   {
     id: "honkai-star-trail",
+    video: "/project-videos/honkai-star-trail.mp4",
     name: "Honkai Star Trail",
     director: "Omer Ben Shachar",
     cinematographer: "Kai Krause",
@@ -147,6 +151,7 @@ export const projects_nicola = [
   },
   {
     id: "blossom-shanghai",
+    video: "/project-videos/blossom-shanghai.mp4",
     name: "Blossom Shanghai",
     director: "Wong Kar-wai",
     cinematographer: "Peter Pau",
@@ -167,6 +172,7 @@ export const projects_nicola = [
   },
   {
     id: "beats",
+    video: "/project-videos/beats.mp4",
     name: "Beats",
     director: "Zika Liu",
     cinematographer: "Liu Chao",
@@ -187,6 +193,7 @@ export const projects_nicola = [
   },
   {
     id: "royal-enfield",
+    video: "/project-videos/royal-enfield.mp4",
     name: "Royal Enfield",
     director: "Aakash Bhatia",
     cinematographer: "Vikash Nowlakha",
@@ -204,6 +211,7 @@ export const projects_nicola = [
   },
   {
     id: "bmw-x5",
+    video: "/project-videos/bmw-x5.mov",
     name: "Bmw X5",
     director: "Zika Liu",
     cinematographer: "Lu Xiqi",
@@ -227,6 +235,7 @@ export const projects_nicola = [
   },
   {
     id: "lollipop",
+    video: "/project-videos/lollipop.mp4",
     name: "Lollipop",
     director: "Steven Ilous",
     cinematographer: "Tone Prot Promprot",
@@ -274,6 +283,7 @@ export const projects_nicola = [
   },
   {
     id: "crime-fiction",
+    video: "/project-videos/crime-fiction.mp4",
     name: "Crime Fiction",
     director: "Dj",
     cinematographer: "Talin",
@@ -312,6 +322,7 @@ export const projects_nicola = [
   },
   {
     id: "furla",
+    video: "/project-videos/furla.mp4",
     name: "Furla",
     director: "Yuan",
     cinematographer: "Tetsuya Arimori",
@@ -340,6 +351,7 @@ export const projects_nicola = [
   },
   {
     id: "sony-ps5",
+    video: "/project-videos/sony-ps5.mov",
     name: "Sony Ps5",
     director: "",
     cinematographer: "",
@@ -360,6 +372,7 @@ export const projects_nicola = [
   },
   {
     id: "teva",
+    video: "/project-videos/teva.mp4",
     name: "Teva",
     director: "Yuan",
     cinematographer: "Yuki Ono",
@@ -380,6 +393,7 @@ export const projects_nicola = [
   },
   {
     id: "beyond-symmetry",
+    video: "/project-videos/beyond-symmetry.mp4",
     name: "Beyond Symmetry",
     director: "Amerigo Brini",
     cinematographer: "Stevo Shen",
@@ -402,6 +416,7 @@ export const projects_nicola = [
   },
   {
     id: "revival-marni",
+    video: "/project-videos/revival-marni.mp4",
     name: "Revival Marni",
     director: "Dwight Yao",
     cinematographer: "Yanqiu Fei",
@@ -423,6 +438,7 @@ export const projects_nicola = [
   },
   {
     id: "amazon-prime",
+    video: "/project-videos/amazon-prime.mp4",
     name: "Amazon Prime",
     director: "Vittorio Bonaffini",
     cinematographer: "Alessandro Ubaldi",
@@ -441,6 +457,7 @@ export const projects_nicola = [
   },
   {
     id: "budweiser-be-a-king",
+    video: "/project-videos/budweiser-be-a-king.mp4",
     name: "Budweiser Be a King",
     director: "Bharat Sikka",
     cinematographer: "",
@@ -461,6 +478,7 @@ export const projects_nicola = [
   },
   {
     id: "to-the-moon",
+    video: "/project-videos/to-the-moon.mp4",
     name: "To the Moon",
     director: "Weston Borg",
     cinematographer: "Jeremy Herron",
@@ -483,6 +501,7 @@ export const projects_nicola = [
   },
   {
     id: "bgmi",
+    video: "/project-videos/bgmi.mp4",
     name: "BGMI",
     director: "Shai",
     cinematographer: "Yash Khanna",
@@ -538,6 +557,7 @@ export const projects_nicola = [
 
   {
     id: "gravity-lastlings",
+    video: "/project-videos/gravity-lastlings.mp4",
     name: "Gravity Lastlings",
     director: "Rico Zhang",
     cinematographer: "Kenny Liu",
@@ -607,6 +627,7 @@ export const projects_nicola = [
 export const projects_agua = [
   {
     id: "mengniu",
+    video: "/project-videos/mengniu.mp4",
     name: "Mengniu",
     director: "Shen Yujie",
     cinematographer: "Jian Liwei",
@@ -635,6 +656,7 @@ export const projects_agua = [
   },
   {
     id: "burberry-perfume",
+    video: "/project-videos/burberry-perfume.mp4",
     name: "Burberry Perfume",
     director: "Zika Liu",
     cinematographer: "Lǎo Dòng",
@@ -653,6 +675,7 @@ export const projects_agua = [
   },
   {
     id: "shiseido",
+    video: "/project-videos/shiseido.mp4",
     name: "Shiseido",
     director: "Dai Shu",
     cinematographer: "An Zheng",
@@ -669,6 +692,7 @@ export const projects_agua = [
   },
   {
     id: "yili-cny",
+    video: "/project-videos/yili-cny.mp4",
     name: "Yili CNY",
     director: "Wu Ershan, JB",
     cinematographer: "",
@@ -690,6 +714,7 @@ export const projects_agua = [
   },
   {
     id: "vili-n-jana",
+    video: "/project-videos/vili-n-jana.mp4",
     name: "Vili n Jana",
     director: "Ding Yuchen",
     cinematographer: "Wang Tianxing",
@@ -711,6 +736,7 @@ export const projects_agua = [
   },
   {
     id: "huawei-s9",
+    video: "/project-videos/huawei-s9.mp4",
     name: "Huawei S9",
     director: "Jean Claude Thibaut",
     cinematographer: "Dariusz Wolski",
@@ -737,6 +763,7 @@ export const projects_agua = [
   },
   {
     id: "earth-revival",
+    video: "/project-videos/earth-revival.mp4",
     name: "Earth Revival",
     director: "Morten Vinther",
     cinematographer: "",
@@ -755,6 +782,7 @@ export const projects_agua = [
   },
   {
     id: "peacebird",
+    video: "/project-videos/peacebird.mp4",
     name: "Peacebird",
     director: "Zika Liu",
     cinematographer: "An Zheng",
@@ -776,6 +804,7 @@ export const projects_agua = [
   },
   {
     id: "lululemon-cny",
+    video: "/project-videos/lululemon-cny.mp4",
     name: "Lululemon CNY",
     director: "Fan Qing",
     cinematographer: "Lǎo Dòng",
@@ -798,6 +827,7 @@ export const projects_agua = [
   },
   {
     id: "zeekr-three-years",
+    video: "/project-videos/zeekr-three-years.mp4",
     name: "Zeekr Three Years",
     director: "Will Wang",
     cinematographer: "Yuan Qiming",
@@ -823,6 +853,7 @@ export const projects_agua = [
   },
   {
     id: "li-auto-i8",
+    video: "/project-videos/li-auto-i8.mp4",
     name: "Li Auto I8",
     director: "Wei Ning",
     cinematographer: "Liang Zi",
@@ -849,6 +880,7 @@ export const projects_agua = [
   },
   {
     id: "audi-cny",
+    video: "/project-videos/audi-cny.mp4",
     name: "Audi CNY",
     director: "Will Wang",
     cinematographer: "Ren Guangli",
@@ -870,6 +902,7 @@ export const projects_agua = [
   },
   {
     id: "china-mobile",
+    video: "/project-videos/china-mobile.mp4",
     name: "China Mobile",
     director: "Xu Wangliang",
     cinematographer: "Zhao Xuhui",
@@ -894,6 +927,7 @@ export const projects_agua = [
   },
   {
     id: "audi-rsgt",
+    video: "/project-videos/audi-rsgt.mp4",
     name: "Audi RsGt",
     director: "Wei Ning",
     cinematographer: "Liangzi, Dufu",
@@ -913,6 +947,7 @@ export const projects_agua = [
   },
   {
     id: "oppo-reno",
+    video: "/project-videos/oppo-reno.mp4",
     name: "Oppo Reno",
     director: "Vincent Sylvain",
     cinematographer: "Nico Schrenk",
@@ -935,6 +970,7 @@ export const projects_agua = [
   },
   {
     id: "lululemon",
+    video: "/project-videos/lululemon.mp4",
     name: "Lululemon",
     director: "Colin Solal Cardo",
     cinematographer: "Madison McKamey",
@@ -957,6 +993,7 @@ export const projects_agua = [
   },
   {
     id: "redmi-n13",
+    video: "/project-videos/redmi-n13.mp4",
     name: "Redmi N13",
     director: "Wu Ting",
     cinematographer: "Dustin",
@@ -978,6 +1015,7 @@ export const projects_agua = [
   },
   {
     id: "neiwai-active",
+    video: "/project-videos/neiwai-active.mp4",
     name: "Neiwai Active",
     director: "Fan Qing",
     cinematographer: "Lǎo Dòng",
