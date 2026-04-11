@@ -5,6 +5,7 @@ import ProjectHeroMedia from "@/components/ProjectHeroMedia";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getAllProjects } from "@/app/constants/data";
+import { Suspense } from "react";
 
 export async function generateStaticParams() {
   return getAllProjects().map((project) => ({ id: project.id }));
@@ -38,7 +39,9 @@ export default async function ProjectPage({ params }) {
       </div>
 
       <div className="mt-10">
-        <NextProject currentId={id} />
+        <Suspense fallback={null}>
+          <NextProject currentId={id} />
+        </Suspense>
       </div>
     </PageTransition>
   );
