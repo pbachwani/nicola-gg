@@ -5,13 +5,27 @@ import Link from "next/link";
 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "motion/react";
+import { useSearchParams } from "next/navigation";
+import { getAllProjects } from "@/app/constants/data";
 
-const NextProject = ({ nextProject }) => {
+const NextProject = ({ currentId }) => {
+  const searchParams = useSearchParams();
+  const source = searchParams.get("source");
+  const projects = getAllProjects();
+
+  const projectList = source
+    ? projects.filter((p) => p.artist?.toLowerCase() === source.toLowerCase())
+    : projects;
+
+  const currentIndex = projectList.findIndex((p) => p.id === currentId);
+  const nextProject = projectList[currentIndex + 1] ?? projectList[0];
+
+  const href = source
+    ? `/projects/${nextProject.id}?source=${source}`
+    : `/projects/${nextProject.id}`;
+
   return (
-    <Link
-      href={`/projects/${nextProject.id}`}
-      className="md:w-full h-full relative block"
-    >
+    <Link href={href} className="md:w-full h-full relative block">
       <motion.div
         initial={{ opacity: 0, scale: 0.85, y: 80 }}
         whileInView={{ opacity: 1, scale: 1, y: 0 }}

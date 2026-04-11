@@ -5,7 +5,10 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 
-export default function ProjectCard({ project, i }) {
+export default function ProjectCard({ project, i, source }) {
+  const href = source
+    ? `/projects/${project.id}?source=${source}`
+    : `/projects/${project.id}`;
   const ref = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -19,13 +22,10 @@ export default function ProjectCard({ project, i }) {
   if (!project) return null;
 
   return (
-    <Link
-      href={`/projects/${project.id}`}
-      className="group relative flex flex-col"
-    >
+    <Link href={href} className="group relative flex flex-col">
       <div
         ref={ref}
-        className="relative w-full aspect-4/5 overflow-hidden transition-all duration-500 ease-out group-hover:scale-[0.98] md:hover:brightness-95"
+        className="relative w-full aspect-4/5 overflow-hidden transition-all duration-500 ease-out group-hover:scale-[0.98]"
       >
         {/* Image */}
         <Image

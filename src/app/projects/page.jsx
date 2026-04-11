@@ -4,7 +4,6 @@ import ProjectCard from "@/components/ProjectCard";
 import { projects } from "../constants/data";
 
 export default function Work() {
-  // console.log(projects[0].id);
   return (
     <PageTransition>
       <div className="text-white min-h-screen px-4 md:px-16 py-20">

@@ -14,16 +14,8 @@ export default async function ProjectPage({ params }) {
   const { id } = await params;
   const projects = getAllProjects();
   const project = projects.find((p) => p.id === id);
+
   if (!project) notFound();
-
-  const currentIndex = projects.findIndex((p) => p.id === id);
-
-  // const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
-
-  const nextProject =
-    currentIndex < projects.length - 1
-      ? projects[currentIndex + 1]
-      : projects[0];
 
   return (
     <PageTransition>
@@ -46,7 +38,7 @@ export default async function ProjectPage({ params }) {
       </div>
 
       <div className="mt-10">
-        <NextProject nextProject={nextProject} />
+        <NextProject currentId={id} />
       </div>
     </PageTransition>
   );

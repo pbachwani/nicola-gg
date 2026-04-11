@@ -4,21 +4,21 @@ import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import TransitionProvider from "@/components/TransitionProvider";
+import { cdnBase } from "../constants/data";
 
 const artists = [
   {
     id: "nicola",
     name: "Nicola Gasparri",
     href: "/artists/nicola",
-    video:
-      "https://nicola-gasparri.b-cdn.net/project-videos/hsrLaunchshow_MIP01.mp4",
+    video: `${cdnBase}/homepage/nicola-artistpage.mp4`,
     index: "01",
   },
   {
     id: "agua",
     name: "Agua Jiang",
     href: "/artists/agua",
-    video: "/videos/Apple-Security.mp4",
+    video: `${cdnBase}/homepage/agua-artistpage.mp4`,
     index: "02",
   },
 ];
@@ -32,7 +32,7 @@ const ArtistsPage = () => {
     clearInterval(intervalRef.current);
     intervalRef.current = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % artists.length);
-    }, 5000);
+    }, 4000);
   };
 
   useEffect(() => {
@@ -54,7 +54,7 @@ const ArtistsPage = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0, ease: "easeOut" }}
           >
             <video
               src={displayArtist.video}
@@ -64,7 +64,7 @@ const ArtistsPage = () => {
               playsInline
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-black/0" />
+            <div className="absolute inset-0 bg-black/10" />
           </motion.div>
         </AnimatePresence>
 
@@ -86,39 +86,27 @@ const ArtistsPage = () => {
                 {/* Name row */}
                 <div className="flex items-center md:justify-center py-2 px-2 w-full relative">
                   <motion.h2
-                    className={`text-white font-light tracking-tight leading-none text-center md:min-h-10 duration-300 ease-out ${isActive ? "text-2xl md:text-4xl" : "text-lg md:text-2xl opacity-40"}`}
-                    // transition={{ duration: 0.45, ease: [0.33, 1, 0.68, 1] }}
+                    className={`text-white font-light tracking-tight leading-none text-center md:min-h-10 duration-500 ease-out ${isActive ? "text-2xl md:text-4xl" : "text-lg md:text-2xl opacity-40"}`}
                   >
                     {artist.name}
                   </motion.h2>
-
-                  {/* See projects — right absolute */}
-                  {/* <motion.div
-                    className="absolute right-8 md:right-16 flex items-center gap-1.5"
-                    animate={{ opacity: isActive ? 1 : 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <span className="text-white/50 text-[10px] tracking-widest uppercase hidden md:block">
-                      See projects
-                    </span>
-                    <svg
-                      width="12"
-                      height="12"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      className="text-white/50"
-                    >
-                      <path
-                        d="M3 13L13 3M13 3H6M13 3V10"
-                        stroke="currentColor"
-                        strokeWidth="1.2"
-                      />
-                    </svg>
-                  </motion.div> */}
                 </div>
+              </Link>
+            );
+          })}
+        </div>
+      </div>
+    </PageTransition>
+  );
+};
 
-                {/* Progress bar */}
-                {/* <div className="w-full max-w-xs max-md:hidden h-px bg-white/0 overflow-hidden">
+export default ArtistsPage;
+
+{
+  /* Progress bar */
+}
+{
+  /* <div className="w-full max-w-xs max-md:hidden h-px bg-white/0 overflow-hidden">
                   <AnimatePresence mode="wait">
                     {isActive && (
                       <motion.div
@@ -136,14 +124,5 @@ const ArtistsPage = () => {
                       />
                     )}
                   </AnimatePresence>
-                </div> */}
-              </Link>
-            );
-          })}
-        </div>
-      </div>
-    </PageTransition>
-  );
-};
-
-export default ArtistsPage;
+                </div> */
+}

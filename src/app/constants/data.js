@@ -2,6 +2,7 @@ export const cdnBase = "https://nicola-gasparri.b-cdn.net";
 
 export const projects_nicola = [
   {
+    artist: "nicola",
     id: "apple-security",
     video: "/project-videos/apple-security.mp4",
     name: "Apple Security",
@@ -23,6 +24,7 @@ export const projects_nicola = [
     ],
   },
   {
+    artist: "nicola",
     id: "neeraj",
     video: "/project-videos/samsung.mp4",
     name: "Neeraj",
@@ -58,6 +60,7 @@ export const projects_nicola = [
     ],
   },
   {
+    artist: "nicola",
     id: "astropulse",
     video: "/project-videos/astropulse.mp4",
     name: "Astropulse",
@@ -75,9 +78,21 @@ export const projects_nicola = [
       "/nicola/astropulse/5.jpg",
       "/nicola/astropulse/6.jpg",
       "/nicola/astropulse/7.jpg",
+      "/nicola/astropulse/8.jpg",
+      "/nicola/astropulse/9.jpg",
+      "/nicola/astropulse/10.jpg",
+      "/nicola/astropulse/11.jpg",
+      "/nicola/astropulse/12.jpg",
+      "/nicola/astropulse/13.jpg",
+      "/nicola/astropulse/14.jpg",
+      "/nicola/astropulse/15.jpg",
+      "/nicola/astropulse/16.jpg",
+      "/nicola/astropulse/17.jpg",
+      "/nicola/astropulse/18.jpg",
     ],
   },
   {
+    artist: "nicola",
     id: "lotus-limitless",
     video: "/project-videos/lotus-limitless.mp4",
     name: "Lotus Limitless",
@@ -85,7 +100,7 @@ export const projects_nicola = [
     cinematographer: "Lu Xiqi",
     productionCompany: "",
     category: "TVC",
-    cover: "/nicola/lotus-limitless/lotus-limitless-coverImg.jpg",
+    cover: "/nicola/lotus-limitless/lotus-limitless-coverImg1.jpg",
     span: 4,
     images: [
       "/nicola/lotus-limitless/1.jpg",
@@ -97,7 +112,7 @@ export const projects_nicola = [
       "/nicola/lotus-limitless/7.jpg",
       "/nicola/lotus-limitless/8.jpg",
       "/nicola/lotus-limitless/9.jpg",
-      "/nicola/lotus-limitless/10.jpg",
+      // "/nicola/lotus-limitless/10.jpg",
       "/nicola/lotus-limitless/11.jpg",
       "/nicola/lotus-limitless/12.jpg",
       "/nicola/lotus-limitless/13.jpg",
@@ -123,10 +138,11 @@ export const projects_nicola = [
       "/nicola/lotus-limitless/33.jpg",
       "/nicola/lotus-limitless/34.jpg",
       "/nicola/lotus-limitless/35.jpg",
-      "/nicola/lotus-limitless/36.jpg",
+      // "/nicola/lotus-limitless/36.jpg",
     ],
   },
   {
+    artist: "nicola",
     id: "honkai-star-trail",
     video: "/project-videos/honkai-star-trail.mp4",
     name: "Honkai Star Trail",
@@ -134,7 +150,7 @@ export const projects_nicola = [
     cinematographer: "Kai Krause",
     productionCompany: "",
     category: "Film",
-    cover: "/nicola/honkai-star-trail/honkai-star-trail-coverImg.jpg",
+    cover: "/nicola/honkai-star-trail/honkai-star-trail-coverImg2.jpg",
     span: 4,
     images: [
       "/nicola/honkai-star-trail/1.jpg",
@@ -150,6 +166,7 @@ export const projects_nicola = [
     ],
   },
   {
+    artist: "nicola",
     id: "blossom-shanghai",
     video: "/project-videos/blossom-shanghai.mp4",
     name: "Blossom Shanghai",
@@ -157,7 +174,7 @@ export const projects_nicola = [
     cinematographer: "Peter Pau",
     productionCompany: "",
     category: "Film",
-    cover: "/nicola/blossom-shanghai/blossom-shanghai-coverImg.jpg",
+    cover: "/nicola/blossom-shanghai/blossom-shanghai-coverImg1.jpg",
     span: 2,
     images: [
       "/nicola/blossom-shanghai/1.jpg",
@@ -168,9 +185,62 @@ export const projects_nicola = [
       "/nicola/blossom-shanghai/6.jpg",
       "/nicola/blossom-shanghai/7.jpg",
       "/nicola/blossom-shanghai/8.jpg",
+      "/nicola/blossom-shanghai/9.jpg",
+      "/nicola/blossom-shanghai/10.jpg",
+      "/nicola/blossom-shanghai/11.jpg",
+      "/nicola/blossom-shanghai/12.jpg",
+      "/nicola/blossom-shanghai/13.jpg",
+      "/nicola/blossom-shanghai/14.jpg",
+      "/nicola/blossom-shanghai/15.jpg",
+      "/nicola/blossom-shanghai/16.jpg",
+      "/nicola/blossom-shanghai/17.jpg",
+      "/nicola/blossom-shanghai/18.jpg",
+      "/nicola/blossom-shanghai/19.jpg",
+      "/nicola/blossom-shanghai/20.jpg",
+      "/nicola/blossom-shanghai/21.jpg",
+      "/nicola/blossom-shanghai/22.jpg",
+      "/nicola/blossom-shanghai/23.jpg",
+      "/nicola/blossom-shanghai/24.jpg",
+      "/nicola/blossom-shanghai/25.jpg",
+      "/nicola/blossom-shanghai/26.jpg",
+      "/nicola/blossom-shanghai/27.jpg",
+      "/nicola/blossom-shanghai/28.jpg",
+      "/nicola/blossom-shanghai/29.jpg",
+      "/nicola/blossom-shanghai/30.jpg",
+      "/nicola/blossom-shanghai/31.jpg",
+      "/nicola/blossom-shanghai/32.jpg",
+      "/nicola/blossom-shanghai/33.jpg",
+      "/nicola/blossom-shanghai/34.jpg",
+      "/nicola/blossom-shanghai/35.jpg",
+      "/nicola/blossom-shanghai/36.jpg",
+      "/nicola/blossom-shanghai/37.jpg",
+      "/nicola/blossom-shanghai/38.jpg",
+      "/nicola/blossom-shanghai/39.jpg",
+      "/nicola/blossom-shanghai/40.jpg",
+      "/nicola/blossom-shanghai/41.jpg",
+      "/nicola/blossom-shanghai/42.jpg",
+      "/nicola/blossom-shanghai/43.jpg",
+      "/nicola/blossom-shanghai/44.jpg",
+      "/nicola/blossom-shanghai/45.jpg",
+      "/nicola/blossom-shanghai/46.jpg",
+      "/nicola/blossom-shanghai/47.jpg",
+      "/nicola/blossom-shanghai/48.jpg",
+      "/nicola/blossom-shanghai/49.jpg",
+      "/nicola/blossom-shanghai/50.jpg",
+      "/nicola/blossom-shanghai/51.jpg",
+      "/nicola/blossom-shanghai/52.jpg",
+      "/nicola/blossom-shanghai/53.jpg",
+      "/nicola/blossom-shanghai/54.jpg",
+      "/nicola/blossom-shanghai/55.jpg",
+      "/nicola/blossom-shanghai/56.jpg",
+      "/nicola/blossom-shanghai/57.jpg",
+      "/nicola/blossom-shanghai/58.jpg",
+      "/nicola/blossom-shanghai/59.jpg",
+      "/nicola/blossom-shanghai/60.jpg",
     ],
   },
   {
+    artist: "nicola",
     id: "beats",
     video: "/project-videos/beats.mp4",
     name: "Beats",
@@ -192,6 +262,7 @@ export const projects_nicola = [
     ],
   },
   {
+    artist: "nicola",
     id: "royal-enfield",
     video: "/project-videos/royal-enfield.mp4",
     name: "Royal Enfield",
@@ -210,6 +281,7 @@ export const projects_nicola = [
     ],
   },
   {
+    artist: "nicola",
     id: "bmw-x5",
     video: "/project-videos/bmw-x5.mov",
     name: "Bmw X5",
@@ -234,6 +306,7 @@ export const projects_nicola = [
     ],
   },
   {
+    artist: "nicola",
     id: "lollipop",
     video: "/project-videos/lollipop.mp4",
     name: "Lollipop",
@@ -241,7 +314,7 @@ export const projects_nicola = [
     cinematographer: "Tone Prot Promprot",
     productionCompany: "",
     category: "Film",
-    cover: "/nicola/lollipop/lollipop-coverImg.jpg",
+    cover: "/nicola/lollipop/lollipop-coverImg1.jpg",
     span: 2,
     images: [
       "/nicola/lollipop/1.jpg",
@@ -282,6 +355,7 @@ export const projects_nicola = [
     ],
   },
   {
+    artist: "nicola",
     id: "crime-fiction",
     video: "/project-videos/crime-fiction.mp4",
     name: "Crime Fiction",
@@ -321,6 +395,7 @@ export const projects_nicola = [
     ],
   },
   {
+    artist: "nicola",
     id: "furla",
     video: "/project-videos/furla.mp4",
     name: "Furla",
@@ -350,6 +425,7 @@ export const projects_nicola = [
     ],
   },
   {
+    artist: "nicola",
     id: "sony-ps5",
     video: "/project-videos/sony-ps5.mov",
     name: "Sony Ps5",
@@ -371,6 +447,7 @@ export const projects_nicola = [
     ],
   },
   {
+    artist: "nicola",
     id: "teva",
     video: "/project-videos/teva.mp4",
     name: "Teva",
@@ -392,6 +469,7 @@ export const projects_nicola = [
     ],
   },
   {
+    artist: "nicola",
     id: "beyond-symmetry",
     video: "/project-videos/beyond-symmetry.mp4",
     name: "Beyond Symmetry",
@@ -415,6 +493,7 @@ export const projects_nicola = [
     ],
   },
   {
+    artist: "nicola",
     id: "revival-marni",
     video: "/project-videos/revival-marni.mp4",
     name: "Revival Marni",
@@ -437,6 +516,7 @@ export const projects_nicola = [
     ],
   },
   {
+    artist: "nicola",
     id: "amazon-prime",
     video: "/project-videos/amazon-prime.mp4",
     name: "Amazon Prime",
@@ -456,6 +536,7 @@ export const projects_nicola = [
     ],
   },
   {
+    artist: "nicola",
     id: "budweiser-be-a-king",
     video: "/project-videos/budweiser-be-a-king.mp4",
     name: "Budweiser Be a King",
@@ -477,6 +558,7 @@ export const projects_nicola = [
     ],
   },
   {
+    artist: "nicola",
     id: "to-the-moon",
     video: "/project-videos/to-the-moon.mp4",
     name: "To the Moon",
@@ -484,7 +566,7 @@ export const projects_nicola = [
     cinematographer: "Jeremy Herron",
     productionCompany: "",
     category: "MV",
-    // cover: "/to-the-moon/to-the-moon-coverImg.jpg",
+    cover: "/to-the-moon/to-the-moon-coverImg.jpg",
     cover: "/nicola/to-the-moon/1.jpg",
     // span: 2,
     images: [
@@ -497,9 +579,36 @@ export const projects_nicola = [
       "/nicola/to-the-moon/7.jpg",
       "/nicola/to-the-moon/8.jpg",
       "/nicola/to-the-moon/9.jpg",
+      "/nicola/to-the-moon/10.jpg",
+      "/nicola/to-the-moon/11.jpg",
+      "/nicola/to-the-moon/12.jpg",
+      "/nicola/to-the-moon/13.jpg",
+      "/nicola/to-the-moon/14.jpg",
+      "/nicola/to-the-moon/15.jpg",
+      "/nicola/to-the-moon/16.jpg",
+      "/nicola/to-the-moon/17.jpg",
+      "/nicola/to-the-moon/18.jpg",
+      "/nicola/to-the-moon/19.jpg",
+      "/nicola/to-the-moon/20.jpg",
+      "/nicola/to-the-moon/21.jpg",
+      "/nicola/to-the-moon/22.jpg",
+      "/nicola/to-the-moon/23.jpg",
+      "/nicola/to-the-moon/24.jpg",
+      "/nicola/to-the-moon/25.jpg",
+      "/nicola/to-the-moon/26.jpg",
+      "/nicola/to-the-moon/27.jpg",
+      "/nicola/to-the-moon/28.jpg",
+      "/nicola/to-the-moon/29.jpg",
+      "/nicola/to-the-moon/30.jpg",
+      "/nicola/to-the-moon/31.jpg",
+      "/nicola/to-the-moon/32.jpg",
+      "/nicola/to-the-moon/33.jpg",
+      "/nicola/to-the-moon/34.jpg",
+      "/nicola/to-the-moon/35.jpg",
     ],
   },
   {
+    artist: "nicola",
     id: "bgmi",
     video: "/project-videos/bgmi.mp4",
     name: "BGMI",
@@ -554,8 +663,8 @@ export const projects_nicola = [
       "/nicola/bgmi/43.jpg",
     ],
   },
-
   {
+    artist: "nicola",
     id: "gravity-lastlings",
     video: "/project-videos/gravity-lastlings.mp4",
     name: "Gravity Lastlings",
@@ -563,7 +672,7 @@ export const projects_nicola = [
     cinematographer: "Kenny Liu",
     productionCompany: "",
     category: "MV",
-    cover: "/nicola/gravity-lastlings/gravity-lastlings-coverImg.jpg",
+    cover: "/nicola/gravity-lastlings/gravity-lastlings-coverImg1.jpg",
     span: 4,
     images: [
       "/nicola/gravity-lastlings/1.jpg",
@@ -626,6 +735,7 @@ export const projects_nicola = [
 
 export const projects_agua = [
   {
+    artist: "agua",
     id: "mengniu",
     video: "/project-videos/mengniu.mp4",
     name: "Mengniu",
@@ -655,6 +765,7 @@ export const projects_agua = [
     ],
   },
   {
+    artist: "agua",
     id: "burberry-perfume",
     video: "/project-videos/burberry-perfume.mp4",
     name: "Burberry Perfume",
@@ -674,6 +785,7 @@ export const projects_agua = [
     ],
   },
   {
+    artist: "agua",
     id: "shiseido",
     video: "/project-videos/shiseido.mp4",
     name: "Shiseido",
@@ -691,6 +803,7 @@ export const projects_agua = [
     ],
   },
   {
+    artist: "agua",
     id: "yili-cny",
     video: "/project-videos/yili-cny.mp4",
     name: "Yili CNY",
@@ -713,6 +826,7 @@ export const projects_agua = [
     ],
   },
   {
+    artist: "agua",
     id: "vili-n-jana",
     video: "/project-videos/vili-n-jana.mp4",
     name: "Vili n Jana",
@@ -735,6 +849,7 @@ export const projects_agua = [
     ],
   },
   {
+    artist: "agua",
     id: "huawei-s9",
     video: "/project-videos/huawei-s9.mp4",
     name: "Huawei S9",
@@ -762,6 +877,7 @@ export const projects_agua = [
     ],
   },
   {
+    artist: "agua",
     id: "earth-revival",
     video: "/project-videos/earth-revival.mp4",
     name: "Earth Revival",
@@ -781,6 +897,7 @@ export const projects_agua = [
     ],
   },
   {
+    artist: "agua",
     id: "peacebird",
     video: "/project-videos/peacebird.mp4",
     name: "Peacebird",
@@ -788,7 +905,7 @@ export const projects_agua = [
     cinematographer: "An Zheng",
     productionCompany: "",
     category: "Commercial",
-    cover: "/agua/peacebird/peacebird-coverImg.jpg",
+    cover: "/agua/peacebird/peacebird-coverImg1.jpg",
     images: [
       "/agua/peacebird/1.jpg",
       "/agua/peacebird/2.jpg",
@@ -803,6 +920,7 @@ export const projects_agua = [
     ],
   },
   {
+    artist: "agua",
     id: "lululemon-cny",
     video: "/project-videos/lululemon-cny.mp4",
     name: "Lululemon CNY",
@@ -826,6 +944,7 @@ export const projects_agua = [
     ],
   },
   {
+    artist: "agua",
     id: "zeekr-three-years",
     video: "/project-videos/zeekr-three-years.mp4",
     name: "Zeekr Three Years",
@@ -852,6 +971,7 @@ export const projects_agua = [
     ],
   },
   {
+    artist: "agua",
     id: "li-auto-i8",
     video: "/project-videos/li-auto-i8.mp4",
     name: "Li Auto I8",
@@ -879,6 +999,7 @@ export const projects_agua = [
     ],
   },
   {
+    artist: "agua",
     id: "audi-cny",
     video: "/project-videos/audi-cny.mp4",
     name: "Audi CNY",
@@ -901,6 +1022,7 @@ export const projects_agua = [
     ],
   },
   {
+    artist: "agua",
     id: "china-mobile",
     video: "/project-videos/china-mobile.mp4",
     name: "China Mobile",
@@ -926,6 +1048,7 @@ export const projects_agua = [
     ],
   },
   {
+    artist: "agua",
     id: "audi-rsgt",
     video: "/project-videos/audi-rsgt.mp4",
     name: "Audi RsGt",
@@ -946,6 +1069,7 @@ export const projects_agua = [
     ],
   },
   {
+    artist: "agua",
     id: "oppo-reno",
     video: "/project-videos/oppo-reno.mp4",
     name: "Oppo Reno",
@@ -969,6 +1093,7 @@ export const projects_agua = [
     ],
   },
   {
+    artist: "agua",
     id: "lululemon",
     video: "/project-videos/lululemon.mp4",
     name: "Lululemon",
@@ -992,6 +1117,7 @@ export const projects_agua = [
     ],
   },
   {
+    artist: "agua",
     id: "redmi-n13",
     video: "/project-videos/redmi-n13.mp4",
     name: "Redmi N13",
@@ -1014,6 +1140,7 @@ export const projects_agua = [
     ],
   },
   {
+    artist: "agua",
     id: "neiwai-active",
     video: "/project-videos/neiwai-active.mp4",
     name: "Neiwai Active",

@@ -27,7 +27,7 @@ export default function FeaturedProjects() {
                   delay: 0.18, // 👈 stagger delay
                   ease: "easeOut",
                 }}
-                loading="lazy"
+                loading="eager"
                 src={project.cover}
                 alt={project.name}
                 className="w-full h-full max-h-120 object-cover transition-transform duration-700 ease-out group-hover:scale-100 scale-110"

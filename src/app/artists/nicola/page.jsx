@@ -1,14 +1,15 @@
 "use client";
-import { projects_nicola } from "@/app/constants/data";
+import { cdnBase, projects_nicola } from "@/app/constants/data";
 import PageTransition from "@/components/PageTransition";
 import ProjectCard from "@/components/ProjectCard";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 const NicolaProjects = () => {
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const artistProjects = projects_nicola;
 
   useEffect(() => {
     const onScroll = () => {
@@ -55,12 +56,11 @@ const NicolaProjects = () => {
         </motion.div>
 
         {/* Header */}
-        {/* <div className="px-6 md:px-16 pt-36 pb-16 border-b border-current/10"> */}
         <div className="min-h-screen flex flex-col justify-center relative">
           {/* video */}
           <div className="w-full h-full min-h-screen max-h-svh z-0">
             <video
-              src="/videos/Apple-Security.mp4"
+              src={`${cdnBase}/homepage/nicola-artistpage.mp4`}
               autoPlay
               loop
               muted
@@ -75,7 +75,7 @@ const NicolaProjects = () => {
             <h1 className="text-3xl md:text-5xl font-light tracking-tight leading-none">
               Nicola Gasparri
             </h1>
-            <p className="text-sm mt-2 max-w-5xl text-justify ">
+            <p className="text-sm mt-2 max-w-5xl text-center ">
               Nicola is a partner and senior colourist at Groundglass, working
               between Florence and Shanghai. His work is defined by a refined
               and cinematic approach to colour, balancing precision with a
@@ -93,7 +93,7 @@ const NicolaProjects = () => {
           {/* <p className="text-xs tracking-widest uppercase opacity-70 mt-2">
             {projects_nicola.length} Projects
           </p> */}
-          <p className="text-md mt-2 text-justify">
+          <p className="text-md mt-2 text-center">
             Nicola is a partner and senior colourist at Groundglass, working
             between Florence and Shanghai. His work is defined by a refined and
             cinematic approach to colour, balancing precision with a strong
@@ -108,10 +108,15 @@ const NicolaProjects = () => {
         {/* Grid */}
         <div className="px-6 md:px-16 py-16">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-10">
-            {projects_nicola?.map((project, i) => {
+            {artistProjects?.map((project, i) => {
               if (!project) return null;
               return (
-                <ProjectCard key={project.id || i} project={project} i={i} />
+                <ProjectCard
+                  key={project.id || i}
+                  project={project}
+                  i={i}
+                  source="nicola"
+                />
               );
             })}
           </div>

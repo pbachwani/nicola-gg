@@ -8,10 +8,10 @@ export default function LenisProvider({ children }) {
 
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2, // smoothness
+      duration: 0.8, // smoothness
       //   easing: (t) => 1 - Math.pow(1 - t, 3), // easeOutCubic
-      //   smoothWheel: true,
-      //   smoothTouch: false,
+      smoothWheel: true,
+      // smoothTouch: false,
     });
 
     lenisRef.current = lenis;

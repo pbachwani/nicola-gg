@@ -1,14 +1,15 @@
 "use client";
-import { projects_agua } from "@/app/constants/data";
+import { cdnBase, projects_agua } from "@/app/constants/data";
 import PageTransition from "@/components/PageTransition";
 import ProjectCard from "@/components/ProjectCard";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
-const NicolaProjects = () => {
+const AguaProjects = () => {
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const artistProjects = projects_agua;
 
   useEffect(() => {
     const onScroll = () => {
@@ -54,16 +55,32 @@ const NicolaProjects = () => {
         </motion.div>
 
         {/* Header */}
-        <div className="px-6 md:px-16 pt-36 pb-16 border-b border-current/10">
-          <div className="flex flex-col gap-4">
-            <p className="text-[10px] tracking-[0.3em] uppercase opacity-30">
-              Artist — 02
-            </p>
-            <h1 className="text-5xl md:text-7xl font-light tracking-tight leading-none">
+        <div className="min-h-screen flex flex-col justify-center relative">
+          {/* video */}
+          <div className="w-full h-full min-h-screen max-h-svh z-0">
+            <video
+              src={`${cdnBase}/homepage/agua-artistpage.mp4`}
+              autoPlay
+              loop
+              muted
+              className="w-full object-cover h-screen opacity-60"
+            ></video>
+          </div>
+          {/* content */}
+          <div className="flex flex-col w-full justify-center items-center gap-10 z-10 absolute px-4">
+            <h1 className="text-3xl md:text-5xl font-light tracking-tight leading-none">
               Agua Jiang
             </h1>
-            <p className="text-xs tracking-widest uppercase opacity-30 mt-2">
-              {projects_agua.length} Projects
+            <p className="text-sm mt-2 max-w-5xl text-center ">
+              Agua is a partner and colourist at Groundglass, working between
+              Florence and Shanghai. Her work is characterised by a modern and
+              precise approach to colour, with a strong sensitivity to tone,
+              texture, and balance. Her work spans commercials and moving image,
+              with a focus on clean, contemporary visuals and a refined use of
+              colour. With a keen eye for color and a strong foundation in
+              visual aesthetics, she excels at using color to shape emotions,
+              enhance storytelling, and bring a distinctive visual style to
+              every project.
             </p>
           </div>
         </div>
@@ -71,10 +88,15 @@ const NicolaProjects = () => {
         {/* Grid */}
         <div className="px-6 md:px-16 py-16">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-10">
-            {projects_agua?.map((project, i) => {
+            {artistProjects?.map((project, i) => {
               if (!project) return null;
               return (
-                <ProjectCard key={project.id || i} project={project} i={i} />
+                <ProjectCard
+                  key={project.id || i}
+                  project={project}
+                  i={i}
+                  source="agua"
+                />
               );
             })}
           </div>
@@ -111,4 +133,4 @@ const NicolaProjects = () => {
   );
 };
 
-export default NicolaProjects;
+export default AguaProjects;
