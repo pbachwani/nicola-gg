@@ -68,3 +68,7 @@ body {
 /* * {
   cursor: inherit;
 } */
+
+html {
+  scroll-behavior: smooth;
+}

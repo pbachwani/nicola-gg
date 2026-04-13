@@ -1,3 +1,5 @@
+import { span } from "motion/react-client";
+
 export const cdnBase = "https://nicola-gasparri.b-cdn.net";
 
 export const projects_nicola = [
@@ -69,7 +71,7 @@ export const projects_nicola = [
     productionCompany: "",
     category: "TVC",
     cover: "/nicola/astropulse/astropulse-coverImg.jpg",
-    span: 2,
+    span: 4,
     images: [
       "/nicola/astropulse/1.jpg",
       "/nicola/astropulse/2.jpg",
@@ -101,7 +103,7 @@ export const projects_nicola = [
     productionCompany: "",
     category: "TVC",
     cover: "/nicola/lotus-limitless/lotus-limitless-coverImg1.jpg",
-    span: 4,
+    span: 2,
     images: [
       "/nicola/lotus-limitless/1.jpg",
       "/nicola/lotus-limitless/2.jpg",
@@ -249,7 +251,7 @@ export const projects_nicola = [
     productionCompany: "",
     category: "TVC",
     cover: "/nicola/beats/beats-coverImg.jpg",
-    span: 2,
+    span: 4,
     images: [
       "/nicola/beats/1.jpg",
       "/nicola/beats/2.jpg",
@@ -271,7 +273,7 @@ export const projects_nicola = [
     productionCompany: "Loudmouth",
     category: "TVC",
     cover: "/nicola/royal-enfield/royal-enfield-coverImg.jpg",
-    span: 4,
+    span: 2,
     images: [
       "/nicola/royal-enfield/1.jpg",
       "/nicola/royal-enfield/2.jpg",
@@ -427,7 +429,7 @@ export const projects_nicola = [
   {
     artist: "nicola",
     id: "sony-ps5",
-    video: "/project-videos/sony-ps5.mov",
+    video: "/project-videos/sony-ps5.mp4",
     name: "Sony Ps5",
     director: "",
     cinematographer: "",
@@ -744,6 +746,7 @@ export const projects_agua = [
     productionCompany: "Start Films",
     category: "Commercial",
     cover: "/agua/mengniu/mengniu-coverImg.jpg",
+    span: 2,
     images: [
       "/agua/mengniu/1.jpg",
       "/agua/mengniu/2.jpg",
@@ -774,6 +777,7 @@ export const projects_agua = [
     productionCompany: "",
     category: "Commercial",
     cover: "/agua/burberry-perfume/burberry-perfume-coverImg.jpg",
+    span: 4,
     images: [
       "/agua/burberry-perfume/1.jpg",
       "/agua/burberry-perfume/2.jpg",
@@ -794,6 +798,7 @@ export const projects_agua = [
     productionCompany: "",
     category: "Commercial",
     cover: "/agua/shiseido/shiseido-coverImg.jpg",
+    span: 2,
     images: [
       "/agua/shiseido/1.jpg",
       "/agua/shiseido/2.jpg",
@@ -812,6 +817,7 @@ export const projects_agua = [
     productionCompany: "",
     category: "Film/TV",
     cover: "/agua/yili-cny/yili-cny-coverImg.jpg",
+    span: 4,
     images: [
       "/agua/yili-cny/1.jpg",
       "/agua/yili-cny/2.jpg",
@@ -835,6 +841,7 @@ export const projects_agua = [
     productionCompany: "",
     category: "Commercial",
     cover: "/agua/vili-n-jana/vili-n-jana-coverImg.jpg",
+    span: 2,
     images: [
       "/agua/vili-n-jana/1.jpg",
       "/agua/vili-n-jana/2.jpg",
@@ -858,6 +865,7 @@ export const projects_agua = [
     productionCompany: "",
     category: "Commercial",
     cover: "/agua/huawei-s9/huawei-s9-coverImg.jpg",
+    span: 4,
     images: [
       "/agua/huawei-s9/1.jpg",
       "/agua/huawei-s9/2.jpg",
@@ -886,6 +894,7 @@ export const projects_agua = [
     productionCompany: "",
     category: "Commercial",
     cover: "/agua/earth-revival/earth-revival-coverImg.jpg",
+    span: 2,
     images: [
       "/agua/earth-revival/1.jpg",
       "/agua/earth-revival/2.jpg",
@@ -906,6 +915,7 @@ export const projects_agua = [
     productionCompany: "",
     category: "Commercial",
     cover: "/agua/peacebird/peacebird-coverImg1.jpg",
+    span: 4,
     images: [
       "/agua/peacebird/1.jpg",
       "/agua/peacebird/2.jpg",
@@ -940,7 +950,7 @@ export const projects_agua = [
       "/agua/lululemon-cny/8.jpg",
       "/agua/lululemon-cny/9.jpg",
       "/agua/lululemon-cny/10.jpg",
-      "/agua/lululemon-cny/11.jpg",
+      // "/agua/lululemon-cny/11.jpg",
     ],
   },
   {
@@ -1169,7 +1179,7 @@ export function getAllProjects() {
 
   for (let i = 0; i < maxLength; i++) {
     if (projects_nicola[i]) {
-      const { span, ...rest } = projects_nicola[i];
+      const { ...rest } = projects_nicola[i];
       result.push({ ...rest, author: "nicola" });
     }
     if (projects_agua[i]) {

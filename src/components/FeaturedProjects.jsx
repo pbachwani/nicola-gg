@@ -1,16 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { projects_nicola } from "@/app/constants/data";
+import { projects_nicola, projects_agua, projects } from "@/app/constants/data";
 import { motion } from "motion/react";
 
 export default function FeaturedProjects() {
+  const allProjects = [...projects_nicola, ...projects_agua];
   return (
     <section className="px-6 md:px-16 py-32">
       <h1 className="text-2xl mb-10">Featured Projects</h1>
       <div className="grid grid-cols-1 lg:grid-cols-6 gap-5">
-        {projects_nicola.map((project) => {
-          const span = project.span || 3;
+        {projects.slice(0, 16).map((project) => {
+          const span = project.span || "full";
 
           return (
             <Link

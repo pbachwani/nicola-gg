@@ -6,6 +6,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getAllProjects } from "@/app/constants/data";
 import { Suspense } from "react";
+import ScrollToTopOnMount from "@/components/ScrollToTopOnMount";
 
 export async function generateStaticParams() {
   return getAllProjects().map((project) => ({ id: project.id }));
@@ -17,9 +18,10 @@ export default async function ProjectPage({ params }) {
   const project = projects.find((p) => p.id === id);
 
   if (!project) notFound();
-
   return (
     <PageTransition>
+      <ScrollToTopOnMount key={id} />
+
       <ProjectContent project={project} />
 
       <ProjectHeroMedia project={project} />

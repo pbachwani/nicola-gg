@@ -4,45 +4,38 @@ import React, { useEffect, useState } from "react";
 import clsx from "clsx";
 import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
-import Contact from "@/app/contact/page";
-import Footer from "./Footer";
 
-const links = [
-  // { href: "/", label: "Home" },
+const mobileLinks = [
   { href: "/projects", label: "Work" },
   { href: "/artists", label: "Artists" },
-  { href: "/contact", label: "Contact" },
 ];
 
 const Navbar = () => {
-  const [footerVisible, setFooterVisible] = useState(false);
-  const pathname = usePathname();
-  const home = pathname === "/";
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [drawerOpen, setDrawerOpen] = useState(false);
-
-  // wherever you initialize Lenis
+  const [contactOpen, setContactOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentY = window.scrollY;
-      if (currentY > lastScrollY && currentY > 50) setShow(false);
-      else setShow(true);
+      if (currentY > lastScrollY && currentY > 50) {
+        setShow(false);
+      } else {
+        setShow(true);
+      }
       setLastScrollY(currentY);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
-  // Lock body scroll when drawer is open
   useEffect(() => {
-    document.body.style.overflow = drawerOpen ? "hidden" : "";
+    document.body.style.overflow = drawerOpen || contactOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
-  }, [drawerOpen]);
+  }, [drawerOpen, contactOpen]);
 
   return (
     <>
@@ -54,68 +47,188 @@ const Navbar = () => {
           show ? "translate-y-0" : "-translate-y-full",
         )}
       >
-        <div className={`flex w-full h-full justify-between items-center`}>
-          <Link href="/" className="">
+        <div className="flex w-full h-full justify-between items-center">
+          <Link href="/">
             <Image
               alt="Ground Glass logo"
               width={100}
               height={100}
               src="/logo-files/PNG/white stacked.png"
               className="w-auto h-12 object-cover"
-              onClick={() => window.scrollTo({ top, behavior: "smooth" })}
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             />
           </Link>
 
           {/* Desktop links */}
-          <div className="flex gap-2 text-sm max-md:hidden mt-1 cursor-pointer">
-            <Link href={"/projects"} className="hover:cursor-pointer">
-              Work
-            </Link>
-            <Link href={"/artists"} className="hover:cursor-pointer">
-              Artists
-            </Link>
-            <button
-              onClick={() => {
-                console.log("contact clicked");
-                setFooterVisible(!footerVisible);
-              }}
-              className="hover:cursor-pointer"
-            >
-              Contact
-            </button>
-            {/* {links.map((l) => (
-              <Link key={l.href} href={l.href} className="hover:cursor-pointer">
-                {l.label}
-              </Link>
-            ))} */}
+          <div className="flex gap-2 text-sm max-md:hidden mt-1">
+            <Link href="/projects">Work</Link>
+            <Link href="/artists">Artists</Link>
+            <button onClick={() => setContactOpen(true)}>Contact</button>
           </div>
 
-          {/* Hamburger button— mobile only */}
+          {/* Hamburger — mobile only */}
           <button
             className="md:hidden flex flex-col justify-center items-end gap-1.5 w-8 h-8"
             onClick={() => setDrawerOpen(true)}
             aria-label="Open menu"
           >
             <span
-              className={`block h-px w-6 bg-current ${drawerOpen && "w-8"} transition-all duration-500 ease-out`}
+              className={clsx(
+                "block h-px bg-current transition-all duration-500 ease-out",
+                drawerOpen ? "w-8" : "w-6",
+              )}
             />
             <span
-              className={`block h-px w-4 bg-current ${drawerOpen && "w-8"} transition-all duration-500 ease-out`}
+              className={clsx(
+                "block h-px bg-current transition-all duration-500 ease-out",
+                drawerOpen ? "w-8" : "w-4",
+              )}
             />
             <span
-              className={`block h-px w-2 bg-current ${drawerOpen && "w-8"} transition-all duration-500 ease-out`}
+              className={clsx(
+                "block h-px bg-current transition-all duration-500 ease-out",
+                drawerOpen ? "w-8" : "w-2",
+              )}
             />
           </button>
         </div>
       </motion.nav>
 
-      {/* Drawer for mobile */}
+      {/* Contact overlay */}
+      <AnimatePresence>
+        {contactOpen && (
+          <>
+            <motion.div
+              key="contact-backdrop"
+              className="fixed inset-0 z-50 bg-black/60"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={() => setContactOpen(false)}
+            />
+
+            <motion.div
+              key="contact-panel"
+              className="fixed bottom-0 left-0 right-0 z-50 bg-black border border-white/10 rounded-t-3xl px-4 md:px-16 py-10 w-full"
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "100%" }}
+              transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
+            >
+              {/* Close button */}
+              <button
+                className="absolute top-6 right-8 text-white/40 hover:text-white transition-colors"
+                onClick={() => setContactOpen(false)}
+                aria-label="Close contact"
+              >
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <line
+                    x1="2"
+                    y1="2"
+                    x2="18"
+                    y2="18"
+                    stroke="currentColor"
+                    strokeWidth="1.2"
+                  />
+                  <line
+                    x1="18"
+                    y1="2"
+                    x2="2"
+                    y2="18"
+                    stroke="currentColor"
+                    strokeWidth="1.2"
+                  />
+                </svg>
+              </button>
+
+              {/* Content row */}
+              <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-8">
+                {/* Email */}
+                <div className="flex justify-start items-baseline ">
+                  <p className="md:text-3xl tracking-widest mb-2 text-white/30">
+                    Say
+                  </p>
+                  <a
+                    href="mailto:hello@groundglass.com"
+                    className="md:text-3xl font-light tracking-tight text-white hover:text-white/30 transition-all duration-200 ease-out"
+                  >
+                    hello@groundglass.com
+                  </a>
+                </div>
+                <div className="flex flex-col gap-8 sm:flex-row justify-between w-full xl:pl-20">
+                  {/* Socials */}
+                  <div className="flex flex-col gap-2 text-xs text-white/50 w-fit">
+                    <p className="tracking-widest uppercase text-white/30 mb-1">
+                      Follow
+                    </p>
+                    <a href="#" className="hover:text-white transition-colors">
+                      Instagram
+                    </a>
+                    <a href="#" className="hover:text-white transition-colors">
+                      Vimeo
+                    </a>
+                  </div>
+
+                  {/* site links */}
+                  <div className="flex flex-col gap-2 text-xs text-white/50 w-fit">
+                    <p className="tracking-widest uppercase text-white/30 mb-1">
+                      SiteLinks
+                    </p>
+                    <Link
+                      href="/projects"
+                      className="hover:text-white transition-colors"
+                    >
+                      Work
+                    </Link>
+                    <Link
+                      href="/artists"
+                      className="hover:text-white transition-colors"
+                    >
+                      Artist
+                    </Link>
+                  </div>
+
+                  {/* Newsletter */}
+                  <div className="flex flex-col gap-2">
+                    <p className="text-xs tracking-widest uppercase text-white/30">
+                      Newsletter
+                    </p>
+                    <div className="flex gap-2">
+                      <input
+                        type="email"
+                        placeholder="Enter your email"
+                        className="bg-transparent border border-white/20 rounded-full px-4 py-2 text-xs text-white placeholder:text-white/30 focus:outline-none focus:border-white/50 transition-colors w-56"
+                      />
+                      <button className="border border-white/20 rounded-full px-4 py-2 text-xs hover:bg-white hover:text-black transition-colors">
+                        Subscribe
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Big wordmark */}
+              <div className="mt-10 overflow-hidden h-fit">
+                <div className="flex flex-col h-full w-full justify-end items-center p-4">
+                  <img
+                    src="/logo-files/PNG/white horizontal.png"
+                    alt=""
+                    className="w-full h-auto"
+                  />
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
+      {/* Mobile drawer */}
       <AnimatePresence>
         {drawerOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
-              key="backdrop"
+              key="mobile-backdrop"
               className="fixed inset-0 z-50 bg-black/40"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -124,16 +237,14 @@ const Navbar = () => {
               onClick={() => setDrawerOpen(false)}
             />
 
-            {/* Panel */}
             <motion.div
-              key="drawer"
+              key="mobile-drawer"
               className="fixed top-0 right-0 h-full w-3/4 max-w-xs z-50 bg-black flex flex-col px-8 py-10"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ duration: 0.45, ease: [0.76, 0, 0.24, 1] }}
             >
-              {/* Close */}
               <button
                 className="self-end mb-14 text-white/40 hover:text-white transition-colors"
                 onClick={() => setDrawerOpen(false)}
@@ -159,9 +270,8 @@ const Navbar = () => {
                 </svg>
               </button>
 
-              {/* Nav links */}
               <nav className="flex flex-col gap-1">
-                {links.map((l, i) => (
+                {mobileLinks.map((l, i) => (
                   <motion.div
                     key={l.href}
                     initial={{ opacity: 0, x: 20 }}
@@ -183,15 +293,29 @@ const Navbar = () => {
                 ))}
               </nav>
 
-              {/* Footer detail */}
-              <motion.p
-                className="mt-auto text-white/20 text-xs tracking-widest uppercase"
+              {/* Email + socials for mobile */}
+              <motion.div
+                className="mt-auto flex flex-col gap-4"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
               >
-                <Link href={"/"}>{/* <img src="" alt="" /> */}</Link>
-              </motion.p>
+                <h2>Contact</h2>
+                <a
+                  href="mailto:hello@groundglass.com"
+                  className="text-white/50 text-sm hover:text-white transition-colors"
+                >
+                  hello@groundglass.com
+                </a>
+                <div className="flex gap-4 text-xs text-white/30 uppercase tracking-widest">
+                  <a href="#" className="hover:text-white transition-colors">
+                    Instagram
+                  </a>
+                  <a href="#" className="hover:text-white transition-colors">
+                    Vimeo
+                  </a>
+                </div>
+              </motion.div>
             </motion.div>
           </>
         )}
