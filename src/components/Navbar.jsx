@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import clsx from "clsx";
 import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
+import { RollText } from "./RollText";
 
 const mobileLinks = [
   { href: "/projects", label: "Work" },
@@ -60,10 +61,19 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop links */}
-          <div className="flex gap-2 text-sm max-md:hidden mt-1">
-            <Link href="/projects">Work</Link>
-            <Link href="/artists">Artists</Link>
-            <button onClick={() => setContactOpen(true)}>Contact</button>
+          <div className="flex gap-4 text-sm max-md:hidden mt-1 uppercase font-extralight">
+            <Link href="/projects">
+              <RollText>Work</RollText>
+            </Link>
+            <Link href="/artists">
+              <RollText>Artists</RollText>
+            </Link>
+            <button
+              onClick={() => setContactOpen(true)}
+              className="uppercase hover:cursor-pointer"
+            >
+              <RollText>Contact</RollText>
+            </button>
           </div>
 
           {/* Hamburger — mobile only */}
@@ -145,8 +155,8 @@ const Navbar = () => {
               {/* Content row */}
               <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-8">
                 {/* Email */}
-                <div className="flex justify-start items-baseline ">
-                  <p className="md:text-3xl tracking-widest mb-2 text-white/30">
+                <div className="flex justify-start items-baseline">
+                  <p className="md:text-2xl tracking-widest mb-2 text-white/30">
                     Say
                   </p>
                   <a
@@ -156,7 +166,7 @@ const Navbar = () => {
                     hello@groundglass.com
                   </a>
                 </div>
-                <div className="flex flex-col gap-8 sm:flex-row justify-between w-full xl:pl-20">
+                <div className="flex flex-col gap-8 sm:flex-row justify-between w-full">
                   {/* Socials */}
                   <div className="flex flex-col gap-2 text-xs text-white/50 w-fit">
                     <p className="tracking-widest uppercase text-white/30 mb-1">
@@ -178,12 +188,14 @@ const Navbar = () => {
                     <Link
                       href="/projects"
                       className="hover:text-white transition-colors"
+                      onClick={() => setContactOpen(false)}
                     >
                       Work
                     </Link>
                     <Link
                       href="/artists"
                       className="hover:text-white transition-colors"
+                      onClick={() => setContactOpen(false)}
                     >
                       Artist
                     </Link>
@@ -194,14 +206,14 @@ const Navbar = () => {
                     <p className="text-xs tracking-widest uppercase text-white/30">
                       Newsletter
                     </p>
-                    <div className="flex gap-2">
+                    <div className="space-x-2 space-y-2">
                       <input
                         type="email"
                         placeholder="Enter your email"
-                        className="bg-transparent border border-white/20 rounded-full px-4 py-2 text-xs text-white placeholder:text-white/30 focus:outline-none focus:border-white/50 transition-colors w-56"
+                        className="bg-transparent border border-white/20 rounded-full px-4 py-2 text-xs text-white placeholder:text-white/30 focus:outline-none focus:border-white/50 transition-colors min-w-20 text-[10px]"
                       />
-                      <button className="border border-white/20 rounded-full px-4 py-2 text-xs hover:bg-white hover:text-black transition-colors">
-                        Subscribe
+                      <button className="border border-white/20 rounded-full px-4 py-2 text-xs hover:bg-white hover:text-black transition-colors flex-wrap">
+                        Submit
                       </button>
                     </div>
                   </div>
@@ -291,16 +303,25 @@ const Navbar = () => {
                     </Link>
                   </motion.div>
                 ))}
+                <button
+                  onClick={() => {
+                    setDrawerOpen(false);
+                    setContactOpen(true);
+                  }}
+                  className="hover:cursor-pointer block text-white text-3xl font-light tracking-wide py-3 border-b border-white/10 hover:text-white/60 transition-colors text-left"
+                >
+                  Contact
+                </button>
               </nav>
 
               {/* Email + socials for mobile */}
-              <motion.div
+              {/* <motion.div
                 className="mt-auto flex flex-col gap-4"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
               >
-                <h2>Contact</h2>
+                <h2>Reach Out</h2>
                 <a
                   href="mailto:hello@groundglass.com"
                   className="text-white/50 text-sm hover:text-white transition-colors"
@@ -315,7 +336,7 @@ const Navbar = () => {
                     Vimeo
                   </a>
                 </div>
-              </motion.div>
+              </motion.div> */}
             </motion.div>
           </>
         )}

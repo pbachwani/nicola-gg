@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { projects_nicola, projects_agua, projects } from "@/app/constants/data";
 import { motion } from "motion/react";
+import { RollText } from "./RollText";
 
 export default function FeaturedProjects() {
   const allProjects = [...projects_nicola, ...projects_agua];
@@ -37,7 +38,7 @@ export default function FeaturedProjects() {
               {/* hover overlay */}
               <div className="absolute inset-0 flex items-end md:p-6 p-4 bg-black/0 group-hover:bg-black/10 transition duration-200 ease-out ">
                 <h3 className="text-white md:text-lg md:opacity-0 md:translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-300">
-                  {project.name}
+                  <RollText>{project.name}</RollText>
                 </h3>
               </div>
             </Link>

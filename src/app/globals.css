@@ -37,7 +37,7 @@ html.lenis {
 @font-face {
   font-family: "Agrandir - regular";
   src: url("/fonts/Agrandir-Regular.otf") format("opentype");
-  /* font-weight: 100 300 500 800 900; */
+  font-weight: 100 300 500 800 900;
   font-style: normal;
   font-display: swap;
 }
@@ -50,25 +50,33 @@ html.lenis {
   --font-main: "Agrandir";
   --font-regular: "Agrandir - regular";
 }
-/* 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
 
 body {
   background: var(--background);
   color: var(--foreground);
-  cursor: url("/Cursor.svg"), auto;
+  /* cursor: url("/Cursor.svg"), auto; */
   /* default is agrandir but switch to Arial if custom font fails to load */
   font-family: var(--font-main), Arial, Helvetica, sans-serif;
 }
-/* * {
-  cursor: inherit;
-} */
 
-html {
-  scroll-behavior: smooth;
+/* only for RollText component */
+.roll-text {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  line-height: 1;
+  height: 1.15em;
+}
+.roll-text .roll-inner {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.38s cubic-bezier(0.76, 0, 0.24, 1);
+}
+.roll-text:hover .roll-inner {
+  transform: translateY(-50%);
+}
+.roll-text span {
+  display: block;
+  white-space: nowrap;
+  line-height: 1.15;
 }

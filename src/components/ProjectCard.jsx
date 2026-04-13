@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
+import { RollText } from "./RollText";
 
 export default function ProjectCard({ project, i, source }) {
   const href = source
