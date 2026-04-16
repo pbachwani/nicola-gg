@@ -22,8 +22,20 @@ export default function PreloaderWrapper({ children }) {
   const stackedRef = useRef(null);
   const navLogoRef = useRef(null);
 
-  const showPreloader = !ready || !counterDone;
+  const [skipLoader, setSkipLoader] = useState(false);
+
+  const showPreloader = !skipLoader && (!ready || !counterDone);
   // const [contentVisible, setContentVisible] = useState(false);
+
+  useEffect(() => {
+    const hasShown = sessionStorage.getItem("hasLoaderShown");
+
+    if (hasShown === "true") {
+      setSkipLoader(true);
+      setReady(true);
+      setCounterDone(true);
+    }
+  }, []);
 
   // ── Video loading (home only) ──────────────────────────────
   useEffect(() => {
@@ -95,7 +107,10 @@ export default function PreloaderWrapper({ children }) {
       setBarVisible(false);
       setTimeout(() => {
         runLogoAnimation(() => {
-          setTimeout(() => setCounterDone(true), 100);
+          setTimeout(() => {
+            sessionStorage.setItem("hasLoaderShown", "true");
+            setCounterDone(true);
+          }, 100);
           window.dispatchEvent(new Event("preloader:done"));
         });
       }, 400);
@@ -267,84 +282,35 @@ export default function PreloaderWrapper({ children }) {
                 zIndex: 9999,
                 transformOrigin: "bottom",
               }}
+              // className="fixed flex inset-0 top-50% z-9999 origin-bottom bg-black"
             />
 
             {/* bottom right content */}
             <motion.div
               key="preloader-content"
               exit={{ opacity: 0, transition: { duration: 0.2 } }}
-              style={{ position: "fixed", inset: 0, zIndex: 10000 }}
+              className={`${displayNum === 100 && "opacity-0 transition-opacity duration-1200 ease-in"} w-full fixed bottom-8 left-50% -translate-x-50% z-9999 flex justify-center items-center gap-4`}
             >
               <motion.p
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.2 }}
-                style={{
-                  position: "absolute",
-                  bottom: "2rem",
-                  right: "5rem",
-                  color: "rgba(255,255,255,0.4)",
-                  fontSize: "12px",
-                  letterSpacing: "0.3em",
-                  textTransform: "uppercase",
-                  fontWeight: 300,
-                }}
+                className="text-xs tracking-wide uppercase font-light text-white/65"
               >
                 Ground Glass
               </motion.p>
+
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
                 style={{
-                  position: "absolute",
-                  bottom: "2rem",
-                  right: "2rem",
-                  color: "rgba(255,255,255,0.5)",
-                  fontSize: "11px",
-                  fontWeight: 300,
-                  letterSpacing: "0.05em",
                   fontVariantNumeric: "tabular-nums",
                 }}
+                className="w-10 text-white/65 text-xs tracking-wide font-light"
               >
                 {displayNum}
               </motion.div>
-
-              {/* loading bar */}
-              {/* <AnimatePresence>
-                {barVisible && (
-                  <motion.div
-                    key="progress-bar"
-                    initial={{ opacity: 1 }}
-                    exit={{
-                      opacity: 0,
-                      transition: { duration: 0.3, ease: "easeOut" },
-                    }}
-                    style={{
-                      position: "absolute",
-                      top: "50%",
-                      left: 0,
-                      right: 0,
-                      transform: "translateY(-50%)",
-                      width: "100%",
-                      height: "1px",
-                      background: "rgba(255,255,255,0.12)",
-                      overflow: "hidden",
-                    }}
-                  >
-                    <motion.div
-                      style={{
-                        height: "100%",
-                        background: "rgba(255,255,255,0.6)",
-                        transformOrigin: "left",
-                      }}
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: progress / 100 }}
-                      transition={{ ease: "linear", duration: 0.5 }}
-                    />
-                  </motion.div>
-                )}
-              </AnimatePresence> */}
             </motion.div>
           </>
         )}
@@ -390,4 +356,42 @@ export default function PreloaderWrapper({ children }) {
       </motion.div>
     </>
   );
+}
+
+{
+  /* loading bar */
+  /* <AnimatePresence>
+                {barVisible && (
+                  <motion.div
+                    key="progress-bar"
+                    initial={{ opacity: 1 }}
+                    exit={{
+                      opacity: 0,
+                      transition: { duration: 0.3, ease: "easeOut" },
+                    }}
+                    style={{
+                      position: "absolute",
+                      top: "50%",
+                      left: 0,
+                      right: 0,
+                      transform: "translateY(-50%)",
+                      width: "100%",
+                      height: "1px",
+                      background: "rgba(255,255,255,0.12)",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <motion.div
+                      style={{
+                        height: "100%",
+                        background: "rgba(255,255,255,0.6)",
+                        transformOrigin: "left",
+                      }}
+                      initial={{ scaleX: 0 }}
+                      animate={{ scaleX: progress / 100 }}
+                      transition={{ ease: "linear", duration: 0.5 }}
+                    />
+                  </motion.div>
+                )}
+              </AnimatePresence> */
 }

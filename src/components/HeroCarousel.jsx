@@ -12,9 +12,19 @@ const slides = [
     index: "01",
   },
   {
+    src: `${cdnBase}/homepage/MENGNIU_HP.mp4`,
+    project: "Mengniu",
+    index: "04",
+  },
+  {
     src: `${cdnBase}/homepage/01_Samsung_HP.mp4`,
     project: "Samsung",
     index: "02",
+  },
+  {
+    src: `${cdnBase}/homepage/Burberry_Perfume_HP.mp4`,
+    project: "Burberry Perfume",
+    index: "05",
   },
   {
     src: `${cdnBase}/homepage/Astropulse_Final_HP.mp4.mp4`,
@@ -22,9 +32,9 @@ const slides = [
     index: "03",
   },
   {
-    src: `${cdnBase}/homepage/04_Lotus_HP.mp4`,
-    project: "Lotus Limitless",
-    index: "04",
+    src: `${cdnBase}/homepage/Shiseido_HP.mp4`,
+    project: "Shiseido",
+    index: "06",
   },
 ];
 
@@ -122,7 +132,6 @@ export default function HeroCarousel() {
                 ref={(el) => (videoRefs.current[i] = el)}
                 src={slide.src}
                 playsInline
-                preload="auto"
                 className="w-full h-full object-cover"
                 loop
                 muted
@@ -139,7 +148,7 @@ export default function HeroCarousel() {
       {/* Project name + progress bar */}
       <div className="absolute bottom-12 left-1/2 max-md:-translate-x-1/2 md:left-14">
         <AnimatePresence mode="wait">
-          <div className="max-w-sm max-md:text-center">
+          <div className=" max-md:text-center">
             <motion.h2
               key={activeIndex}
               initial={{ opacity: 0, y: 16 }}
