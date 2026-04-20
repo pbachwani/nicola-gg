@@ -38,7 +38,7 @@ export default function FeaturedProjects() {
               {/* hover overlay */}
               <div className="absolute inset-0 flex items-end md:p-6 p-4 bg-black/0 group-hover:bg-black/10 transition duration-200 ease-out ">
                 <h3 className="text-white md:text-lg md:opacity-0 md:translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-300">
-                  <RollText>{project.name}</RollText>
+                  {project.name}
                 </h3>
               </div>
             </Link>

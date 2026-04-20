@@ -5,6 +5,7 @@ import clsx from "clsx";
 import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
 import { RollText } from "./RollText";
+import Footer from "./Footer";
 
 const mobileLinks = [
   { href: "/projects", label: "Work" },
@@ -105,6 +106,7 @@ const Navbar = () => {
       </motion.nav>
 
       {/* Contact overlay */}
+
       <AnimatePresence>
         {contactOpen && (
           <>
@@ -120,116 +122,13 @@ const Navbar = () => {
 
             <motion.div
               key="contact-panel"
-              className="fixed bottom-0 left-0 right-0 z-50 bg-black border border-white/10 rounded-t-3xl px-4 md:px-16 py-10 w-full"
+              className="fixed bottom-0 left-0 right-0 z-50"
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
               exit={{ y: "100%" }}
               transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
             >
-              {/* Close button */}
-              <button
-                className="absolute top-6 right-8 text-white/40 hover:text-white transition-colors"
-                onClick={() => setContactOpen(false)}
-                aria-label="Close contact"
-              >
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <line
-                    x1="2"
-                    y1="2"
-                    x2="18"
-                    y2="18"
-                    stroke="currentColor"
-                    strokeWidth="1.2"
-                  />
-                  <line
-                    x1="18"
-                    y1="2"
-                    x2="2"
-                    y2="18"
-                    stroke="currentColor"
-                    strokeWidth="1.2"
-                  />
-                </svg>
-              </button>
-
-              {/* Content row */}
-              <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-8">
-                {/* Email */}
-                <div className="flex justify-start items-baseline">
-                  <p className="md:text-2xl tracking-widest mb-2 text-white/30">
-                    Say
-                  </p>
-                  <a
-                    href="mailto:hello@groundglass.com"
-                    className="md:text-3xl font-light tracking-tight text-white hover:text-white/30 transition-all duration-200 ease-out"
-                  >
-                    hello@groundglass.com
-                  </a>
-                </div>
-                <div className="flex flex-col gap-8 sm:flex-row justify-between w-full">
-                  {/* Socials */}
-                  <div className="flex flex-col gap-2 text-xs text-white/50 w-fit">
-                    <p className="tracking-widest uppercase text-white/30 mb-1">
-                      Follow
-                    </p>
-                    <a href="#" className="hover:text-white transition-colors">
-                      Instagram
-                    </a>
-                    <a href="#" className="hover:text-white transition-colors">
-                      Vimeo
-                    </a>
-                  </div>
-
-                  {/* site links */}
-                  <div className="flex flex-col gap-2 text-xs text-white/50 w-fit">
-                    <p className="tracking-widest uppercase text-white/30 mb-1">
-                      SiteLinks
-                    </p>
-                    <Link
-                      href="/projects"
-                      className="hover:text-white transition-colors"
-                      onClick={() => setContactOpen(false)}
-                    >
-                      Work
-                    </Link>
-                    <Link
-                      href="/artists"
-                      className="hover:text-white transition-colors"
-                      onClick={() => setContactOpen(false)}
-                    >
-                      Artist
-                    </Link>
-                  </div>
-
-                  {/* Newsletter */}
-                  <div className="flex flex-col gap-2">
-                    <p className="text-xs tracking-widest uppercase text-white/30">
-                      Newsletter
-                    </p>
-                    <div className="space-x-2 space-y-2">
-                      <input
-                        type="email"
-                        placeholder="Enter your email"
-                        className="bg-transparent border border-white/20 rounded-full px-4 py-2 text-xs text-white placeholder:text-white/30 focus:outline-none focus:border-white/50 transition-colors min-w-20 text-[10px]"
-                      />
-                      <button className="border border-white/20 rounded-full px-4 py-2 text-xs hover:bg-white hover:text-black transition-colors flex-wrap">
-                        Submit
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Big wordmark */}
-              <div className="mt-10 overflow-hidden h-fit">
-                <div className="flex flex-col h-full w-full justify-end items-center p-4">
-                  <img
-                    src="/logo-files/PNG/white horizontal.png"
-                    alt=""
-                    className="w-full h-auto"
-                  />
-                </div>
-              </div>
+              <Footer onClose={() => setContactOpen(false)} />
             </motion.div>
           </>
         )}

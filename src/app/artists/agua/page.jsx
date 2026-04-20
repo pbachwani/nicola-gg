@@ -71,7 +71,7 @@ const AguaProjects = () => {
             <h1 className="text-3xl md:text-5xl font-light tracking-tight leading-none">
               Agua Jiang
             </h1>
-            <p className="text-sm mt-2 max-w-5xl text-center ">
+            <p className="mt-2 max-w-5xl text-center">
               Agua is a partner and colourist at Groundglass, working between
               Florence and Shanghai. Her work is characterised by a modern and
               precise approach to colour, with a strong sensitivity to tone,

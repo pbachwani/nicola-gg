@@ -75,7 +75,7 @@ const NicolaProjects = () => {
             <h1 className="text-3xl md:text-5xl font-light tracking-tight leading-none">
               Nicola Gasparri
             </h1>
-            <p className="text-sm mt-2 max-w-5xl text-center ">
+            <p className="mt-2 max-w-5xl text-center">
               Nicola is a partner and senior colourist at Groundglass, working
               between Florence and Shanghai. His work is defined by a refined
               and cinematic approach to colour, balancing precision with a

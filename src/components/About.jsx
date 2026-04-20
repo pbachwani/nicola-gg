@@ -235,7 +235,7 @@ const About = () => {
       ScrollTrigger.create({
         trigger: sectionRef.current,
         start: "top top",
-        end: "+=800",
+        end: "+=200",
         scrub: true,
         onUpdate: (self) => {
           const progress = self.progress;
@@ -256,8 +256,8 @@ const About = () => {
 
   return (
     <main className="relative">
-      <div className="sticky top-1/3 bg-transparent z-50 px-4 md:px-16 py-10">
-        <h1 className="md:text-3xl text-justify">
+      <div className="sticky top-1/2 -translate-y-1/2 bg-transparent z-50 px-4 md:px-16 py-10">
+        <h1 className="md:text-3xl text-left max-w-6xl">
           {words.map((word, wordIndex) => (
             <span
               key={wordIndex}
@@ -274,7 +274,7 @@ const About = () => {
 
       <section ref={sectionRef} className="relative w-full">
         {/* IMAGE WRAPPER */}
-        <div className="relative w-full h-svh">
+        {/* <div className="relative w-full h-svh">
           <div
             ref={imageRef}
             className="absolute bottom-0 left-0 w-full h-full opacity-50"
@@ -290,7 +290,7 @@ const About = () => {
               />
             ))}
           </div>
-        </div>
+        </div> */}
       </section>
     </main>
   );
