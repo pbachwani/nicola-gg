@@ -14,22 +14,22 @@ const slides = [
   {
     src: `${cdnBase}/homepage/MENGNIU_HP.mp4`,
     project: "Mengniu",
-    index: "04",
+    index: "02",
   },
   {
-    src: `${cdnBase}/homepage/01_Samsung_HP.mp4`,
-    project: "Samsung",
-    index: "02",
+    src: `${cdnBase}/homepage/Beats_PF.mp4`,
+    project: "Beats",
+    index: "03",
   },
   {
     src: `${cdnBase}/homepage/Burberry_Perfume_HP.mp4`,
     project: "Burberry Perfume",
-    index: "05",
+    index: "04",
   },
   {
-    src: `${cdnBase}/homepage/Astropulse_Final_HP.mp4.mp4`,
-    project: "Astropulse",
-    index: "03",
+    src: `${cdnBase}/homepage/Royal_Enfiled_HP.mp4`,
+    project: "Royal Enfield",
+    index: "05",
   },
   {
     src: `${cdnBase}/homepage/Shiseido_HP.mp4`,

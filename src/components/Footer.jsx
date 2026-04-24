@@ -75,14 +75,14 @@ const Footer = ({ onClose }) => {
                 </p>
                 <a
                   href="#"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-white transition-colors duration-500"
                   onClick={() => onClose?.()}
                 >
                   Instagram
                 </a>
                 <a
                   href="#"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-white transition-colors duration-500"
                   onClick={() => onClose?.()}
                 >
                   Vimeo
@@ -96,14 +96,14 @@ const Footer = ({ onClose }) => {
                 </p>
                 <Link
                   href="/projects"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-white transition-colors duration-500"
                   onClick={() => onClose?.()}
                 >
                   Work
                 </Link>
                 <Link
                   href="/artists"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-white transition-colors duration-500"
                   onClick={() => onClose?.()}
                 >
                   Artist

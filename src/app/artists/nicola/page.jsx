@@ -28,9 +28,9 @@ const NicolaProjects = () => {
       <div className="">
         {/* Sticky side label + scroll indicator */}
         <motion.div
-          className="fixed left-6 top-1/2 -translate-y-1/2 z-30 hidden md:flex flex-col items-center gap-3"
+          className="fixed right-6 top-1/2 -translate-y-1/2 z-30 hidden md:flex flex-col items-center gap-3"
           initial={{ opacity: 0 }}
-          animate={{ opacity: scrolled ? 1 : 0 }}
+          animate={{ opacity: scrolled ? 1 : 0, delay: 0.5 }}
           transition={{ duration: 0.4 }}
         >
           <span

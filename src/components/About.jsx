@@ -200,23 +200,23 @@ const About = () => {
       const totalImages = images.length;
 
       // IMAGE HEIGHT (unchanged)
-      gsap.fromTo(
-        imageRef.current,
-        {
-          height: "0vh",
-        },
-        {
-          height: "100vh",
-          ease: "none",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top top",
-            end: "+=800",
-            scrub: true,
-            pin: true,
-          },
-        },
-      );
+      // gsap.fromTo(
+      //   imageRef.current,
+      //   {
+      //     height: "0vh",
+      //   },
+      //   {
+      //     height: "100vh",
+      //     ease: "none",
+      //     scrollTrigger: {
+      //       trigger: sectionRef.current,
+      //       start: "top top",
+      //       end: "+=800",
+      //       scrub: true,
+      //       pin: true,
+      //     },
+      //   },
+      // );
 
       // TEXT HIGHLIGHT (unchanged)
       ScrollTrigger.create({
@@ -235,7 +235,7 @@ const About = () => {
       ScrollTrigger.create({
         trigger: sectionRef.current,
         start: "top top",
-        end: "+=200",
+        end: "+=800",
         scrub: true,
         onUpdate: (self) => {
           const progress = self.progress;
@@ -257,7 +257,7 @@ const About = () => {
   return (
     <main className="relative">
       <div className="sticky top-1/2 -translate-y-1/2 bg-transparent z-50 px-4 md:px-16 py-10">
-        <h1 className="md:text-3xl text-left max-w-6xl">
+        <h1 className="md:text-3xl text-left max-w-6xl leading-snug">
           {words.map((word, wordIndex) => (
             <span
               key={wordIndex}
@@ -272,7 +272,10 @@ const About = () => {
         </h1>
       </div>
 
-      <section ref={sectionRef} className="relative w-full">
+      <section
+        ref={sectionRef}
+        className="relative w-full min-h-screen h-[150vh]"
+      >
         {/* IMAGE WRAPPER */}
         {/* <div className="relative w-full h-svh">
           <div
