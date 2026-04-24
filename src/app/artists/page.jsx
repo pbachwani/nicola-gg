@@ -3,7 +3,7 @@ import PageTransition from "@/components/PageTransition";
 import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import TransitionProvider from "@/components/TransitionProvider";
+
 import { cdnBase } from "../constants/data";
 
 const artists = [
@@ -32,7 +32,7 @@ const ArtistsPage = () => {
     clearInterval(intervalRef.current);
     intervalRef.current = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % artists.length);
-    }, 4000);
+    }, 6000);
   };
 
   useEffect(() => {
@@ -80,7 +80,15 @@ const ArtistsPage = () => {
                   setHoveredId(artist.id);
                   resetCycle();
                 }}
-                onMouseLeave={() => setHoveredId(null)}
+                // onMouseLeave={() => {
+                //   setHoveredId(null);
+                // }}
+                onMouseLeave={() => {
+                  const idx = artists.findIndex((a) => a.id === hoveredId);
+                  if (idx !== -1) setActiveIndex(idx);
+                  setHoveredId(null);
+                  resetCycle();
+                }}
                 className="group min-w-xs flex flex-col items-center"
               >
                 {/* Name row */}
@@ -101,28 +109,3 @@ const ArtistsPage = () => {
 };
 
 export default ArtistsPage;
-
-{
-  /* Progress bar */
-}
-{
-  /* <div className="w-full max-w-xs max-md:hidden h-px bg-white/0 overflow-hidden">
-                  <AnimatePresence mode="wait">
-                    {isActive && (
-                      <motion.div
-                        key={artist.id + activeIndex}
-                        className={`h-full bg-white/0 ${isActive && "bg-white/70"}`}
-                        initial={{ scaleX: 0 }}
-                        animate={{ scaleX: 1 }}
-                        exit={{
-                          opacity: 0,
-                          // scaleX: "100%",
-                          transition: { duration: 0.2 },
-                        }}
-                        transition={{ duration: 5, ease: "linear" }}
-                        style={{ transformOrigin: "left" }}
-                      />
-                    )}
-                  </AnimatePresence>
-                </div> */
-}
