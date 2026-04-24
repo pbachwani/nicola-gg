@@ -12,7 +12,7 @@ const Home = () => {
     <PreloaderWrapper>
       <main className="">
         <Hero />
-        <div className="absolute inset-0 flex flex-col justify-center items-center gap-4 mt-20 cursor-default"></div>
+        {/* <div className="absolute inset-0 flex flex-col justify-center items-center gap-4 mt-20 cursor-default"></div> */}
         <About />
         <FeaturedProjects />
         <Footer />

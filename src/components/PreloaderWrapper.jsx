@@ -49,7 +49,7 @@ export default function PreloaderWrapper({ children }) {
     const tryAttach = () => {
       const videos = Array.from(
         document.querySelectorAll("#hero-video video"),
-      ).slice(0, 2);
+      ).slice(0, 1);
 
       if (!videos.length) {
         setProgress(100);
@@ -80,7 +80,7 @@ export default function PreloaderWrapper({ children }) {
     const fallback = setTimeout(() => {
       setProgress(100);
       setReady(true);
-    }, 3000); // 3s max — never hold the user longer
+    }, 5000); // 3s max — never hold the user longer
 
     return () => {
       cancelAnimationFrame(raf);

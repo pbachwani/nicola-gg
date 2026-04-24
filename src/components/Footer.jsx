@@ -43,7 +43,7 @@ const Footer = ({ onClose }) => {
     setLoading(false);
   }
   return (
-    <main className="h-full flex flex-col justify-end" id="footer">
+    <main className="h-full flex flex-col justify-end " id="footer">
       <>
         <motion.div
           key="contact-panel"
@@ -54,7 +54,7 @@ const Footer = ({ onClose }) => {
           transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
         >
           {/* Content row */}
-          <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-8">
+          <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-8 z-99">
             {/* Email */}
             <div className="flex justify-start items-baseline ">
               <p className="md:text-3xl tracking-widest mb-2 text-white/30">

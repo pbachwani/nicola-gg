@@ -4,37 +4,45 @@ import useEmblaCarousel from "embla-carousel-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState, useCallback } from "react";
 import { cdnBase } from "@/app/constants/data";
+import Link from "next/link";
+import { RollText } from "./RollText";
 
 const slides = [
   {
     src: `${cdnBase}/homepage/01_Apple_Security_HP.mp4`,
     project: "Apple Security",
     index: "01",
+    link: "/projects/apple-security",
   },
   {
     src: `${cdnBase}/homepage/MENGNIU_HP.mp4`,
     project: "Mengniu",
     index: "02",
+    link: "/projects/mengniu",
   },
   {
     src: `${cdnBase}/homepage/Beats_PF.mp4`,
     project: "Beats",
     index: "03",
+    link: "/projects/beats",
   },
   {
     src: `${cdnBase}/homepage/Burberry_Perfume_HP.mp4`,
     project: "Burberry Perfume",
     index: "04",
+    link: "/projects/burberry-perfume",
   },
   {
     src: `${cdnBase}/homepage/Royal_Enfiled_HP.mp4`,
     project: "Royal Enfield",
     index: "05",
+    link: "/projects/royal-enfield",
   },
   {
     src: `${cdnBase}/homepage/Shiseido_HP.mp4`,
     project: "Shiseido",
     index: "06",
+    link: "/projects/shiseido",
   },
 ];
 
@@ -148,16 +156,18 @@ export default function HeroCarousel() {
       {/* Project name + progress bar */}
       <div className="absolute bottom-12 left-1/2 max-md:-translate-x-1/2 md:left-14">
         <AnimatePresence mode="wait">
-          <div className=" max-md:text-center">
+          <div className="max-md:text-center">
             <motion.h2
               key={activeIndex}
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
-              className="text-white/80 text-2xl md:text-3xl font-light tracking-wide"
+              className="text-2xl md:text-3xl font-light tracking-wide"
             >
-              {slides[activeIndex].project}
+              <Link href={slides[activeIndex].link}>
+                <RollText>{slides[activeIndex].project}</RollText>
+              </Link>
             </motion.h2>
             <div className="mt-2 w-xs h-px bg-white/10 overflow-hidden ml-0.5">
               <motion.div
