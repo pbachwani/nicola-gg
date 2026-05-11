@@ -56,7 +56,7 @@ const Footer = ({ onClose }) => {
           {/* Content row */}
           <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-8 z-99">
             {/* Email */}
-            <div className="flex justify-start items-baseline ">
+            <div className="flex justify-start items-baseline  gap-1">
               <p className="md:text-3xl tracking-widest mb-2 text-white/30">
                 Say
               </p>
@@ -71,26 +71,28 @@ const Footer = ({ onClose }) => {
               {/* Socials */}
               <div className="flex flex-col gap-2 text-xs text-white/30 w-fit">
                 <p className="tracking-widest uppercase text-white/60 mb-1">
-                  Follow
+                  Give us a follow
                 </p>
                 <a
-                  href="#"
+                  href="https://www.instagram.com/groundglass.studio"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:text-white transition-colors duration-500"
                   onClick={() => onClose?.()}
                 >
                   Instagram
                 </a>
-                <a
+                {/* <a
                   href="#"
                   className="hover:text-white transition-colors duration-500"
                   onClick={() => onClose?.()}
                 >
                   Vimeo
-                </a>
+                </a> */}
               </div>
 
               {/* site links */}
-              <div className="flex flex-col gap-2 text-xs text-white/30 w-fit">
+              {/* <div className="flex flex-col gap-2 text-xs text-white/30 w-fit">
                 <p className="tracking-widest uppercase text-white/60 mb-1">
                   SiteLinks
                 </p>
@@ -108,7 +110,7 @@ const Footer = ({ onClose }) => {
                 >
                   Artist
                 </Link>
-              </div>
+              </div> */}
 
               {/* Newsletter */}
               <div className="flex flex-col gap-2">
@@ -152,7 +154,7 @@ const Footer = ({ onClose }) => {
           <div className="mt-10 overflow-hidden h-fit">
             <div className="flex flex-col lg:flex-row h-full w-full justify-start items-start lg:items-end gap-4 lg:gap-10">
               {/* text */}
-              <div className="flex flex-row gap-4 text-xs">
+              {/* <div className="flex flex-row gap-4 text-xs">
                 <Link
                   href={"/"}
                   className="text-white/30 hover:text-white transition-all duration-300 ease-out text-nowrap"
@@ -167,12 +169,12 @@ const Footer = ({ onClose }) => {
                 >
                   Privacy Policy
                 </Link>
-              </div>
+              </div> */}
 
               {/* image */}
               <div className="w-full">
                 <img
-                  src="/logo-files/PNG/logo-horizontal-cropped.png"
+                  src="/logo-files/PNG/white horizontal.png"
                   alt=""
                   className="w-full h-auto object-contain"
                 />

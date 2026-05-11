@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
 import gsap from "gsap";
 import Link from "next/link";
+import Image from "next/image";
+import { logoHorizontal } from "../../public/logo-files/PNG/white horizontal.png";
 
 export default function PreloaderWrapper({ children }) {
   const pathname = usePathname();
@@ -289,7 +291,7 @@ export default function PreloaderWrapper({ children }) {
             <motion.div
               key="preloader-content"
               exit={{ opacity: 0, transition: { duration: 0.2 } }}
-              className={`${displayNum === 100 && "opacity-0 transition-opacity duration-1200 ease-in"} w-full fixed bottom-8 left-50% -translate-x-50% z-9999 flex justify-center items-center gap-4`}
+              className={`${displayNum === 100 && "opacity-0 transition-opacity duration-1200 ease-in"} w-full fixed bottom-8 left-50% -translate-x-50% z-9999 flex flex-col justify-center items-center gap-4`}
             >
               <motion.p
                 initial={{ opacity: 0, y: 8 }}
@@ -297,19 +299,34 @@ export default function PreloaderWrapper({ children }) {
                 transition={{ duration: 0.7, delay: 0.2 }}
                 className="text-xs tracking-wide uppercase font-light text-white/65"
               >
-                Ground Glass
+                <img
+                  src="/logo-files/PNG/white horizontal.png"
+                  alt="horizontal logo"
+                  className="h-12 w-full"
+                />
               </motion.p>
 
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                style={{
-                  fontVariantNumeric: "tabular-nums",
-                }}
-                className="w-10 text-white/65 text-xs tracking-wide font-light"
+                style={{ fontVariantNumeric: "tabular-nums" }}
+                className="flex items-center gap-3"
               >
-                {displayNum}
+                {/* Progress bar */}
+                <div className="w-[320px] h-px bg-white/20 overflow-hidden">
+                  <motion.div
+                    initial={{ width: 0 }}
+                    animate={{ width: `${displayNum}%` }}
+                    transition={{ ease: "easeOut", duration: 0.6 }}
+                    className="h-full bg-white"
+                  />
+                </div>
+
+                {/* Number */}
+                {/* <div className="w-10 text-white/65 text-xs tracking-wide font-light">
+                  {displayNum}%
+                </div> */}
               </motion.div>
             </motion.div>
           </>
@@ -360,7 +377,8 @@ export default function PreloaderWrapper({ children }) {
 
 {
   /* loading bar */
-  /* <AnimatePresence>
+  /* 
+  <AnimatePresence>
                 {barVisible && (
                   <motion.div
                     key="progress-bar"
@@ -393,5 +411,6 @@ export default function PreloaderWrapper({ children }) {
                     />
                   </motion.div>
                 )}
-              </AnimatePresence> */
+              </AnimatePresence> 
+              */
 }

@@ -163,11 +163,9 @@ export default function HeroCarousel() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
-              className="text-2xl md:text-3xl font-light tracking-wide"
+              className="text-2xl md:text-3xl font-light tracking-wide cursor-default"
             >
-              <Link href={slides[activeIndex].link}>
-                <RollText>{slides[activeIndex].project}</RollText>
-              </Link>
+              {slides[activeIndex].project}
             </motion.h2>
             <div className="mt-2 w-xs h-px bg-white/10 overflow-hidden ml-0.5">
               <motion.div
@@ -178,6 +176,38 @@ export default function HeroCarousel() {
             </div>
           </div>
         </AnimatePresence>
+      </div>
+      <div className="absolute max-md:hidden bottom-8 right-14 flex flex-col items-center gap-2.5">
+        {/* Vertical text */}
+        <motion.p
+          className="text-[10px] tracking-[0.2em] text-white/80 font-mono"
+          style={{
+            writingMode: "vertical-rl",
+            textOrientation: "mixed",
+            transform: "rotate(0deg)",
+          }}
+          animate={{ opacity: [0.35, 0.65, 0.35] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+        >
+          scroll down
+        </motion.p>
+
+        {/* Animated line */}
+        <div className="relative w-px h-14 overflow-hidden bg-white/10">
+          <motion.div
+            className="absolute left-0 w-px bg-white/80"
+            animate={{
+              height: ["0%", "60%", "0%"],
+              top: ["0%", "0%", "100%"],
+              opacity: [1, 1, 0.2],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: [0.4, 0, 0.2, 1],
+            }}
+          />
+        </div>
       </div>
     </>
   );
